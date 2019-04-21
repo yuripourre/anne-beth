@@ -6,12 +6,10 @@ import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.macbeth.aspell.core.Context;
-import com.harium.macbeth.aspell.ui.DialogManager;
-import com.harium.macbeth.aspell.object.BaseObject;
-import com.harium.macbeth.aspell.object.HitBoxObject;
-import com.harium.macbeth.aspell.object.DummyObject;
-import com.harium.macbeth.aspell.object.Fan;
+import com.harium.macbeth.aspell.object.*;
 import com.harium.macbeth.aspell.player.Player;
+import com.harium.macbeth.aspell.ui.DialogManager;
+import com.harium.macbeth.aspell.ui.InventoryManager;
 import com.harium.macbeth.aspell.ui.UIManager;
 
 import java.util.ArrayList;
@@ -22,6 +20,8 @@ public class InGame extends Application {
     Player player;
     DialogManager dialogManager;
     UIManager uiManager;
+    InventoryManager inventoryManager;
+
     List<BaseObject> objectList = new ArrayList<BaseObject>();
 
     public InGame(int w, int h) {
@@ -33,9 +33,11 @@ public class InGame extends Application {
         player = new Player(0, 80);
 
         objectList.add(new Fan(40, 40));
-        objectList.add(new HitBoxObject("carpet", 240, 240, 104, 128));
+        objectList.add(new HitBoxObject("carpet", 180, 240, 104, 128));
+        objectList.add(new Lemon(400, 240));
 
         uiManager = new UIManager();
+        inventoryManager = new InventoryManager();
     }
 
     @Override
@@ -55,6 +57,7 @@ public class InGame extends Application {
         player.draw(g);
 
         uiManager.draw(g);
+        inventoryManager.draw(g);
         dialogManager.draw(g);
         Context.draw(g);
     }
@@ -66,6 +69,9 @@ public class InGame extends Application {
             if (event.getY() < 410) {
                 boolean found = false;
                 for (BaseObject object : objectList) {
+                    if (object.disabled) {
+                        continue;
+                    }
                     if (object.x < event.getX() && object.x + object.w > event.getX() &&
                             object.y < event.getY() && object.y + object.h > event.getY()) {
 
@@ -78,10 +84,13 @@ public class InGame extends Application {
 
                 if (!found) {
                     // just walk
-                    player.setTarget(new DummyObject(event.getX(), event.getY()));
+                    BaseObject object = new DummyObject(event.getX(), event.getY());
+                    player.setTarget(object);
+                    Context.setObject(object);
                 }
             } else {
                 uiManager.updateMouse(event);
+                inventoryManager.updateMouse(event);
             }
         }
     }

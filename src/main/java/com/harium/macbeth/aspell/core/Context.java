@@ -14,6 +14,10 @@ public class Context {
     public static BaseObject with = NULL_OBJECT;
 
     public static void reachObject() {
+        if (object.disabled) {
+            reset();
+            return;
+        }
         switch (interaction) {
             case OPEN:
                 object.onOpen();
@@ -26,7 +30,6 @@ public class Context {
                 break;
             case LOOK_AT:
                 object.onLook();
-
                 break;
             case PICK_UP:
                 object.onPickUp();
@@ -61,9 +64,8 @@ public class Context {
             }
         }
 
+        // Draw action
         g.drawStringX(sentence, CONTEXT_SENTENCE);
-
-        // TODO DRAW CONTEXT
     }
 
     private static String asWord(Interaction interaction) {

@@ -10,6 +10,7 @@ public class BaseObject {
 
     public String name;
 
+    public boolean disabled = false;
     public boolean canOpen = false;
     public boolean canClose = false;
     public boolean canLook = false;
@@ -38,7 +39,6 @@ public class BaseObject {
         g.setColor(Color.BLACK);
         g.drawRect(x, y, w, h);
     }
-
 
     public void onOpen() {
         if (!canOpen) {

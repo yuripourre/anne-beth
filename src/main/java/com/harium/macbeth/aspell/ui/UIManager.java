@@ -39,23 +39,23 @@ public class UIManager {
     }
 
     public void updateMouse(PointerEvent event) {
-        checkOpen(open, event);
-        checkOpen(close, event);
-        checkOpen(lookat, event);
-        checkOpen(use, event);
-        checkOpen(pickup, event);
-        checkOpen(pull, event);
+        checkCollide(open, event);
+        checkCollide(close, event);
+        checkCollide(lookat, event);
+        checkCollide(use, event);
+        checkCollide(pickup, event);
+        checkCollide(pull, event);
     }
 
-    private void checkOpen(ActionButton object, PointerEvent event) {
-        int x = object.layer.getX();
-        int y = object.layer.getY();
-        int w = object.layer.getW();
-        int h = object.layer.getH();
+    private void checkCollide(ActionButton button, PointerEvent event) {
+        int x = button.layer.getX();
+        int y = button.layer.getY();
+        int w = button.layer.getW();
+        int h = button.layer.getH();
 
         if (x < event.getX() && x + w > event.getX() &&
                 y < event.getY() && y + h > event.getY()) {
-            Context.interaction = object.interaction;
+            Context.interaction = button.interaction;
         }
     }
 }
