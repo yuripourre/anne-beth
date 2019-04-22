@@ -1,26 +1,49 @@
 package com.harium.macbeth.aspell.ui;
 
 import com.harium.etyl.commons.event.PointerEvent;
+import com.harium.etyl.commons.event.PointerState;
 import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.layer.ImageLayer;
 import com.harium.macbeth.aspell.core.Context;
 import com.harium.macbeth.aspell.core.Interaction;
 import com.harium.macbeth.aspell.object.PickupableObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InventoryManager {
 
-    private static InventoryButton[] slots;
+    private static final int ROW = 3;
+    public static final int ROW_OFFSET = 138;
+    private int offsetY = 0;
+    private int cursor = 0;
 
+    private static final int ARROW_X = 542;
+    private static final int x = 598;
+    private static final int y = 424;
+
+    private ImageLayer upArrow;
+    private ImageLayer downArrow;
+    private static List<InventoryButton> slots = new ArrayList<InventoryButton>(3);
     private static int usedSlots = 0;
 
-    {
-        slots = new InventoryButton[3];
-        int x = 588;
-        int y = 424;
-        int ox = 148;
+    public InventoryManager() {
+        upArrow = new ImageLayer(ARROW_X, 420, 48, 64, "ui/arrow_up.png");
+        downArrow = new ImageLayer(ARROW_X, 490, 48, 64, "ui/arrow_down.png");
 
-        for (int i = 0; i < 3; i++) {
-            slots[i] = new InventoryButton(x + ox * i, y);
+        for (int i = 0; i < ROW; i++) {
+            addSlot();
         }
+    }
+
+    private static void addSlot() {
+        int ox = ROW_OFFSET;
+        int oy = ox;
+
+        int i = slots.size() % ROW;
+        int j = slots.size() / ROW;
+
+        slots.add(new InventoryButton(x + ox * i, y + oy * j));
     }
 
     public static void pickup(PickupableObject object) {
@@ -30,37 +53,71 @@ public class InventoryManager {
     }
 
     private static InventoryButton nextSlot() {
-        return slots[usedSlots];
+        if (usedSlots == slots.size()) {
+            addSlot();
+        }
+
+        return slots.get(usedSlots);
     }
 
     public void draw(Graphics g) {
+        upArrow.simpleDraw(g);
+        downArrow.simpleDraw(g);
+
         int count = 0;
         for (InventoryButton button : slots) {
-            button.draw(g);
+            button.draw(g, 0, offsetY);
             if (count < usedSlots) {
                 // Draw slot content
-                button.drawObject(g);
+                button.drawObject(g, 0, offsetY);
             }
             count++;
         }
     }
 
     public void updateMouse(PointerEvent event) {
-        for (InventoryButton button : slots) {
-            checkCollide(button, event);
+        if (event.getX() < ARROW_X) {
+            return;
+        }
+
+        if (event.getState() == PointerState.PRESSED) {
+            if (usedSlots > ROW) {
+                if (checkCollide(upArrow, event)) {
+                    if (cursor > 0) {
+                        offsetY += ROW_OFFSET;
+                        cursor--;
+                    }
+                } else if (checkCollide(downArrow, event)) {
+                    if ((cursor + 1) * ROW < usedSlots) {
+                        offsetY -= ROW_OFFSET;
+                        cursor++;
+                    }
+                }
+            }
+
+            for (InventoryButton button : slots) {
+                if (button.layer.getY() < y) {
+                    continue;
+                }
+                checkCollide(button, event);
+            }
         }
     }
 
     private void checkCollide(InventoryButton button, PointerEvent event) {
-        int x = button.layer.getX();
-        int y = button.layer.getY();
-        int w = button.layer.getW();
-        int h = button.layer.getH();
-
-        if (x < event.getX() && x + w > event.getX() &&
-                y < event.getY() && y + h > event.getY()) {
+        if (checkCollide(button.layer, event)) {
             Context.interaction = Interaction.USE;
             Context.object = button.object;
         }
+    }
+
+    private boolean checkCollide(ImageLayer layer, PointerEvent event) {
+        int x = layer.getX();
+        int y = layer.getY();
+        int w = layer.getW();
+        int h = layer.getH();
+
+        return (x < event.getX() && x + w > event.getX() &&
+                y < event.getY() && y + h > event.getY());
     }
 }

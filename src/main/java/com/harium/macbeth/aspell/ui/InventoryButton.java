@@ -11,16 +11,16 @@ public class InventoryButton {
     public PickupableObject object;
 
     public InventoryButton(int x, int y) {
-        layer = new ImageLayer(x, y, "inventory.png");
+        layer = new ImageLayer(x, y, "ui/inventory.png");
     }
 
-    public void draw(Graphics g) {
-        layer.draw(g);
+    public void draw(Graphics g, int x, int y) {
+        layer.simpleDraw(g, layer.getX() + x, layer.getY() + y);
     }
 
-    public void drawObject(Graphics g) {
+    public void drawObject(Graphics g, int x, int y) {
         ImageLayer layer = object.getInventoryLayer();
-        layer.simpleDraw(g);
+        layer.simpleDraw(g, layer.getX() + x, layer.getY() + y);
     }
 
     public GeometricLayer getLayer() {

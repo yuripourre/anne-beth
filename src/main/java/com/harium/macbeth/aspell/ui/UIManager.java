@@ -16,9 +16,9 @@ public class UIManager {
     private ActionButton pull;
 
     public UIManager() {
-        int x = 38;
+        int x = 22;
         int y = 424;
-        int ox = 178;
+        int ox = 176;
         int oy = 70;
 
         open = new ActionButton(OPEN, x, y);

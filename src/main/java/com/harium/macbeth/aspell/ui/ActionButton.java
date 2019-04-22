@@ -13,7 +13,7 @@ public class ActionButton {
 
     public ActionButton(Interaction interaction, int x, int y) {
         this.interaction = interaction;
-        layer = new ImageLayer(x, y, "button.png");
+        layer = new ImageLayer(x, y, "ui/button.png");
         //label = new ImageLayer();*/
     }
 

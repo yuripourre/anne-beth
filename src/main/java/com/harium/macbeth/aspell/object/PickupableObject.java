@@ -1,11 +1,13 @@
 package com.harium.macbeth.aspell.object;
 
+import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 import com.harium.macbeth.aspell.ui.InventoryManager;
 
 
 public class PickupableObject extends BaseObject {
 
+    public ImageLayer layer;
     protected ImageLayer inventoryLayer;
 
     public PickupableObject(String name, int x, int y, int w, int h) {
@@ -18,7 +20,16 @@ public class PickupableObject extends BaseObject {
     }
 
     @Override
+    public void draw(Graphics g) {
+        if (disabled) {
+            return;
+        }
+        layer.simpleDraw(g, x, y);
+    }
+
+    @Override
     public void onPickUp() {
         InventoryManager.pickup(this);
+        disabled = true;
     }
 }

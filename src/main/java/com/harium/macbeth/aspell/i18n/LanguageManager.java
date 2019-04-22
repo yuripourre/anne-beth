@@ -10,5 +10,7 @@ public class LanguageManager {
         return dictionary.asWord(interaction);
     }
 
-
+    public static String objectName(String key) {
+        return dictionary.objectName(key);
+    }
 }
