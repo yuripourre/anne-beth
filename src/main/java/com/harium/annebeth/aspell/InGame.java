@@ -36,6 +36,12 @@ public class InGame extends Application {
         sceneManager = new SceneManager();
         uiManager = new UIManager();
         inventoryManager = new InventoryManager();
+
+        /*InventoryManager.pickup(new Lemon(0, 0));
+        InventoryManager.pickup(new Stool(0, 0));
+        InventoryManager.pickup(new Softener(0, 0));
+        InventoryManager.pickup(new Soap(0, 0));*/
+
     }
 
     @Override

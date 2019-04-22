@@ -61,8 +61,15 @@ public class InventoryManager {
     }
 
     public void draw(Graphics g) {
-        upArrow.simpleDraw(g);
-        downArrow.simpleDraw(g);
+
+        if (usedSlots > ROW) {
+            if (cursor > 0) {
+                upArrow.simpleDraw(g);
+            }
+            if ((cursor+1) * ROW < usedSlots) {
+                downArrow.simpleDraw(g);
+            }
+        }
 
         int count = 0;
         for (InventoryButton button : slots) {
