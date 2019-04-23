@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.object;
 
+import com.harium.annebeth.aspell.object.base.HitBoxObject;
 import com.harium.annebeth.aspell.ui.DialogManager;
 
 public class Fan extends HitBoxObject {

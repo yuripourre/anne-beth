@@ -2,6 +2,7 @@ package com.harium.annebeth.aspell.object;
 
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
+import com.harium.annebeth.aspell.object.base.PickupableObject;
 import com.harium.etyl.layer.ImageLayer;
 
 public class Stool extends PickupableObject {

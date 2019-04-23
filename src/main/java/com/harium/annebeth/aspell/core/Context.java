@@ -2,7 +2,7 @@ package com.harium.annebeth.aspell.core;
 
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.etyl.core.graphics.Graphics;
-import com.harium.annebeth.aspell.object.BaseObject;
+import com.harium.annebeth.aspell.object.base.BaseObject;
 
 public class Context {
 

@@ -1,4 +1,4 @@
-package com.harium.annebeth.aspell.object;
+package com.harium.annebeth.aspell.object.base;
 
 import com.harium.annebeth.aspell.ui.DialogHelper;
 import com.harium.annebeth.aspell.ui.DialogManager;

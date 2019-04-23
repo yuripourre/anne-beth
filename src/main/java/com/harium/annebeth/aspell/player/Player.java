@@ -1,7 +1,7 @@
 package com.harium.annebeth.aspell.player;
 
 import com.harium.annebeth.aspell.core.Context;
-import com.harium.annebeth.aspell.object.BaseObject;
+import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.AnimatedLayer;
 

@@ -1,6 +1,6 @@
 package com.harium.annebeth.aspell.ui;
 
-import com.harium.annebeth.aspell.object.PickupableObject;
+import com.harium.annebeth.aspell.object.base.PickupableObject;
 import com.harium.etyl.commons.layer.GeometricLayer;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
@@ -32,6 +32,9 @@ public class InventoryButton {
     }
 
     public void setObject(PickupableObject object) {
+        if (object == null) {
+            return;
+        }
         this.object = object;
 
         ImageLayer objectInventoryLayer = this.object.getInventoryLayer();
@@ -40,5 +43,11 @@ public class InventoryButton {
 
         int baseY = this.layer.getY() + 96;
         objectInventoryLayer.setY(baseY - objectInventoryLayer.getH());
+    }
+
+    public void updatePosition(int x, int y) {
+        layer.setX(x);
+        layer.setY(y);
+        setObject(object);
     }
 }

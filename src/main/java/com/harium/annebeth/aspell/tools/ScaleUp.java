@@ -22,7 +22,7 @@ public class ScaleUp extends Application {
 
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
-        g.fillRect(this);
+        g.drawStringX("Drop images to scale!", w / 4);
     }
 
     @Override

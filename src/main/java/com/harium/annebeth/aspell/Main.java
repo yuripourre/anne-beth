@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell;
 
+import com.harium.annebeth.aspell.tools.ScaleUp;
 import com.harium.etyl.Etyl;
 import com.harium.etyl.commons.context.Application;
 
@@ -11,7 +12,7 @@ public class Main extends Etyl {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.setTitle("Anne Beth: Accidentally Magical");
+        main.setTitle("Anne Beth: Laundry Day");
         main.init();
     }
 

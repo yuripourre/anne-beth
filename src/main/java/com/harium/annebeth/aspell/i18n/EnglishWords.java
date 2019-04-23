@@ -10,10 +10,14 @@ public class EnglishWords implements Dictionary {
     Map<String, String> words = new HashMap<String, String>();
 
     {
-        words.put(STOOL, "stool");
+        words.put(CLOTHES_PILE, "pile of clothes");
         words.put(LEMON, "lemon");
-        words.put(SOFTENER, "fabric softener");
         words.put(SOAP, "laundry soap");
+        words.put(SOFTENER, "fabric softener");
+        words.put(STOOL, "stool");
+        words.put(SOCK, "dirty sock");
+        words.put(SHOYU, "soy sauce");
+        words.put(WASHER, "washer");
     }
 
     @Override
@@ -40,6 +44,9 @@ public class EnglishWords implements Dictionary {
 
     @Override
     public String objectName(String key) {
+        if (!words.containsKey(key)) {
+            System.out.println(key + ": not implemented.");
+        }
         return words.get(key);
     }
 }

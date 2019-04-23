@@ -1,4 +1,4 @@
-package com.harium.annebeth.aspell.object;
+package com.harium.annebeth.aspell.object.base;
 
 public class DummyObject extends BaseObject {
 

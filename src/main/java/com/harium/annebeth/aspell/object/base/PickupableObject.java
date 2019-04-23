@@ -1,4 +1,4 @@
-package com.harium.annebeth.aspell.object;
+package com.harium.annebeth.aspell.object.base;
 
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
@@ -13,6 +13,7 @@ public class PickupableObject extends BaseObject {
     public PickupableObject(String name, int x, int y, int w, int h) {
         super(name, x, y, w, h);
         canPickup = true;
+        canUse = true;
     }
 
     public ImageLayer getInventoryLayer() {

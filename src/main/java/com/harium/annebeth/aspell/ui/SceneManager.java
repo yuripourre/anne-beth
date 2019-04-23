@@ -2,6 +2,9 @@ package com.harium.annebeth.aspell.ui;
 
 import com.harium.annebeth.aspell.InGame;
 import com.harium.annebeth.aspell.object.*;
+import com.harium.annebeth.aspell.object.base.BaseObject;
+import com.harium.annebeth.aspell.object.base.DummyObject;
+import com.harium.annebeth.aspell.object.base.HitBoxObject;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
@@ -25,6 +28,11 @@ public class SceneManager {
         objectList.add(new Stool(300, 240));
         objectList.add(new Soap(500, 140));
         objectList.add(new Softener(560, 140));
+
+        objectList.add(new Sock(200, 140));
+        objectList.add(new Pile(600, 140));
+
+        objectList.add(new Washer(650, 240));
     }
 
     public void draw(Graphics g) {
