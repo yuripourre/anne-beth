@@ -20,6 +20,7 @@ public class Main extends Etyl {
 
     public Application startApplication() {
         MultimediaLoader.getInstance().setUrl(IOHelper.FILE_PREFIX + PathHelper.currentDirectory());
-        return new InGame(w, h);
+        //return new InGame(w, h);
+        return new MainMenu(w, h);
     }
 }

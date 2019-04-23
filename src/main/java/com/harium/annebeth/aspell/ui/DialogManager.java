@@ -63,6 +63,7 @@ public class DialogManager {
             g.drawStringX(currentDialog, dialogHeight);
             g.setColor(FONT_COLOR);
             g.drawStringX(currentDialog, -offset, dialogHeight - offset);
+            g.setColor(SHADOW_COLOR);
         }
 
         drawBottomSentence(g);

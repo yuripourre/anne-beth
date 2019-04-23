@@ -6,6 +6,7 @@ import com.harium.annebeth.aspell.object.*;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.DummyObject;
 import com.harium.annebeth.aspell.object.base.HitBoxObject;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
@@ -17,8 +18,11 @@ import java.util.List;
 
 public class SceneManager {
 
+    private static final Color background = new Color(0xC7, 0xB0, 0x8B);
+    private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
+
     Washer washer;
-    Color background = new Color(0xC7, 0xB0, 0x8B);
+    boolean normalWorld = true;
 
     List<BaseObject> objectList = new ArrayList<BaseObject>();
     List<BaseObject> foreground = new ArrayList<BaseObject>();
@@ -39,7 +43,11 @@ public class SceneManager {
     }
 
     public void draw(Graphics g) {
-        g.setColor(background);
+        if(normalWorld) {
+            g.setColor(background);
+        } else {
+            g.setColor(upsideDownBG);
+        }
         g.fillRect(0, 0, g.getWidth(), InGame.BOTTOM_BAR);
 
         for (BaseObject object : objectList) {
@@ -80,9 +88,10 @@ public class SceneManager {
 
     public void update(long now) {
         washer.update(now);
-        if (washer.explosion) {
-            // Effect
+        if (normalWorld && washer.explosion) {
+            normalWorld = false;
             // Flash Effect
+            Jukebox.playUpsideDownMusic();
         }
     }
 }

@@ -78,9 +78,9 @@ public class Jukebox {
     }
 
     public static void stopMusic(Music music) {
-        if (music.isPlaying()) {
+        //if (music.isPlaying()) {
             music.stop();
-        }
+        //}
     }
 
     public static void stopWasher() {

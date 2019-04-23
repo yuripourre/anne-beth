@@ -50,8 +50,6 @@ public class Washer extends OpenableObject {
         hasSoftener = true;
         hasSock = true;
         hasPile = true;
-
-        turnOn();
     }
 
     @Override
@@ -115,9 +113,12 @@ public class Washer extends OpenableObject {
 
     private void turnOn() {
         turnedOn = true;
+        Jukebox.stopMusics();
         Jukebox.playWasher();
         // TODO Add Special Effects
         DialogManager.addDialog("Mission Accomplished!");
         DialogManager.addDialog("Uh oh, something is wrong.");
+        DialogManager.addDialog("...");
+        DialogManager.addDialog("Spider Crap!");
     }
 }
