@@ -2,6 +2,7 @@ package com.harium.annebeth.aspell;
 
 import com.harium.annebeth.aspell.object.*;
 import com.harium.annebeth.aspell.player.Player;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.ActionUIManager;
 import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.annebeth.aspell.ui.InventoryManager;
@@ -26,6 +27,7 @@ public class InGame extends Application {
     }
 
     public void load() {
+        Jukebox.init();
         dialogManager = new DialogManager();
         player = new Player(0, 80);
 
@@ -38,12 +40,14 @@ public class InGame extends Application {
         InventoryManager.pickup(new Stool(0, 0));
         InventoryManager.pickup(new Softener(0, 0));
         InventoryManager.pickup(new Detergent(0, 0));
+        //Jukebox.playNormalMusic();
     }
 
     @Override
     public void update(long now) {
         player.update(now);
         dialogManager.update(now);
+        sceneManager.update(now);
     }
 
     public void draw(Graphics g) {

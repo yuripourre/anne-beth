@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.object.base;
 
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 import com.harium.annebeth.aspell.ui.InventoryManager;
@@ -30,7 +31,8 @@ public class PickupableObject extends BaseObject {
 
     @Override
     public void onPickUp() {
-        InventoryManager.pickup(this);
         visible = false;
+        InventoryManager.pickup(this);
+        Jukebox.playPickup();
     }
 }

@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.object.base;
 
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.DialogHelper;
 import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.etyl.commons.graphics.Color;
@@ -45,12 +46,17 @@ public class BaseObject {
     public void onOpen() {
         if (!canOpen) {
             DialogManager.addDialog("I can't do that.");
+        } else {
+            Jukebox.playOpen();
         }
+
     }
 
     public void onClose() {
         if (!canClose) {
             DialogManager.addDialog("I can't do that.");
+        } else {
+            Jukebox.playOpen();
         }
     }
 
@@ -58,6 +64,8 @@ public class BaseObject {
         if (!canPickup) {
             String sentence = DialogHelper.negativeSentence();
             DialogManager.addDialog(sentence);
+        } else {
+            Jukebox.playPickup();
         }
     }
 
@@ -65,6 +73,8 @@ public class BaseObject {
         if (!canUse) {
             String sentence = DialogHelper.negativeSentence();
             DialogManager.addDialog(sentence);
+        } else {
+            Jukebox.playUse();
         }
     }
 
@@ -72,6 +82,8 @@ public class BaseObject {
         if (!canPull) {
             String sentence = DialogHelper.negativeSentence();
             DialogManager.addDialog(sentence);
+        } else {
+            Jukebox.playPickup();
         }
     }
 

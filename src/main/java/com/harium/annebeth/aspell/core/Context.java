@@ -2,6 +2,7 @@ package com.harium.annebeth.aspell.core;
 
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.object.base.BaseObject;
+import com.harium.annebeth.aspell.sound.Jukebox;
 
 public class Context {
 
@@ -32,11 +33,9 @@ public class Context {
                 break;
             case PICK_UP:
                 object.onPickUp();
-
                 break;
             case PULL:
                 object.onPull();
-
                 break;
             case WALK:
             default:

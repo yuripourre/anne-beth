@@ -26,6 +26,11 @@
             <artifactId>etyl</artifactId>
             <version>1.4.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.harium.etyl</groupId>
+            <artifactId>sound</artifactId>
+            <version>1.2.0</version>
+        </dependency>
     </dependencies>
 
 </project>

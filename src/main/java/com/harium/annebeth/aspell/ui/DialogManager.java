@@ -16,7 +16,7 @@ public class DialogManager {
     public static final float FONT_SIZE = 18f;
     public static final Color SHADOW_COLOR = Color.BLACK;
     public static final Color FONT_COLOR = Color.WHITE;
-    static long DIALOG_DELAY = 3000;
+    static long DIALOG_DELAY = 2500;
 
     static List<String> dialogs = new ArrayList<String>();
     String currentDialog = "";

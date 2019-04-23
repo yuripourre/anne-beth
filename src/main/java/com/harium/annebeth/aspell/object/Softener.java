@@ -4,6 +4,7 @@ import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.HighObject;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.etyl.layer.ImageLayer;
 
@@ -64,8 +65,11 @@ public class Softener extends HighObject {
         if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
             Washer washer = (Washer) with;
             if (washer.isOpen()) {
-                step = USED;
-                washer.hasSoftener = true;
+                if (step == UNUSED && !washer.hasSoftener) {
+                    step = USED;
+                    washer.hasSoftener = true;
+                    Jukebox.playUse();
+                }
             } else {
                 DialogManager.addDialog("The washer should be open first.");
             }

@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.object.base;
 
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
@@ -29,11 +30,13 @@ public class OpenableObject extends BaseObject {
     @Override
     public void onOpen() {
         isOpen = true;
+        Jukebox.playOpen();
     }
 
     @Override
     public void onClose() {
         isOpen = false;
+        Jukebox.playOpen();
     }
 
     public boolean isOpen() {
