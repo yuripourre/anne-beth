@@ -57,7 +57,6 @@ public class InGame extends Application {
         sceneManager.drawForeground(g);
 
         dialogManager.draw(g);
-        Context.draw(g);
     }
 
     @Override

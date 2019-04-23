@@ -22,7 +22,7 @@ public class Pile extends PickupableObject {
             Washer washer = (Washer) with;
             if (washer.isOpen()) {
                 washer.hasPile = true;
-                disabled = true;
+                visible = false;
                 InventoryManager.remove(this.name);
             } else {
                 DialogManager.addDialog("The washer should be open first.");

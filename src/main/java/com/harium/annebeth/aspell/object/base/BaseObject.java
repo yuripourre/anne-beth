@@ -10,7 +10,9 @@ public class BaseObject {
 
     public String name;
 
+    public boolean visible = true;
     public boolean disabled = false;
+
     public boolean canOpen = false;
     public boolean canClose = false;
     public boolean canLook = false;

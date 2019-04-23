@@ -22,7 +22,7 @@ public class PickupableObject extends BaseObject {
 
     @Override
     public void draw(Graphics g) {
-        if (disabled) {
+        if (!visible) {
             return;
         }
         layer.simpleDraw(g, x, y);
@@ -31,6 +31,6 @@ public class PickupableObject extends BaseObject {
     @Override
     public void onPickUp() {
         InventoryManager.pickup(this);
-        disabled = true;
+        visible = false;
     }
 }

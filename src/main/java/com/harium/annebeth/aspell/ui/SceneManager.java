@@ -1,6 +1,7 @@
 package com.harium.annebeth.aspell.ui;
 
 import com.harium.annebeth.aspell.InGame;
+import com.harium.annebeth.aspell.core.Interaction;
 import com.harium.annebeth.aspell.object.*;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.DummyObject;
@@ -53,7 +54,7 @@ public class SceneManager {
     public void updateMouse(PointerEvent event, Player player) {
         boolean found = false;
         for (BaseObject object : objectList) {
-            if (object.disabled) {
+            if (!object.visible) {
                 continue;
             }
             if (object.x < event.getX() && object.x + object.w > event.getX() &&
@@ -67,6 +68,7 @@ public class SceneManager {
         }
 
         if (!found) {
+            Context.interaction = Interaction.WALK;
             // just walk
             BaseObject object = new DummyObject(event.getX(), event.getY());
             player.setTarget(object);

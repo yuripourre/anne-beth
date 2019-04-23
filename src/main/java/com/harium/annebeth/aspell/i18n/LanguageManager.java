@@ -6,7 +6,7 @@ public class LanguageManager {
 
     static Dictionary dictionary = new EnglishWords();
 
-    public static String InteractionAsWord(Interaction interaction) {
+    public static String asWord(Interaction interaction) {
         return dictionary.asWord(interaction);
     }
 

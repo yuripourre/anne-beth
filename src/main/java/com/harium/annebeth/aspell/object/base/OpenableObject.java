@@ -16,7 +16,7 @@ public class OpenableObject extends BaseObject {
 
     @Override
     public void draw(Graphics g) {
-        if (disabled) {
+        if (!visible) {
             return;
         }
         if (!isOpen) {

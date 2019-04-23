@@ -1,7 +1,6 @@
 package com.harium.annebeth.aspell.core;
 
 import com.harium.annebeth.aspell.i18n.LanguageManager;
-import com.harium.etyl.core.graphics.Graphics;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 
 public class Context {
@@ -14,7 +13,7 @@ public class Context {
     public static BaseObject with = NULL_OBJECT;
 
     public static void reachObject() {
-        if (object.disabled) {
+        if (object.disabled || object.name.isEmpty()) {
             reset();
             return;
         }
@@ -47,29 +46,8 @@ public class Context {
         reset();
     }
 
-    public static void draw(Graphics g) {
-        if (interaction == Interaction.WALK && object == NULL_OBJECT) {
-            return;
-        }
-
-        String sentence = asWord(interaction);
-
-        if (object != NULL_OBJECT) {
-            sentence += " " + object.name;
-            if (interaction == Interaction.USE && object.canUse) {
-                sentence += " with";
-                if (with != NULL_OBJECT) {
-                    sentence += " " + with.name;
-                }
-            }
-        }
-
-        // Draw action
-        g.drawStringX(sentence, CONTEXT_SENTENCE);
-    }
-
-    private static String asWord(Interaction interaction) {
-        return LanguageManager.InteractionAsWord(interaction);
+    public static String asWord(Interaction interaction) {
+        return LanguageManager.asWord(interaction);
     }
 
     public static void setObject(BaseObject object) {

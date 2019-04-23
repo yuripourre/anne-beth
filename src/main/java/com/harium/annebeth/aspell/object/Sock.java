@@ -22,10 +22,10 @@ public class Sock extends PickupableObject {
             Washer washer = (Washer) with;
             if (washer.isOpen()) {
                 washer.hasSock = true;
-                disabled = true;
+                visible = false;
                 InventoryManager.remove(this.name);
             } else {
-                DialogManager.addDialog("The washer should be opened first.");
+                DialogManager.addDialog("The washer should be open first.");
             }
         }
     }
