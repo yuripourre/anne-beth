@@ -6,7 +6,7 @@ import com.harium.annebeth.aspell.core.Context;
 
 import static com.harium.annebeth.aspell.core.Interaction.*;
 
-public class UIManager {
+public class ActionUIManager {
 
     private ActionButton open;
     private ActionButton close;
@@ -15,7 +15,7 @@ public class UIManager {
     private ActionButton pickup;
     private ActionButton pull;
 
-    public UIManager() {
+    public ActionUIManager() {
         int x = 22;
         int y = 424;
         int ox = 176;
@@ -56,6 +56,9 @@ public class UIManager {
         if (x < event.getX() && x + w > event.getX() &&
                 y < event.getY() && y + h > event.getY()) {
             Context.interaction = button.interaction;
+            // Reset context
+            Context.object = Context.NULL_OBJECT;
+            Context.with = Context.NULL_OBJECT;
         }
     }
 }

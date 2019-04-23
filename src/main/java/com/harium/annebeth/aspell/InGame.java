@@ -10,7 +10,7 @@ import com.harium.annebeth.aspell.player.Player;
 import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.annebeth.aspell.ui.InventoryManager;
 import com.harium.annebeth.aspell.ui.SceneManager;
-import com.harium.annebeth.aspell.ui.UIManager;
+import com.harium.annebeth.aspell.ui.ActionUIManager;
 
 public class InGame extends Application {
 
@@ -18,7 +18,7 @@ public class InGame extends Application {
 
     Player player;
     DialogManager dialogManager;
-    UIManager uiManager;
+    ActionUIManager actionUiManager;
     InventoryManager inventoryManager;
     SceneManager sceneManager;
 
@@ -31,7 +31,7 @@ public class InGame extends Application {
         player = new Player(0, 80);
 
         sceneManager = new SceneManager();
-        uiManager = new UIManager();
+        actionUiManager = new ActionUIManager();
         inventoryManager = new InventoryManager();
 
         InventoryManager.pickup(new Sock(0, 0));
@@ -49,7 +49,7 @@ public class InGame extends Application {
     }
 
     public void draw(Graphics g) {
-        uiManager.draw(g);
+        actionUiManager.draw(g);
         inventoryManager.draw(g);
 
         sceneManager.draw(g);
@@ -69,7 +69,7 @@ public class InGame extends Application {
                 sceneManager.updateMouse(event, player);
             } else {
                 inventoryManager.updateMouse(event);
-                uiManager.updateMouse(event);
+                actionUiManager.updateMouse(event);
             }
         }
     }
