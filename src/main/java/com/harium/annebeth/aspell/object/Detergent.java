@@ -7,12 +7,12 @@ import com.harium.annebeth.aspell.object.base.HighObject;
 import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.etyl.layer.ImageLayer;
 
-public class Soap extends HighObject {
+public class Detergent extends HighObject {
 
-    public Soap(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SOAP), x, y, 36, 44);
-        layer = new ImageLayer("objects/soap.png");
-        inventoryLayer = new ImageLayer("objects/soap.png");
+    public Detergent(int x, int y) {
+        super(LanguageManager.objectName(Dictionary.SOAP), x, y, 49, 80);
+        layer = new ImageLayer("objects/detergent.png");
+        inventoryLayer = new ImageLayer("objects/detergent.png");
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Soap extends HighObject {
         if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
             Washer washer = (Washer) with;
             if (washer.isOpen()) {
-                washer.hasSoap = true;
+                washer.hasDetergent = true;
             } else {
                 DialogManager.addDialog("The washer should be open first.");
             }

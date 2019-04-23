@@ -19,7 +19,7 @@ public class Softener extends HighObject {
     int step = UNUSED;
 
     public Softener(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SOFTENER), x, y, 36, 44);
+        super(LanguageManager.objectName(Dictionary.SOFTENER), x, y, 50, 72);
         layer = new ImageLayer("objects/softener.png");
         inventoryLayer = new ImageLayer("objects/softener.png");
     }

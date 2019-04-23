@@ -13,7 +13,7 @@ public class Washer extends OpenableObject {
 
     boolean hasSock = false;
     boolean hasPile = false;
-    boolean hasSoap = false;
+    boolean hasDetergent = false;
     boolean hasSoftener = false;
 
     private static final Color BACKGROUND = new Color(0x32, 0x2b, 0x28);
@@ -46,7 +46,7 @@ public class Washer extends OpenableObject {
 
     @Override
     public void onUse(BaseObject with) {
-        if (!hasSock || !hasPile || !hasSoftener || !hasSoap) {
+        if (!hasSock || !hasPile || !hasSoftener || !hasDetergent) {
             DialogManager.addDialog("It's not ready yet.");
         } else {
             if (isOpen()) {

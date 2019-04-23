@@ -27,7 +27,7 @@ public class SceneManager {
         objectList.add(new HitBoxObject("carpet", 180, 240, 104, 128));
         objectList.add(new Lemon(480, 240));
         objectList.add(new Stool(300, 240));
-        objectList.add(new Soap(500, 140));
+        objectList.add(new Detergent(500, 140));
         objectList.add(new Softener(560, 140));
 
         objectList.add(new Sock(200, 140));

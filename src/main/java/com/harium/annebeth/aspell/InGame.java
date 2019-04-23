@@ -1,16 +1,15 @@
 package com.harium.annebeth.aspell;
 
 import com.harium.annebeth.aspell.object.*;
+import com.harium.annebeth.aspell.player.Player;
+import com.harium.annebeth.aspell.ui.ActionUIManager;
+import com.harium.annebeth.aspell.ui.DialogManager;
+import com.harium.annebeth.aspell.ui.InventoryManager;
+import com.harium.annebeth.aspell.ui.SceneManager;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.MouseEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.core.graphics.Graphics;
-import com.harium.annebeth.aspell.core.Context;
-import com.harium.annebeth.aspell.player.Player;
-import com.harium.annebeth.aspell.ui.DialogManager;
-import com.harium.annebeth.aspell.ui.InventoryManager;
-import com.harium.annebeth.aspell.ui.SceneManager;
-import com.harium.annebeth.aspell.ui.ActionUIManager;
 
 public class InGame extends Application {
 
@@ -38,8 +37,7 @@ public class InGame extends Application {
         InventoryManager.pickup(new Lemon(0, 0));
         InventoryManager.pickup(new Stool(0, 0));
         InventoryManager.pickup(new Softener(0, 0));
-        InventoryManager.pickup(new Soap(0, 0));
-
+        InventoryManager.pickup(new Detergent(0, 0));
     }
 
     @Override

@@ -14,6 +14,8 @@ import static com.harium.annebeth.aspell.core.Context.*;
 public class DialogManager {
 
     public static final float FONT_SIZE = 18f;
+    public static final Color SHADOW_COLOR = Color.BLACK;
+    public static final Color FONT_COLOR = Color.WHITE;
     static long DIALOG_DELAY = 3000;
 
     static List<String> dialogs = new ArrayList<String>();
@@ -54,9 +56,13 @@ public class DialogManager {
     public void draw(Graphics g) {
         g.setFont(font);
         g.setFontSize(FONT_SIZE);
-        g.setColor(Color.BLACK);
+        g.setColor(SHADOW_COLOR);
         if (!currentDialog.isEmpty()) {
-            g.drawStringX(currentDialog, 200);
+            int dialogHeight = 200;
+            int offset = 2;
+            g.drawStringX(currentDialog, dialogHeight);
+            g.setColor(FONT_COLOR);
+            g.drawStringX(currentDialog, -offset, dialogHeight - offset);
         }
 
         drawBottomSentence(g);
