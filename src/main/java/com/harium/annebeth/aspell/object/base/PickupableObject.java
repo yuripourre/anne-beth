@@ -6,9 +6,8 @@ import com.harium.etyl.layer.ImageLayer;
 import com.harium.annebeth.aspell.ui.InventoryManager;
 
 
-public class PickupableObject extends BaseObject {
+public class PickupableObject extends DecorativeObject {
 
-    public ImageLayer layer;
     protected ImageLayer inventoryLayer;
 
     public PickupableObject(String name, int x, int y, int w, int h) {

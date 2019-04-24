@@ -6,8 +6,8 @@ import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.AnimatedLayer;
 
 public class Player {
-    public static final int WIDTH = 32 * 4;
-    public static final int HEIGHT = 52 * 4;
+    public static final int WIDTH = 190;
+    public static final int HEIGHT = 200;
 
     private static final int UNDEFINED = -1;
     public static final int WALK_SPEED = 4;
@@ -21,7 +21,7 @@ public class Player {
     PlayerState state = PlayerState.IDLE;
 
     public Player(int x, int y) {
-        layer = new AnimatedLayer(x, y, WIDTH, HEIGHT, "player/neo-witch-4x.png");
+        layer = new AnimatedLayer(x, y, WIDTH, HEIGHT, "player/new-witch.png");
         idle();
     }
 

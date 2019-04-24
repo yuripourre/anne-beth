@@ -1,14 +1,16 @@
 package com.harium.annebeth.aspell.object;
 
-import com.harium.annebeth.aspell.object.base.HitBoxObject;
+import com.harium.annebeth.aspell.object.base.DecorativeObject;
 import com.harium.annebeth.aspell.ui.DialogManager;
+import com.harium.etyl.layer.ImageLayer;
 
-public class Fan extends HitBoxObject {
+public class Fan extends DecorativeObject {
 
     boolean looked = false;
 
     public Fan(int x, int y) {
-        super("fan", x, y, 64, 120);
+        super("fan", x, y, 148, 52);
+        layer = new ImageLayer("objects/fan.png");
     }
 
     @Override

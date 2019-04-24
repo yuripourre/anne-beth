@@ -15,11 +15,14 @@ import com.harium.etyl.commons.layer.Layer;
 import com.harium.etyl.core.animation.Animation;
 import com.harium.etyl.core.animation.OnCompleteListener;
 import com.harium.etyl.core.graphics.Graphics;
+import com.harium.etyl.layer.ImageLayer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SceneManager {
+
+    private static final boolean DEBUG_MODE = false;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
@@ -32,16 +35,21 @@ public class SceneManager {
 
     Layer flash;
 
-    public SceneManager(int w, int h) {
-        objectList.add(new Fan(40, 40));
-        objectList.add(new HitBoxObject("carpet", 180, 240, 104, 128));
-        objectList.add(new Lemon(480, 240));
-        objectList.add(new Stool(300, 240));
-        objectList.add(new Detergent(500, 140));
-        objectList.add(new Softener(560, 140));
+    ImageLayer room;
 
-        objectList.add(new Sock(200, 140));
-        objectList.add(new Pile(600, 140));
+    public SceneManager(int w, int h) {
+        room = new ImageLayer("rooms/room.png");
+
+        foreground.add(new Fan(40, 0));
+
+        objectList.add(new HitBoxObject("carpet", 80, 340, 104, 50));
+        objectList.add(new Lemon(880, 240));
+        objectList.add(new Stool(500, 370));
+        objectList.add(new Detergent(630, 50));
+        objectList.add(new Softener(690, 50));
+
+        objectList.add(new Sock(200, 325));
+        objectList.add(new Pile(600, 330));
 
         washer = new Washer(650, 240);
         objectList.add(washer);
@@ -59,11 +67,33 @@ public class SceneManager {
         }
         g.fillRect(0, 0, g.getWidth(), InGame.BOTTOM_BAR);
 
+        if (normalWorld) {
+            room.draw(g);
+        }
+
         for (BaseObject object : objectList) {
-            object.draw(g);
+            if (DEBUG_MODE) {
+               drawDebug(g, object);
+            } else {
+                drawObject(g, object);
+            }
         }
 
         drawFlashFx(g);
+    }
+
+    private void drawDebug(Graphics g, BaseObject object) {
+        if(!object.visible) {
+            g.setColor(Color.GRAY);
+        } else {
+            g.setColor(Color.BLACK);
+        }
+        g.drawRect(object.x, object.y, object.w, object.h);
+        g.drawString(object.name, object.x, object.y, object.w, object.h);
+    }
+
+    private void drawObject(Graphics g, BaseObject object) {
+        object.draw(g);
     }
 
     private void drawFlashFx(Graphics g) {
