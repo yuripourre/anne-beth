@@ -6,8 +6,9 @@ import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.AnimatedLayer;
 
 public class Player {
-    public static final int WIDTH = 190;
-    public static final int HEIGHT = 200;
+    public static final int WIDTH = 143;
+    public static final int HEIGHT = 150;
+    public static final int ANIMATION_SPEED = 190;
 
     private static final int UNDEFINED = -1;
     public static final int WALK_SPEED = 4;
@@ -29,7 +30,7 @@ public class Player {
         state = PlayerState.IDLE;
         layer.setSrcY(0);
         layer.setNeedleY(0);
-        layer.setSpeed(200);
+        layer.setSpeed(ANIMATION_SPEED);
         layer.setFrames(1);
         layer.resetAnimation();
     }
@@ -38,7 +39,7 @@ public class Player {
         state = PlayerState.WALKING_RIGHT;
         layer.setSrcY(HEIGHT);
         layer.setNeedleY(HEIGHT);
-        layer.setSpeed(200);
+        layer.setSpeed(ANIMATION_SPEED);
         layer.setFrames(4);
         layer.resetAnimation();
     }
@@ -47,7 +48,7 @@ public class Player {
         state = PlayerState.WALKING_LEFT;
         layer.setSrcY(HEIGHT * 2);
         layer.setNeedleY(HEIGHT * 2);
-        layer.setSpeed(200);
+        layer.setSpeed(ANIMATION_SPEED);
         layer.setFrames(4);
         layer.resetAnimation();
     }

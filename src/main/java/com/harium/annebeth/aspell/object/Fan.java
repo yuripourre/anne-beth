@@ -24,4 +24,9 @@ public class Fan extends DecorativeObject {
             super.onLook();
         }
     }
+
+    public void upsideDown() {
+        y = 179;
+        layer.setScaleY(-1);
+    }
 }

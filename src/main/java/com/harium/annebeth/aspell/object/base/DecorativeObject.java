@@ -17,7 +17,7 @@ public class DecorativeObject extends BaseObject {
         if (!visible) {
             return;
         }
-        layer.simpleDraw(g, x, y);
+        layer.draw(g, x, y);
     }
 
 }

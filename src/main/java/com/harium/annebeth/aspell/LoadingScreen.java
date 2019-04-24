@@ -31,7 +31,7 @@ public class LoadingScreen extends DefaultLoadApplication {
 
     @Override
     public void load() {
-        background = new ImageLayer("loading.png");
+        background = new ImageLayer("screen/loading.png");
         x = w / 2 - BAR_SIZE / 2;
     }
 

@@ -29,7 +29,7 @@ public class InGame extends Application {
     public void load() {
         Jukebox.init();
         dialogManager = new DialogManager(w, h);
-        player = new Player(322, 170);
+        player = new Player(322, 240);
 
         sceneManager = new SceneManager(w, h);
         actionUiManager = new ActionUIManager();

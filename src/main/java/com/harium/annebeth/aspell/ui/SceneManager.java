@@ -22,7 +22,7 @@ import java.util.List;
 
 public class SceneManager {
 
-    private static final boolean DEBUG_MODE = false;
+    private static final boolean DEBUG_MODE = true;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
@@ -36,20 +36,25 @@ public class SceneManager {
     Layer flash;
 
     ImageLayer room;
+    ImageLayer roomInv;
 
     public SceneManager(int w, int h) {
-        room = new ImageLayer("rooms/room.png");
+        //room = new ImageLayer("rooms/room.png");
+        room = new ImageLayer(0,50,"rooms/room_inv.png");
 
-        foreground.add(new Fan(40, 0));
+        Fan fan = new Fan(40,0);
+        fan.upsideDown();
+        foreground.add(fan);
 
-        objectList.add(new HitBoxObject("carpet", 80, 340, 104, 50));
+
+        /*objectList.add(new HitBoxObject("carpet", 80, 340, 104, 50));
         objectList.add(new Lemon(880, 240));
         objectList.add(new Stool(500, 370));
-        objectList.add(new Detergent(630, 50));
-        objectList.add(new Softener(690, 50));
+        objectList.add(new Detergent(630, 90));
+        objectList.add(new Softener(690, 90));
 
-        objectList.add(new Sock(200, 325));
-        objectList.add(new Pile(600, 330));
+        objectList.add(new Sock(200, 354));
+        objectList.add(new Pile(600, 330));*/
 
         washer = new Washer(650, 240);
         objectList.add(washer);
@@ -108,13 +113,31 @@ public class SceneManager {
 
     public void drawForeground(Graphics g) {
         for (BaseObject object : foreground) {
-            object.draw(g);
+            if (DEBUG_MODE) {
+                drawDebug(g, object);
+            } else {
+                drawObject(g, object);
+            }
         }
     }
 
     public void updateMouse(PointerEvent event, Player player) {
         boolean found = false;
         for (BaseObject object : objectList) {
+            if (!object.visible) {
+                continue;
+            }
+            if (object.x < event.getX() && object.x + object.w > event.getX() &&
+                    object.y < event.getY() && object.y + object.h > event.getY()) {
+
+                player.setTarget(object);
+                Context.setObject(object);
+                found = true;
+                break;
+            }
+        }
+
+        for (BaseObject object : foreground) {
             if (!object.visible) {
                 continue;
             }

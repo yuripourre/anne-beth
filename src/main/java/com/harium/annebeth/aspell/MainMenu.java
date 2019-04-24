@@ -19,7 +19,7 @@ public class MainMenu extends Application {
 
     public void load() {
         Jukebox.init();
-        splash = new ImageLayer("splash.png");
+        splash = new ImageLayer("screen/splash.png");
         Jukebox.playMenuMusic();
     }
 
