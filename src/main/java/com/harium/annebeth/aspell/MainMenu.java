@@ -13,6 +13,8 @@ public class MainMenu extends Application {
 
     public MainMenu(int w, int h) {
         super(w, h);
+        loadApplication = new LoadingScreen(w,h);
+        loadApplication.load();
     }
 
     public void load() {

@@ -5,6 +5,9 @@ import com.harium.etyl.sound.model.Sound;
 
 public class Jukebox {
 
+    public static final boolean MUSIC_ON = false;
+    public static final boolean SOUND_ON = false;
+
     private static Music menu;
     private static Music normal;
     private static Music upsidedown;
@@ -33,41 +36,68 @@ public class Jukebox {
     }
 
     public static void playNormalMusic() {
+        if (!MUSIC_ON) {
+            return;
+        }
         stopMusics();
         normal.play();
     }
 
     public static void playUpsideDownMusic() {
+        if (!MUSIC_ON) {
+            return;
+        }
         stopMusics();
         upsidedown.play();
     }
 
     public static void playMenuMusic() {
+        if (!MUSIC_ON) {
+            return;
+        }
         stopMusics();
         menu.play();
     }
 
     public static void playCannot() {
+        if (!SOUND_ON) {
+            return;
+        }
         cannot.play();
     }
 
     public static void playExplosion() {
+        if (!SOUND_ON) {
+            return;
+        }
         explosion.play();
     }
 
     public static void playOpen() {
+        if (!SOUND_ON) {
+            return;
+        }
         open.play();
     }
 
     public static void playUse() {
+        if (!SOUND_ON) {
+            return;
+        }
         use.play();
     }
 
     public static void playPickup() {
+        if (!SOUND_ON) {
+            return;
+        }
         pickup.play();
     }
 
     public static void playWasher() {
+        if (!SOUND_ON) {
+            return;
+        }
         washer.play();
     }
 
@@ -79,7 +109,7 @@ public class Jukebox {
 
     public static void stopMusic(Music music) {
         //if (music.isPlaying()) {
-            music.stop();
+        music.stop();
         //}
     }
 

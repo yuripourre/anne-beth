@@ -1,17 +1,20 @@
 package com.harium.annebeth.aspell.ui;
 
 import com.harium.annebeth.aspell.InGame;
+import com.harium.annebeth.aspell.core.Context;
 import com.harium.annebeth.aspell.core.Interaction;
 import com.harium.annebeth.aspell.object.*;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.DummyObject;
 import com.harium.annebeth.aspell.object.base.HitBoxObject;
+import com.harium.annebeth.aspell.player.Player;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
+import com.harium.etyl.commons.layer.Layer;
+import com.harium.etyl.core.animation.Animation;
+import com.harium.etyl.core.animation.OnCompleteListener;
 import com.harium.etyl.core.graphics.Graphics;
-import com.harium.annebeth.aspell.core.Context;
-import com.harium.annebeth.aspell.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,9 @@ public class SceneManager {
     List<BaseObject> objectList = new ArrayList<BaseObject>();
     List<BaseObject> foreground = new ArrayList<BaseObject>();
 
-    public SceneManager() {
+    Layer flash;
+
+    public SceneManager(int w, int h) {
         objectList.add(new Fan(40, 40));
         objectList.add(new HitBoxObject("carpet", 180, 240, 104, 128));
         objectList.add(new Lemon(480, 240));
@@ -40,10 +45,14 @@ public class SceneManager {
 
         washer = new Washer(650, 240);
         objectList.add(washer);
+
+        flash = new Layer(0, 0, w, h);
+        flash.setVisible(false);
+        flash.setOpacity(0);
     }
 
     public void draw(Graphics g) {
-        if(normalWorld) {
+        if (normalWorld) {
             g.setColor(background);
         } else {
             g.setColor(upsideDownBG);
@@ -53,6 +62,18 @@ public class SceneManager {
         for (BaseObject object : objectList) {
             object.draw(g);
         }
+
+        drawFlashFx(g);
+    }
+
+    private void drawFlashFx(Graphics g) {
+        if (!flash.isVisible()) {
+            return;
+        }
+
+        g.setColor(Color.WHITE);
+        g.fillRect(flash);
+        g.setOpacity(flash.getOpacity());
     }
 
     public void drawForeground(Graphics g) {
@@ -90,8 +111,23 @@ public class SceneManager {
         washer.update(now);
         if (normalWorld && washer.explosion) {
             normalWorld = false;
-            // Flash Effect
+            flashEffect();
             Jukebox.playUpsideDownMusic();
         }
+    }
+
+    private void flashEffect() {
+        if (flash.isVisible()) {
+            return;
+        }
+        flash.setVisible(true);
+        flash.setOpacity(0);
+
+        Animation.animate(flash).fadeIn().during(500).onFinish(new OnCompleteListener() {
+            @Override
+            public void onComplete(long l) {
+                flash.setVisible(false);
+            }
+        }).start();
     }
 }

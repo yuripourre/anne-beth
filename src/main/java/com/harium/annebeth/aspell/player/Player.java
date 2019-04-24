@@ -21,7 +21,7 @@ public class Player {
     PlayerState state = PlayerState.IDLE;
 
     public Player(int x, int y) {
-        layer = new AnimatedLayer(x, y, WIDTH, HEIGHT, "neo-witch-4x.png");
+        layer = new AnimatedLayer(x, y, WIDTH, HEIGHT, "player/neo-witch-4x.png");
         idle();
     }
 

@@ -28,10 +28,10 @@ public class InGame extends Application {
 
     public void load() {
         Jukebox.init();
-        dialogManager = new DialogManager();
+        dialogManager = new DialogManager(w, h);
         player = new Player(0, 80);
 
-        sceneManager = new SceneManager();
+        sceneManager = new SceneManager(w, h);
         actionUiManager = new ActionUIManager();
         inventoryManager = new InventoryManager();
 
@@ -40,7 +40,17 @@ public class InGame extends Application {
         InventoryManager.pickup(new Stool(0, 0));
         InventoryManager.pickup(new Softener(0, 0));
         InventoryManager.pickup(new Detergent(0, 0));
-        //Jukebox.playNormalMusic();
+
+        /*for(int i=0;i<90;i++) {
+            loading = i;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }*/
+
+        Jukebox.playNormalMusic();
     }
 
     @Override

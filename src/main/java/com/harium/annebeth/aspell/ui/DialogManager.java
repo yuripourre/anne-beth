@@ -25,7 +25,7 @@ public class DialogManager {
 
     private Font font;
 
-    public DialogManager() {
+    public DialogManager(int w, int h) {
         dialogs.add("");
         font = FontLoader.getInstance().loadFont("PressStart2P.ttf");
     }
