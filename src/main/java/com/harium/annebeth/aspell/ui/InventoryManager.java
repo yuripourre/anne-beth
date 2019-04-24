@@ -162,8 +162,18 @@ public class InventoryManager {
 
     private void checkCollide(InventoryButton button, PointerEvent event) {
         if (checkCollide(button.layer, event)) {
-            Context.interaction = Interaction.USE;
-            Context.object = button.object;
+            if (Context.interaction == Interaction.LOOK_AT) {
+                Context.object = button.object;
+                Context.reachObject();
+            } else {
+                if (Context.interaction == Interaction.USE && Context.object != Context.NULL_OBJECT) {
+                    Context.with = button.object;
+                    Context.reachObject();
+                } else {
+                    Context.interaction = Interaction.USE;
+                    Context.object = button.object;
+                }
+            }
         }
     }
 

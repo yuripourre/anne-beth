@@ -94,6 +94,9 @@ public class Washer extends OpenableObject {
     private void explode() {
         explosion = true;
         turnedOn = false;
+        hasSoftener = false;
+        hasDetergent = false;
+        onOpen();
         Jukebox.stopWasher();
         Jukebox.playExplosion();
     }
