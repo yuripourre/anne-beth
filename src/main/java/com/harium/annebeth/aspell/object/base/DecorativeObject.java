@@ -34,4 +34,9 @@ public class DecorativeObject extends BaseObject {
         layer.setScaleY(1);
     }
 
+    public void setPosition(int x, int y) {
+        super.setPosition(x, y);
+        layer.setLocation(x, y);
+    }
+
 }

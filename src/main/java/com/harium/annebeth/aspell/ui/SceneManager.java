@@ -6,6 +6,7 @@ import com.harium.annebeth.aspell.core.Interaction;
 import com.harium.annebeth.aspell.object.*;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.DummyObject;
+import com.harium.annebeth.aspell.object.base.HitBoxObject;
 import com.harium.annebeth.aspell.player.Player;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
@@ -24,7 +25,7 @@ public class SceneManager {
     public static final int ROOM_HEIGHT = 310;
     public static final int ROOM_OFFSET = 60;
 
-    private static final boolean DEBUG_MODE = false;
+    public static boolean DEBUG_MODE = false;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
@@ -45,8 +46,14 @@ public class SceneManager {
         foreground.add(new Fan(40, 0));
         foreground.add(new Television(90, 302));
 
+        roomObjects();
+
         Refrigerator refrigerator = new Refrigerator(800, 90);
-        objectList.add(new Lemon(880, 240, refrigerator));
+        objectList.add(refrigerator);
+
+        Lemon lemon = new Lemon(290, 90);
+        refrigerator.add(lemon);
+        objectList.add(lemon);
 
         objectList.add(new FanSwitch(490, 110));
 
@@ -71,6 +78,11 @@ public class SceneManager {
         setupEffects(w, h);
     }
 
+    private void roomObjects() {
+        objectList.add(new HitBoxObject("mirror", "Hey, it's me.", 384, 100, 76, 98));
+        objectList.add(new HitBoxObject("bed", "A very comfortable bed.", 105, 205, 190, 98));
+    }
+
     private void setupEffects(int w, int h) {
         flash = new Layer(0, 0, w, h);
         flash.setVisible(false);
@@ -89,10 +101,9 @@ public class SceneManager {
 
 
         for (BaseObject object : objectList) {
+            drawObject(g, object);
             if (DEBUG_MODE) {
                 drawDebug(g, object);
-            } else {
-                drawObject(g, object);
             }
         }
 
@@ -103,7 +114,7 @@ public class SceneManager {
         if (!object.visible) {
             g.setColor(Color.GRAY);
         } else {
-            g.setColor(Color.BLACK);
+            g.setColor(Color.BLUE);
         }
         g.drawRect(object.x, object.y, object.w, object.h);
         g.drawString(object.name, object.x, object.y, object.w, object.h);
@@ -125,17 +136,19 @@ public class SceneManager {
 
     public void drawForeground(Graphics g) {
         for (BaseObject object : foreground) {
+            drawObject(g, object);
             if (DEBUG_MODE) {
                 drawDebug(g, object);
-            } else {
-                drawObject(g, object);
             }
         }
     }
 
     public void updateMouse(PointerEvent event, Player player) {
         boolean found = false;
-        for (BaseObject object : objectList) {
+
+        for (int i = objectList.size() - 1; i >= 0; i--) {
+            BaseObject object = objectList.get(i);
+
             if (!object.visible) {
                 continue;
             }

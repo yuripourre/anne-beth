@@ -92,5 +92,9 @@ public class InGame extends Application {
         if (event.isKeyUp(KeyEvent.VK_2)) {
             sceneManager.turnWorldNormal();
         }
+
+        if (event.isKeyUp(KeyEvent.VK_SPACE)) {
+            SceneManager.DEBUG_MODE = !SceneManager.DEBUG_MODE;
+        }
     }
 }

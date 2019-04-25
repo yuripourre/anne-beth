@@ -45,8 +45,7 @@ public class BaseObject {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.drawRect(x, y, w, h);
+
     }
 
     public void onOpen() {
@@ -94,10 +93,6 @@ public class BaseObject {
     }
 
     public void onLook() {
-        /*if(!canLook) {
-            return;
-        }*/
-        // Thoughts about the object
         DialogManager.addDialog("It is just a " + name + ".");
     }
 
@@ -114,4 +109,8 @@ public class BaseObject {
         y = originalY;
     }
 
+    protected void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }

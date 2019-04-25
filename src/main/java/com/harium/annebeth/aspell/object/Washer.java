@@ -17,6 +17,7 @@ public class Washer extends OpenableObject {
     boolean hasPile = false;
     boolean hasDetergent = false;
     boolean hasSoftener = false;
+    boolean hasSwitch = false;
     boolean turnedOn = false;
     public boolean explosion = false;
 
@@ -111,6 +112,15 @@ public class Washer extends OpenableObject {
             } else {
                 turnOn();
             }
+        }
+    }
+
+    @Override
+    public void onLook() {
+        if (!hasSwitch) {
+            super.onLook();
+        } else {
+            DialogManager.addDialog("A reversed " + name + ".");
         }
     }
 

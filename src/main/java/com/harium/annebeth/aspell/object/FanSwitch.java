@@ -2,15 +2,16 @@ package com.harium.annebeth.aspell.object;
 
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
+import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.PickupableObject;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.DialogManager;
-import com.harium.etyl.core.graphics.Graphics;
+import com.harium.annebeth.aspell.ui.InventoryManager;
 import com.harium.etyl.layer.ImageLayer;
 
-import static com.harium.annebeth.aspell.ui.SceneManager.ROOM_HEIGHT;
-import static com.harium.annebeth.aspell.ui.SceneManager.ROOM_OFFSET;
-
 public class FanSwitch extends PickupableObject {
+
+    boolean picked = false;
 
     public FanSwitch(int x, int y) {
         super(LanguageManager.objectName(Dictionary.FAN_SWITCH), x, y, 20, 28);
@@ -20,6 +21,25 @@ public class FanSwitch extends PickupableObject {
 
     @Override
     public void onLook() {
-        DialogManager.addDialog("It is just a " + name + " with two spin modes.");
+        DialogManager.addDialog("A " + name + " with two spin modes.");
+    }
+
+    @Override
+    public void onUse(BaseObject with) {
+        if (!picked) {
+            DialogManager.addDialog("The fan is broken.");
+        } else if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
+            Washer washer = (Washer) with;
+            Jukebox.playUse();
+            washer.hasSwitch = true;
+            visible = false;
+            InventoryManager.remove(this.name);
+        }
+    }
+
+    @Override
+    public void onPickUp() {
+        super.onPickUp();
+        picked = true;
     }
 }

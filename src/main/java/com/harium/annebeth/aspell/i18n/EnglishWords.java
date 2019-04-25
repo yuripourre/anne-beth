@@ -20,7 +20,7 @@ public class EnglishWords implements Dictionary {
         words.put(WASHER, "washer");
         words.put(FAN, "fan");
         words.put(FAN_SWITCH, "fan switch");
-        words.put(TV, "tv");
+        words.put(TV, "television");
         words.put(REFRIGERATOR, "refrigerator");
     }
 
