@@ -34,10 +34,10 @@ public class Washer extends OpenableObject {
 
     public Washer(int x, int y) {
         super(LanguageManager.objectName(Dictionary.WASHER), x, y, 80, 96);
-        layer = new ImageLayer("objects/washer.png");
-        openLayer = new ImageLayer("objects/washer_open.png");
-        sock = new ImageLayer("objects/washer_sock.png");
-        pile = new ImageLayer("objects/washer_pile.png");
+        layer = new ImageLayer(x, y, w, h, "objects/washer.png");
+        openLayer = new ImageLayer(x, y, w, h, "objects/washer_open.png");
+        sock = new ImageLayer(x, y, w, h, "objects/washer_sock.png");
+        pile = new ImageLayer(x, y, w, h, "objects/washer_pile.png");
         inside = new AnimatedLayer(x + 10, y + 24, 60, 60, "objects/washer_anim.png");
         inside.setFrames(4);
         inside.setSpeed(600);

@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.harium.etyl</groupId>
             <artifactId>etyl</artifactId>
-            <version>1.4.4</version>
+            <version>1.4.2</version>
         </dependency>
         <dependency>
             <groupId>com.harium.etyl</groupId>

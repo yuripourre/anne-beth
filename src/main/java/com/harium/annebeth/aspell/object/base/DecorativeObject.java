@@ -17,7 +17,21 @@ public class DecorativeObject extends BaseObject {
         if (!visible) {
             return;
         }
-        layer.draw(g, x, y);
+        layer.draw(g);
+    }
+
+    @Override
+    public void turnUpsideDown() {
+        super.turnUpsideDown();
+        layer.setY(y);
+        layer.setScaleY(-1);
+    }
+
+    @Override
+    public void turnNormal() {
+        super.turnNormal();
+        layer.setY(y);
+        layer.setScaleY(1);
     }
 
 }

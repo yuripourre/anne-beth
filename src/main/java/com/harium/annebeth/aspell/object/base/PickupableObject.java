@@ -25,7 +25,7 @@ public class PickupableObject extends DecorativeObject {
         if (!visible) {
             return;
         }
-        layer.simpleDraw(g, x, y);
+        layer.draw(g);
     }
 
     @Override

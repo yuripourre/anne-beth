@@ -9,7 +9,7 @@ public class Stool extends PickupableObject {
 
     public Stool(int x, int y) {
         super(LanguageManager.objectName(Dictionary.STOOL), x, y, 60, 32);
-        layer = new ImageLayer("objects/stool.png");
+        layer = new ImageLayer(x, y, w, h, "objects/stool.png");
         inventoryLayer = new ImageLayer("objects/stool.png");
     }
 

@@ -6,7 +6,6 @@ import com.harium.annebeth.aspell.core.Interaction;
 import com.harium.annebeth.aspell.object.*;
 import com.harium.annebeth.aspell.object.base.BaseObject;
 import com.harium.annebeth.aspell.object.base.DummyObject;
-import com.harium.annebeth.aspell.object.base.HitBoxObject;
 import com.harium.annebeth.aspell.player.Player;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
@@ -22,7 +21,10 @@ import java.util.List;
 
 public class SceneManager {
 
-    private static final boolean DEBUG_MODE = true;
+    public static final int ROOM_HEIGHT = 310;
+    public static final int ROOM_OFFSET = 60;
+
+    private static final boolean DEBUG_MODE = false;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
@@ -36,16 +38,17 @@ public class SceneManager {
     Layer flash;
 
     ImageLayer room;
-    ImageLayer roomInv;
 
     public SceneManager(int w, int h) {
-        //room = new ImageLayer("rooms/room.png");
-        room = new ImageLayer(0,50,"rooms/room_inv.png");
+        room = new ImageLayer(0, 0, 632, 310, "rooms/room.png");
 
-        Fan fan = new Fan(40,0);
-        fan.upsideDown();
-        foreground.add(fan);
+        foreground.add(new Fan(40, 0));
+        foreground.add(new Television(90, 302));
 
+        Refrigerator refrigerator = new Refrigerator(800, 90);
+        objectList.add(new Lemon(880, 240, refrigerator));
+
+        objectList.add(new FanSwitch(490, 110));
 
         /*objectList.add(new HitBoxObject("carpet", 80, 340, 104, 50));
         objectList.add(new Lemon(880, 240));
@@ -59,6 +62,16 @@ public class SceneManager {
         washer = new Washer(650, 240);
         objectList.add(washer);
 
+        /*InventoryManager.pickup(new Sock(0, 0));
+        InventoryManager.pickup(new Lemon(0, 0, refrigerator));
+        InventoryManager.pickup(new Stool(0, 0));
+        InventoryManager.pickup(new Softener(0, 0));
+        InventoryManager.pickup(new Detergent(0, 0));*/
+
+        setupEffects(w, h);
+    }
+
+    private void setupEffects(int w, int h) {
         flash = new Layer(0, 0, w, h);
         flash.setVisible(false);
         flash.setOpacity(0);
@@ -72,13 +85,12 @@ public class SceneManager {
         }
         g.fillRect(0, 0, g.getWidth(), InGame.BOTTOM_BAR);
 
-        if (normalWorld) {
-            room.draw(g);
-        }
+        room.draw(g);
+
 
         for (BaseObject object : objectList) {
             if (DEBUG_MODE) {
-               drawDebug(g, object);
+                drawDebug(g, object);
             } else {
                 drawObject(g, object);
             }
@@ -88,7 +100,7 @@ public class SceneManager {
     }
 
     private void drawDebug(Graphics g, BaseObject object) {
-        if(!object.visible) {
+        if (!object.visible) {
             g.setColor(Color.GRAY);
         } else {
             g.setColor(Color.BLACK);
@@ -163,9 +175,37 @@ public class SceneManager {
     public void update(long now) {
         washer.update(now);
         if (normalWorld && washer.explosion) {
-            normalWorld = false;
             flashEffect();
             Jukebox.playUpsideDownMusic();
+            turnWorldUpsideDown();
+        }
+    }
+
+    public void turnWorldUpsideDown() {
+        normalWorld = false;
+        room.setY(ROOM_OFFSET);
+        room.setScaleY(-1);
+
+        for (BaseObject object : foreground) {
+            object.turnUpsideDown();
+        }
+
+        for (BaseObject object : objectList) {
+            object.turnUpsideDown();
+        }
+    }
+
+    public void turnWorldNormal() {
+        normalWorld = true;
+        room.setScaleY(1);
+        room.setY(0);
+
+        for (BaseObject object : foreground) {
+            object.turnNormal();
+        }
+
+        for (BaseObject object : objectList) {
+            object.turnNormal();
         }
     }
 

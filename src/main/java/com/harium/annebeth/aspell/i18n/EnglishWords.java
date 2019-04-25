@@ -18,6 +18,10 @@ public class EnglishWords implements Dictionary {
         words.put(SOCK, "dirty sock");
         words.put(SHOYU, "soy sauce");
         words.put(WASHER, "washer");
+        words.put(FAN, "fan");
+        words.put(FAN_SWITCH, "fan switch");
+        words.put(TV, "tv");
+        words.put(REFRIGERATOR, "refrigerator");
     }
 
     @Override

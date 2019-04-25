@@ -1,6 +1,9 @@
 package com.harium.annebeth.aspell;
 
-import com.harium.annebeth.aspell.object.*;
+import com.harium.annebeth.aspell.object.Detergent;
+import com.harium.annebeth.aspell.object.Sock;
+import com.harium.annebeth.aspell.object.Softener;
+import com.harium.annebeth.aspell.object.Stool;
 import com.harium.annebeth.aspell.player.Player;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.ActionUIManager;
@@ -8,6 +11,7 @@ import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.annebeth.aspell.ui.InventoryManager;
 import com.harium.annebeth.aspell.ui.SceneManager;
 import com.harium.etyl.commons.context.Application;
+import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.MouseEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.core.graphics.Graphics;
@@ -34,12 +38,6 @@ public class InGame extends Application {
         sceneManager = new SceneManager(w, h);
         actionUiManager = new ActionUIManager();
         inventoryManager = new InventoryManager();
-
-        InventoryManager.pickup(new Sock(0, 0));
-        InventoryManager.pickup(new Lemon(0, 0));
-        InventoryManager.pickup(new Stool(0, 0));
-        InventoryManager.pickup(new Softener(0, 0));
-        InventoryManager.pickup(new Detergent(0, 0));
 
         /*for(int i=0;i<90;i++) {
             loading = i;
@@ -82,6 +80,17 @@ public class InGame extends Application {
                 inventoryManager.updateMouse(event);
                 actionUiManager.updateMouse(event);
             }
+        }
+    }
+
+    @Override
+    public void updateKeyboard(KeyEvent event) {
+        super.updateKeyboard(event);
+        if (event.isKeyUp(KeyEvent.VK_1)) {
+            sceneManager.turnWorldUpsideDown();
+        }
+        if (event.isKeyUp(KeyEvent.VK_2)) {
+            sceneManager.turnWorldNormal();
         }
     }
 }

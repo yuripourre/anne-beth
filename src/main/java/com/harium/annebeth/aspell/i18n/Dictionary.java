@@ -11,6 +11,11 @@ public interface Dictionary {
     String SOCK = "sock";
     String SHOYU = "shoyu";
     String WASHER = "washer";
+    String REFRIGERATOR = "fridge";
+    String FAN = "fan";
+    String FAN_SWITCH = "fanswtc";
+    String TV = "tv";
+    String TRASH = "trash";
 
     String asWord(Interaction interaction);
     String objectName(String key);

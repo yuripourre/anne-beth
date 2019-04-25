@@ -6,7 +6,7 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class OpenableObject extends BaseObject {
 
-    boolean isOpen = false;
+    protected boolean isOpen = false;
     public ImageLayer layer;
     public ImageLayer openLayer;
 

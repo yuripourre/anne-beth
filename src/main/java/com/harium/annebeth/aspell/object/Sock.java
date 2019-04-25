@@ -13,7 +13,7 @@ public class Sock extends PickupableObject {
 
     public Sock(int x, int y) {
         super(LanguageManager.objectName(Dictionary.SOCK), x, y, 80, 40);
-        layer = new ImageLayer("objects/redsock.png");
+        layer = new ImageLayer(x, y, w, h, "objects/redsock.png");
         inventoryLayer = new ImageLayer("objects/redsock.png");
     }
 

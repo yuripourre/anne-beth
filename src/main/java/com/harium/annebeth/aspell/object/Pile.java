@@ -13,7 +13,7 @@ public class Pile extends PickupableObject {
 
     public Pile(int x, int y) {
         super(LanguageManager.objectName(Dictionary.CLOTHES_PILE), x, y, 90, 60);
-        layer = new ImageLayer("objects/pile.png");
+        layer = new ImageLayer(x, y, w, h, "objects/pile.png");
         inventoryLayer = new ImageLayer("objects/pile.png");
     }
 

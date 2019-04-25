@@ -5,8 +5,8 @@ import com.harium.etyl.sound.model.Sound;
 
 public class Jukebox {
 
-    public static final boolean MUSIC_ON = false;
-    public static final boolean SOUND_ON = false;
+    public static final boolean MUSIC_ON = true;
+    public static final boolean SOUND_ON = true;
 
     private static Music menu;
     private static Music normal;

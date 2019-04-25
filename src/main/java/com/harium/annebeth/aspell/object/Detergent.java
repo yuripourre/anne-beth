@@ -12,8 +12,8 @@ public class Detergent extends HighObject {
 
     public Detergent(int x, int y) {
         super(LanguageManager.objectName(Dictionary.SOAP), x, y, 49, 80);
-        layer = new ImageLayer("objects/detergent.png");
-        inventoryLayer = new ImageLayer("objects/detergent.png");
+        layer = new ImageLayer(x, y, w, h, "objects/detergent.png");
+        inventoryLayer = new ImageLayer(x, y, w, h, "objects/detergent.png");
     }
 
     @Override

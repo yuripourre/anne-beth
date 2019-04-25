@@ -6,6 +6,9 @@ import com.harium.annebeth.aspell.ui.DialogManager;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 
+import static com.harium.annebeth.aspell.ui.SceneManager.ROOM_HEIGHT;
+import static com.harium.annebeth.aspell.ui.SceneManager.ROOM_OFFSET;
+
 
 public class BaseObject {
 
@@ -26,6 +29,8 @@ public class BaseObject {
     public int w;
     public int h;
 
+    protected int originalY = 0;
+
     public BaseObject(String name) {
         this.name = name;
     }
@@ -36,6 +41,7 @@ public class BaseObject {
         this.y = y;
         this.w = w;
         this.h = h;
+        this.originalY = y;
     }
 
     public void draw(Graphics g) {
@@ -97,6 +103,15 @@ public class BaseObject {
 
     public int centerX() {
         return x + w / 2;
+    }
+
+    public void turnUpsideDown() {
+        int offset = ROOM_HEIGHT + ROOM_OFFSET - originalY - h;
+        y = offset;
+    }
+
+    public void turnNormal() {
+        y = originalY;
     }
 
 }
