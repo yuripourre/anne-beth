@@ -21,9 +21,9 @@ public class OpenableObject extends BaseObject {
             return;
         }
         if (!isOpen) {
-            layer.simpleDraw(g, x, y);
+            layer.draw(g);
         } else {
-            openLayer.simpleDraw(g, x, y);
+            openLayer.draw(g);
         }
     }
 
@@ -37,6 +37,12 @@ public class OpenableObject extends BaseObject {
     public void onClose() {
         isOpen = false;
         Jukebox.playOpen();
+    }
+
+    public void setPosition(int x, int y) {
+        super.setPosition(x, y);
+        layer.setLocation(x, y);
+        openLayer.setLocation(x, y);
     }
 
     public boolean isOpen() {

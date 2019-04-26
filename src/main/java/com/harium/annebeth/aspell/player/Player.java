@@ -2,10 +2,14 @@ package com.harium.annebeth.aspell.player;
 
 import com.harium.annebeth.aspell.core.Context;
 import com.harium.annebeth.aspell.object.base.BaseObject;
+import com.harium.annebeth.aspell.ui.SceneManager;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.AnimatedLayer;
 
 public class Player {
+
+    //public static int x = 0;
+
     public static final int WIDTH = 143;
     public static final int HEIGHT = 150;
     public static final int ANIMATION_SPEED = 190;
@@ -15,14 +19,18 @@ public class Player {
 
     BaseObject targetX = Context.NULL_OBJECT;
 
-    int center = WIDTH / 2;
+    int center = 0;
 
     AnimatedLayer layer;
 
     PlayerState state = PlayerState.IDLE;
 
-    public Player(int x, int y) {
-        layer = new AnimatedLayer(x, y, WIDTH, HEIGHT, "player/new-witch.png");
+    SceneManager sceneManager;
+
+    public Player(int x, int y, SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+        center = sceneManager.w / 2;
+        layer = new AnimatedLayer(center - WIDTH / 2, y, WIDTH, HEIGHT, "player/new-witch.png");
         idle();
     }
 
@@ -62,19 +70,22 @@ public class Player {
 
     private void reachTarget() {
         if (state == PlayerState.WALKING_LEFT) {
-            if (layer.getX() + center > targetX.centerX()) {
-                layer.offsetX(-WALK_SPEED);
+            if (targetX.centerX() < center) {
+                offset(WALK_SPEED);
             } else {
                 reached();
-
             }
         } else if (state == PlayerState.WALKING_RIGHT) {
-            if (layer.getX() + center < targetX.centerX()) {
-                layer.offsetX(WALK_SPEED);
+            if (targetX.centerX() > center) {
+                offset(-WALK_SPEED);
             } else {
                 reached();
             }
         }
+    }
+
+    private void offset(int i) {
+        sceneManager.offset(i);
     }
 
     private void reached() {
@@ -85,9 +96,9 @@ public class Player {
 
     public void setTarget(BaseObject object) {
         if (targetX != object) {
-            if (object.centerX() > layer.getX()) {
+            if (object.centerX() > sceneManager.w / 2) {
                 walkRight();
-            } else if (object.centerX() < layer.getX()) {
+            } else if (object.centerX() < sceneManager.w / 2) {
                 walkLeft();
             }
             targetX = object;
@@ -96,5 +107,9 @@ public class Player {
 
     public void draw(Graphics g) {
         layer.draw(g);
+    }
+
+    public PlayerState getState() {
+        return state;
     }
 }

@@ -1,9 +1,5 @@
 package com.harium.annebeth.aspell;
 
-import com.harium.annebeth.aspell.object.Detergent;
-import com.harium.annebeth.aspell.object.Sock;
-import com.harium.annebeth.aspell.object.Softener;
-import com.harium.annebeth.aspell.object.Stool;
 import com.harium.annebeth.aspell.player.Player;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.ActionUIManager;
@@ -33,9 +29,9 @@ public class InGame extends Application {
     public void load() {
         Jukebox.init();
         dialogManager = new DialogManager(w, h);
-        player = new Player(322, 240);
-
         sceneManager = new SceneManager(w, h);
+        player = new Player(322, 240, sceneManager);
+
         actionUiManager = new ActionUIManager();
         inventoryManager = new InventoryManager();
 

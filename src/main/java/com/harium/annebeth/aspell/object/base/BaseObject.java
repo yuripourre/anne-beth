@@ -3,7 +3,6 @@ package com.harium.annebeth.aspell.object.base;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.ui.DialogHelper;
 import com.harium.annebeth.aspell.ui.DialogManager;
-import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 
 import static com.harium.annebeth.aspell.ui.SceneManager.ROOM_HEIGHT;
@@ -109,8 +108,12 @@ public class BaseObject {
         y = originalY;
     }
 
-    protected void setPosition(int x, int y) {
+    public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void offset(int x, int y) {
+        setPosition(this.x + x, this.y + y);
     }
 }

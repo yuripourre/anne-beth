@@ -25,11 +25,16 @@ public class SceneManager {
     public static final int ROOM_HEIGHT = 310;
     public static final int ROOM_OFFSET = 60;
 
-    public static boolean DEBUG_MODE = false;
+    public static boolean DEBUG_MODE = true;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
+    public int x = 0;
+    public int w = 0;
 
+    //private int offset = 0;
+
+    DummyObject floor;
     Washer washer;
     boolean normalWorld = true;
 
@@ -41,6 +46,8 @@ public class SceneManager {
     ImageLayer room;
 
     public SceneManager(int w, int h) {
+        this.w = w;
+        floor = new DummyObject(0, 0);
         room = new ImageLayer(0, 0, 632, 310, "rooms/room.png");
 
         foreground.add(new Fan(40, 0));
@@ -48,7 +55,7 @@ public class SceneManager {
 
         roomObjects();
 
-        Refrigerator refrigerator = new Refrigerator(800, 90);
+        Refrigerator refrigerator = new Refrigerator(730, 108);
         objectList.add(refrigerator);
 
         Lemon lemon = new Lemon(290, 90);
@@ -66,7 +73,7 @@ public class SceneManager {
         objectList.add(new Sock(200, 354));
         objectList.add(new Pile(600, 330));*/
 
-        washer = new Washer(650, 240);
+        washer = new Washer(850, refrigerator.y + 71);
         objectList.add(washer);
 
         /*InventoryManager.pickup(new Sock(0, 0));
@@ -99,7 +106,6 @@ public class SceneManager {
 
         room.draw(g);
 
-
         for (BaseObject object : objectList) {
             drawObject(g, object);
             if (DEBUG_MODE) {
@@ -108,6 +114,9 @@ public class SceneManager {
         }
 
         drawFlashFx(g);
+        //if (DEBUG_MODE) {
+        g.drawString("X: " + x, 20, 60);
+        //}
     }
 
     private void drawDebug(Graphics g, BaseObject object) {
@@ -179,9 +188,10 @@ public class SceneManager {
         if (!found) {
             Context.interaction = Interaction.WALK;
             // just walk
-            BaseObject object = new DummyObject(event.getX(), event.getY());
-            player.setTarget(object);
-            Context.setObject(object);
+            floor.setPosition(event.getX(), event.getY());
+
+            player.setTarget(floor);
+            Context.setObject(floor);
         }
     }
 
@@ -235,5 +245,17 @@ public class SceneManager {
                 flash.setVisible(false);
             }
         }).start();
+    }
+
+    public void offset(int offset) {
+        this.x += offset;
+        for (BaseObject object : foreground) {
+            object.offset(offset, 0);
+        }
+        for (BaseObject object : objectList) {
+            object.offset(offset, 0);
+        }
+        room.offset(offset, 0);
+        floor.offset(offset, 0);
     }
 }
