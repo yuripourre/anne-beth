@@ -10,9 +10,12 @@ public class EnglishWords implements Dictionary {
     Map<String, String> words = new HashMap<String, String>();
 
     {
+        words.put(CACTUS, "cactus");
+        words.put(CACTUS_FLOWER, "cactus flower");
+        words.put(JIMMY_PLANT, "Jimmy the Plant");
         words.put(CLOTHES_PILE, "pile of clothes");
         words.put(LEMON, "lemon");
-        words.put(SOAP, "laundry soap");
+        words.put(SOAP, "laundry detergent");
         words.put(SOFTENER, "fabric softener");
         words.put(STOOL, "stool");
         words.put(SOCK, "dirty sock");

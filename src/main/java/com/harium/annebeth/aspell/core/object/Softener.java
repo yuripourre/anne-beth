@@ -20,9 +20,9 @@ public class Softener extends HighObject {
     int step = UNUSED;
 
     public Softener(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SOFTENER), x, y, 50, 72);
+        super(LanguageManager.objectName(Dictionary.SOFTENER), x, y, 25, 36);
         layer = new ImageLayer(x, y, w, h, "objects/softener.png");
-        inventoryLayer = new ImageLayer("objects/softener.png");
+        inventoryLayer = new ImageLayer("objects/softener_inv.png");
     }
 
     @Override
@@ -31,11 +31,10 @@ public class Softener extends HighObject {
         if (step == UNUSED) {
             DialogManager.addDialog("It is almost empty.");
         } else if (step == USED) {
-
             if (!hasAcid && !hasSalty && !hasFlower) {
                 DialogManager.addDialog("It's empty.");
             } else {
-                String sentence = "It's ";
+                String sentence = "Well, it's ";
                 if (hasAcid) {
                     sentence += "acid";
                     if (hasSalty && !hasFlower) {

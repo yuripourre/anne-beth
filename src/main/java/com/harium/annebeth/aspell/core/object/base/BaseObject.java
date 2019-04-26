@@ -67,8 +67,7 @@ public class BaseObject implements Turnable {
 
     public void onPickUp() {
         if (!canPickup) {
-            String sentence = DialogHelper.negativeSentence();
-            DialogManager.addDialog(sentence);
+            negativeDialog();
         } else {
             Jukebox.playPickup();
         }
@@ -76,17 +75,20 @@ public class BaseObject implements Turnable {
 
     public void onUse(BaseObject with) {
         if (!canUse) {
-            String sentence = DialogHelper.negativeSentence();
-            DialogManager.addDialog(sentence);
+            negativeDialog();
         } else {
             Jukebox.playUse();
         }
     }
 
+    protected void negativeDialog() {
+        String sentence = DialogHelper.negativeSentence();
+        DialogManager.addDialog(sentence);
+    }
+
     public void onPull() {
         if (!canPull) {
-            String sentence = DialogHelper.negativeSentence();
-            DialogManager.addDialog(sentence);
+            negativeDialog();
         } else {
             Jukebox.playPickup();
         }

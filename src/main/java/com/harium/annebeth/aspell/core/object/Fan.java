@@ -26,20 +26,4 @@ public class Fan extends DecorativeObject {
             super.onLook();
         }
     }
-
-    @Override
-    public void turnUpsideDown() {
-        super.turnUpsideDown();
-        // Special case
-        y += 40;
-        layer.setY(y);
-        layer.setScaleY(-1);
-    }
-
-    @Override
-    public void turnNormal() {
-        super.turnNormal();
-        layer.setY(y);
-        layer.setScaleY(1);
-    }
 }

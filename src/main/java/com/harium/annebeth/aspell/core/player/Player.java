@@ -8,18 +8,15 @@ import com.harium.etyl.layer.AnimatedLayer;
 
 public class Player {
 
-    //public static int x = 0;
-
     public static final int WIDTH = 143;
     public static final int HEIGHT = 150;
     public static final int ANIMATION_SPEED = 190;
 
-    private static final int UNDEFINED = -1;
     public static final int WALK_SPEED = 4;
 
     BaseObject targetX = Context.NULL_OBJECT;
 
-    int center = 0;
+    int center;
 
     AnimatedLayer layer;
 
@@ -77,7 +74,7 @@ public class Player {
             }
         } else if (state == PlayerState.WALKING_RIGHT) {
 
-            if (targetX.centerX() > center) {
+            if (targetX.centerX() > center && sceneManager.x>-1652) {
                 offset(-WALK_SPEED);
             } else {
                 reached();

@@ -1,11 +1,11 @@
 package com.harium.annebeth.aspell.core.object;
 
-import com.harium.annebeth.aspell.i18n.Dictionary;
-import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
 import com.harium.annebeth.aspell.core.object.base.OpenableObject;
-import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.core.ui.DialogManager;
+import com.harium.annebeth.aspell.i18n.Dictionary;
+import com.harium.annebeth.aspell.i18n.LanguageManager;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.AnimatedLayer;
@@ -20,6 +20,7 @@ public class Washer extends OpenableObject {
     boolean hasSwitch = false;
     boolean turnedOn = false;
     public boolean explosion = false;
+    public boolean reversed = false;
 
     private static final Color BACKGROUND = new Color(0x32, 0x2b, 0x28);
 
@@ -51,6 +52,8 @@ public class Washer extends OpenableObject {
         hasSoftener = true;
         hasSock = true;
         hasPile = true;
+
+        //explode();
     }
 
     @Override
@@ -93,6 +96,9 @@ public class Washer extends OpenableObject {
     }
 
     private void explode() {
+        if (hasSwitch) {
+            reversed = true;
+        }
         explosion = true;
         turnedOn = false;
         hasSoftener = false;
@@ -110,7 +116,12 @@ public class Washer extends OpenableObject {
             if (isOpen()) {
                 DialogManager.addDialog("It should be closed first.");
             } else {
-                turnOn();
+                if (explosion && !hasSwitch) {
+                    DialogManager.addDialog("It will not work.");
+                    DialogManager.addDialog("I need a way to reverse the spell.");
+                } else {
+                    turnOn();
+                }
             }
         }
     }
@@ -128,10 +139,28 @@ public class Washer extends OpenableObject {
         turnedOn = true;
         Jukebox.stopMusics();
         Jukebox.playWasher();
-        // TODO Add Special Effects
-        DialogManager.addDialog("Mission Accomplished!");
-        DialogManager.addDialog("Uh oh, something is wrong.");
-        DialogManager.addDialog("...");
-        DialogManager.addDialog("Spider Crap!");
+        if (!hasSwitch) {
+            DialogManager.addDialog("Mission Accomplished!");
+            DialogManager.addDialog("Uh oh, something is wrong.");
+            DialogManager.addDialog("...");
+            DialogManager.addDialog("Spider Crap!");
+        } else {
+            DialogManager.addDialog("Here I go again.");
+            DialogManager.addDialog("It has to work.");
+            DialogManager.addDialog("...");
+            DialogManager.addDialog("It worked!");
+        }
+    }
+
+    @Override
+    public void turnUpsideDown() {
+        //Special case
+    }
+
+    @Override
+    public void setPosition(int x, int y) {
+        super.setPosition(x, y);
+        glow.setLocation(x, y + 16);
+        inside.setLocation(x + 10, y + 24);
     }
 }

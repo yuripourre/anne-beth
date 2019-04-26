@@ -9,6 +9,8 @@ import com.harium.annebeth.aspell.core.object.base.DummyObject;
 import com.harium.annebeth.aspell.core.object.base.HitBoxObject;
 import com.harium.annebeth.aspell.core.player.Player;
 import com.harium.annebeth.aspell.core.room.BedRoom;
+import com.harium.annebeth.aspell.core.room.Hall;
+import com.harium.annebeth.aspell.core.room.Kitchen;
 import com.harium.annebeth.aspell.core.room.Room;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
@@ -37,7 +39,8 @@ public class SceneManager {
 
     DummyObject floor;
     Washer washer;
-    boolean normalWorld = true;
+    public static boolean normalWorld = true;
+    public static boolean gameOver = false;
 
     List<Room> rooms = new ArrayList<Room>();
     List<BaseObject> objectList = new ArrayList<BaseObject>();
@@ -52,51 +55,75 @@ public class SceneManager {
         floor = new DummyObject(0, 0);
 
         initBedRoom();
+        initHall();
+        initKitchen();
 
         roomObjects();
 
-        Refrigerator refrigerator = new Refrigerator(1330, 108);
-        objectList.add(refrigerator);
 
-        Lemon lemon = new Lemon(290, 90);
-        refrigerator.add(lemon);
-        objectList.add(lemon);
-
-        washer = new Washer(1450, refrigerator.y + 71);
-        objectList.add(washer);
-
-        /*objectList.add(new HitBoxObject("carpet", 80, 340, 104, 50));
+        /*
         objectList.add(new Lemon(880, 240));
         objectList.add(new Stool(500, 370));
         objectList.add(new Detergent(630, 90));
         objectList.add(new Softener(690, 90));
-
         */
 
-        objectList.add(new Sock(860, 354));
-        objectList.add(new Pile(600, 330));
-
-
-        /*InventoryManager.pickup(new Sock(0, 0));
-        InventoryManager.pickup(new Lemon(0, 0, refrigerator));
+        InventoryManager.pickup(new Sock(0, 0));
+        InventoryManager.pickup(new Lemon(0, 0));
         InventoryManager.pickup(new Stool(0, 0));
         InventoryManager.pickup(new Softener(0, 0));
-        InventoryManager.pickup(new Detergent(0, 0));*/
+        InventoryManager.pickup(new Detergent(0, 0));
+        InventoryManager.pickup(new FanSwitch(0, 0));
 
         setupEffects(w, h);
+
+        offset(-1300);
+    }
+
+    private void initKitchen() {
+        int ox = 816 + 720;
+        int oy = 50;
+
+        objectList.add(new Detergent(505 + ox, 85 + oy));
+        objectList.add(new Softener(538 + ox, 89 + oy));
+        objectList.add(new Shoyu(505 + ox, 174 + oy));
+
+        Refrigerator refrigerator = new Refrigerator(ox + 10, 106 + oy);
+        objectList.add(refrigerator);
+
+        Lemon lemon = new Lemon(290, 90 + oy);
+        refrigerator.add(lemon);
+        objectList.add(lemon);
+
+        washer = new Washer(ox + 590, 176 + oy);
+        objectList.add(washer);
+    }
+
+    private void initHall() {
+        int ox = 816;
+        int oy = 50;
+
+        Cactus cactus = new Cactus(525 + ox, 102 + oy);
+        objectList.add(cactus);
+        objectList.add(new CactusFlower(cactus));
+        objectList.add(new Stool(290 + ox, 278 + oy));
+        objectList.add(new Sock(390 + ox, 278 + oy));
+        objectList.add(new Pile(-70 + ox, 270 + oy));
     }
 
     private void initBedRoom() {
-        int offset = 50;
-        foreground.add(new Fan(358, 0 + offset));
-        foreground.add(new Television(350, 252 + offset));
-        objectList.add(new HitBoxObject("mirror", "Hey, it's me.", 576, 96 + offset, 76, 98));
-        objectList.add(new HitBoxObject("bed", "A very comfortable bed.", 326, 200 + offset, 190, 98));
-        objectList.add(new FanSwitch(490, 110 + offset));
+        int oy = 50;
+        foreground.add(new Fan(358, -50 + oy));
+        foreground.add(new Television(350, 252 + oy));
+        objectList.add(new HitBoxObject("mirror", "Hey, it's me.", 576, 96 + oy, 76, 98));
+        objectList.add(new HitBoxObject("bed", "A very comfortable bed.", 326, 200 + oy, 190, 98));
+        objectList.add(new FanSwitch(528, 131 + oy));
     }
 
     private void roomObjects() {
         rooms.add(new BedRoom(0, 50));
+        rooms.add(new Hall(816, 50));
+        rooms.add(new Kitchen(816 + 720, 50));
     }
 
     private void setupEffects(int w, int h) {
@@ -215,6 +242,15 @@ public class SceneManager {
             flashEffect();
             Jukebox.playUpsideDownMusic();
             turnWorldUpsideDown();
+            System.out.println("Explosion");
+
+        } else if (!normalWorld && washer.reversed && !gameOver) {
+            flashEffect();
+            Jukebox.playNormalMusic();
+            turnWorldNormal();
+            // TODO GAME OVER
+            gameOver = true;
+            System.out.println("Game Over");
         }
     }
 
@@ -250,7 +286,7 @@ public class SceneManager {
         }
     }
 
-    private void flashEffect() {
+    public void flashEffect() {
         if (flash.isVisible()) {
             return;
         }
@@ -277,5 +313,6 @@ public class SceneManager {
             room.offset(offset, 0);
         }
         floor.offset(offset, 0);
+        flash.offset(offset, 0);
     }
 }

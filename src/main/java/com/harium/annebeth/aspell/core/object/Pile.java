@@ -32,4 +32,8 @@ public class Pile extends PickupableObject {
         }
     }
 
+    @Override
+    public void onLook() {
+        DialogManager.addDialog("It is a huge pile of clothes.");
+    }
 }

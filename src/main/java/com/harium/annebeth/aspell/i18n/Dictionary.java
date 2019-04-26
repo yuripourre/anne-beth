@@ -3,6 +3,9 @@ package com.harium.annebeth.aspell.i18n;
 import com.harium.annebeth.aspell.core.Interaction;
 
 public interface Dictionary {
+
+    String CACTUS = "cactus";
+    String CACTUS_FLOWER = "cactus_flower";
     String CLOTHES_PILE = "pile";
     String LEMON = "lemon";
     String SOAP = "soap";
@@ -16,6 +19,8 @@ public interface Dictionary {
     String FAN_SWITCH = "fanswtc";
     String TV = "tv";
     String TRASH = "trash";
+    String JIMMY_PLANT = "jimmy";
+
 
     String asWord(Interaction interaction);
     String objectName(String key);
