@@ -1,8 +1,7 @@
 package com.harium.annebeth.aspell.core;
 
 import com.harium.annebeth.aspell.i18n.LanguageManager;
-import com.harium.annebeth.aspell.object.base.BaseObject;
-import com.harium.annebeth.aspell.sound.Jukebox;
+import com.harium.annebeth.aspell.core.object.base.BaseObject;
 
 public class Context {
 

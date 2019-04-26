@@ -1,11 +1,11 @@
 package com.harium.annebeth.aspell;
 
-import com.harium.annebeth.aspell.player.Player;
+import com.harium.annebeth.aspell.core.player.Player;
 import com.harium.annebeth.aspell.sound.Jukebox;
-import com.harium.annebeth.aspell.ui.ActionUIManager;
-import com.harium.annebeth.aspell.ui.DialogManager;
-import com.harium.annebeth.aspell.ui.InventoryManager;
-import com.harium.annebeth.aspell.ui.SceneManager;
+import com.harium.annebeth.aspell.core.ui.ActionUIManager;
+import com.harium.annebeth.aspell.core.ui.DialogManager;
+import com.harium.annebeth.aspell.core.ui.InventoryManager;
+import com.harium.annebeth.aspell.core.ui.SceneManager;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.MouseEvent;
