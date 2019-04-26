@@ -1,8 +1,11 @@
 package com.harium.annebeth.aspell.core.object;
 
+import com.harium.annebeth.aspell.core.object.base.BaseObject;
+import com.harium.annebeth.aspell.core.object.base.PickupableObject;
+import com.harium.annebeth.aspell.core.ui.InventoryManager;
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
-import com.harium.annebeth.aspell.core.object.base.PickupableObject;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.layer.ImageLayer;
 
 public class Lemon extends PickupableObject {
@@ -16,5 +19,18 @@ public class Lemon extends PickupableObject {
     public Lemon() {
         this(0, 0);
     }
+
+    @Override
+    public void onUse(BaseObject with) {
+        if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
+            Softener softener = (Softener) with;
+            Jukebox.playUse();
+            softener.hasAcid = true;
+            visible = false;
+            shouldRemove = true;
+        }
+    }
+
+
 
 }

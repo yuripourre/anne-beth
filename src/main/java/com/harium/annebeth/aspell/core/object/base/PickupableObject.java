@@ -8,6 +8,7 @@ import com.harium.annebeth.aspell.core.ui.InventoryManager;
 
 public class PickupableObject extends DecorativeObject {
 
+    public boolean shouldRemove = false;
     protected ImageLayer inventoryLayer;
 
     public PickupableObject(String name, int x, int y, int w, int h) {

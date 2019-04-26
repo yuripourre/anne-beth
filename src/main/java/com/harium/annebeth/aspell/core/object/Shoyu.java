@@ -10,7 +10,7 @@ public class Shoyu extends PickupableObject {
     public Shoyu(int x, int y) {
         super(LanguageManager.objectName(Dictionary.SHOYU), x, y, 11, 23);
         layer = new ImageLayer(x, y, w, h, "objects/shoyu.png");
-        inventoryLayer = new ImageLayer("objects/shoyu.png");
+        inventoryLayer = new ImageLayer("objects/shoyu_inv.png");
     }
 
 }

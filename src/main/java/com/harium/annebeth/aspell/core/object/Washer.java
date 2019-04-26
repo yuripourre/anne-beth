@@ -49,7 +49,7 @@ public class Washer extends OpenableObject {
         glow.setSpeed(100);
 
         hasDetergent = true;
-        hasSoftener = true;
+        //hasSoftener = true;
         hasSock = true;
         hasPile = true;
 

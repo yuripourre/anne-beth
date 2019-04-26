@@ -49,4 +49,22 @@ public class OpenableObject extends BaseObject {
         return isOpen;
     }
 
+    @Override
+    public void turnUpsideDown() {
+        super.turnUpsideDown();
+        layer.setY(y);
+        openLayer.setY(y);
+        layer.setScaleY(-1);
+        openLayer.setScaleY(-1);
+    }
+
+    @Override
+    public void turnNormal() {
+        super.turnNormal();
+        layer.setY(y);
+        openLayer.setY(y);
+        layer.setScaleY(1);
+        openLayer.setScaleY(1);
+    }
+
 }

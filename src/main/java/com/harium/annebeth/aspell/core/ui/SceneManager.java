@@ -28,7 +28,7 @@ public class SceneManager {
     public static final int ROOM_HEIGHT = 310;
     public static final int ROOM_OFFSET = 50;
 
-    public static boolean DEBUG_MODE = true;
+    public static boolean DEBUG_MODE = false;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);

@@ -151,7 +151,16 @@ public class InventoryManager {
                 }
             }
 
-            for (InventoryButton button : slots) {
+            Iterator<InventoryButton> it = slots.iterator();
+            while (it.hasNext()) {
+                InventoryButton button = it.next();
+                /*if (button.object!=null) {
+                    if (button.object.shouldRemove) {
+                        it.remove();
+                        continue;
+                    }
+                }*/
+
                 if (button.layer.getY() < y) {
                     continue;
                 }
