@@ -4,11 +4,15 @@ import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.MouseEvent;
 import com.harium.etyl.commons.event.PointerEvent;
+import com.harium.etyl.core.graphics.Font;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
+import com.harium.etyl.loader.FontLoader;
 
 public class MainMenu extends Application {
 
+    Font font;
+    boolean setFont = false;
     private ImageLayer splash;
 
     public MainMenu(int w, int h) {
@@ -19,14 +23,20 @@ public class MainMenu extends Application {
 
     public void load() {
         loadApplication.load();
+        font = FontLoader.getInstance().loadFont("PressStart2P.ttf");
         Jukebox.init();
         splash = new ImageLayer("screen/splash.png");
         Jukebox.playMenuMusic();
     }
 
     public void draw(Graphics g) {
+        if (!setFont && font != null) {
+            g.setFont(font);
+            setFont = true;
+        }
         splash.simpleDraw(g);
     }
+
 
     @Override
     public void updateMouse(PointerEvent event) {
