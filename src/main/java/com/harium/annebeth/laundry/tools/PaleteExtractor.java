@@ -28,7 +28,7 @@ public class PaleteExtractor extends Application {
 
     public void draw(Graphics g) {
         if (loaded) {
-            g.drawImage(palete, w / 2 - palete.getWidth() / 2, h / 2 - palete.getHeight() / 2);
+            //g.drawImage(palete, w / 2 - palete.getWidth() / 2, h / 2 - palete.getHeight() / 2);
         } else {
             g.setColor(Color.BLUE);
             g.drawStringX("Drop images to extract palete!", w / 4);

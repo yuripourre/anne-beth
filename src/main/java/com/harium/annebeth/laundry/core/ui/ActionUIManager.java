@@ -1,6 +1,7 @@
 package com.harium.annebeth.laundry.core.ui;
 
 import com.harium.etyl.commons.event.PointerEvent;
+import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.annebeth.laundry.core.Context;
 
@@ -30,12 +31,20 @@ public class ActionUIManager {
     }
 
     public void draw(Graphics g) {
+        drawBackground(g);
+
         open.draw(g);
         close.draw(g);
         lookat.draw(g);
         use.draw(g);
         pickup.draw(g);
         pull.draw(g);
+    }
+
+    private void drawBackground(Graphics g) {
+        int y = 410;
+        g.setColor(Color.WHITE);
+        g.fillRect(0, y, 1024, 576 - y);
     }
 
     public void updateMouse(PointerEvent event) {

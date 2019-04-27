@@ -28,7 +28,7 @@ public class Jukebox {
         upsidedown.setLoop(true);
 
         cannot = new Sound("cannot.wav");
-        explosion = new Music("explosion.mp3");
+        explosion = new Sound("explosion.mp3");
         open = new Sound("open.wav");
         pickup = new Sound("pickup.wav");
         use = new Sound("use.wav");

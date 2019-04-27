@@ -124,9 +124,9 @@ public class Credits extends Application {
 
             float ty = offset + spacing * i;
             g.setColor(SHADOW_COLOR);
-            g.drawStringX(sentence, ty);
+            g.drawStringX(sentence, (int) ty);
             g.setColor(TEXT_COLOR);
-            g.drawStringX(sentence, -SHADOW_SIZE, ty - SHADOW_SIZE);
+            g.drawStringX(sentence, -SHADOW_SIZE, (int) ty - SHADOW_SIZE);
             i++;
         }
     }

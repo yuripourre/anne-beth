@@ -40,7 +40,7 @@ public class LoadingScreen extends DefaultLoadApplication {
         background.simpleDraw(g);
         g.setColor(color);
         g.drawRect(x, 500, BAR_SIZE, SIZE);
-        g.fillRect(x + 2, 500 + 2, (BAR_SIZE-2) * percent, SIZE - 3);
+        g.fillRect(x + 2, 500 + 2, (int)((BAR_SIZE-2) * percent), SIZE - 3);
 
     }
 }

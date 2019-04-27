@@ -84,7 +84,7 @@ public class InGame extends Application {
     @Override
     public void updateKeyboard(KeyEvent event) {
         super.updateKeyboard(event);
-        if (event.isKeyUp(KeyEvent.VK_1)) {
+        /*if (event.isKeyUp(KeyEvent.VK_1)) {
             sceneManager.turnWorldUpsideDown();
         }
         if (event.isKeyUp(KeyEvent.VK_2)) {
@@ -93,6 +93,6 @@ public class InGame extends Application {
 
         if (event.isKeyUp(KeyEvent.VK_SPACE)) {
             SceneManager.DEBUG_MODE = !SceneManager.DEBUG_MODE;
-        }
+        }*/
     }
 }

@@ -160,9 +160,6 @@ public class SceneManager {
         }
 
         drawFlashFx(g);
-        //if (DEBUG_MODE) {
-        g.drawString("X: " + x, 20, 60);
-        //}
     }
 
     private void drawDebug(Graphics g, BaseObject object) {

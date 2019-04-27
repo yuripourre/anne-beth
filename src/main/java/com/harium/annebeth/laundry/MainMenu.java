@@ -14,10 +14,11 @@ public class MainMenu extends Application {
     public MainMenu(int w, int h) {
         super(w, h);
         loadApplication = new LoadingScreen(w,h);
-        loadApplication.load();
+        //loadApplication.load();
     }
 
     public void load() {
+        loadApplication.load();
         Jukebox.init();
         splash = new ImageLayer("screen/splash.png");
         Jukebox.playMenuMusic();
