@@ -1,14 +1,17 @@
 package com.harium.annebeth.aspell.core.object;
 
+import com.harium.annebeth.aspell.core.object.base.BaseObject;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
+import com.harium.annebeth.aspell.core.ui.DialogManager;
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
 public class CactusFlower extends PickupableObject {
 
-    Cactus cactus;
+    private Cactus cactus;
 
     public CactusFlower(Cactus cactus) {
         super(LanguageManager.objectName(Dictionary.CACTUS_FLOWER), cactus.x + 58, cactus.y + 8, 27, 23);
@@ -35,5 +38,26 @@ public class CactusFlower extends PickupableObject {
     public void turnUpsideDown() {
         super.turnUpsideDown();
         layer.setLocation(cactus.x - 58, cactus.y - 8);
+    }
+
+    @Override
+    public void onUse(BaseObject with) {
+        if (!inInventory) {
+            negativeDialog();
+            return;
+        }
+        if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
+            Softener softener = (Softener) with;
+            if (softener.hasFlower) {
+                DialogManager.addDialog("I don't think it needs more flowers.");
+                return;
+            }
+            Jukebox.playUse();
+            softener.hasFlower = true;
+            visible = false;
+            removeFromInventory();
+        } else {
+            negativeDialog();
+        }
     }
 }

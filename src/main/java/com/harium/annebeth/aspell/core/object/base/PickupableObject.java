@@ -8,6 +8,7 @@ import com.harium.annebeth.aspell.core.ui.InventoryManager;
 
 public class PickupableObject extends DecorativeObject {
 
+    public boolean inInventory = false;
     public boolean shouldRemove = false;
     protected ImageLayer inventoryLayer;
 
@@ -34,5 +35,10 @@ public class PickupableObject extends DecorativeObject {
         visible = false;
         InventoryManager.pickup(this);
         Jukebox.playPickup();
+    }
+
+    protected void removeFromInventory() {
+        shouldRemove = true;
+        InventoryManager.shouldRemove = true;
     }
 }

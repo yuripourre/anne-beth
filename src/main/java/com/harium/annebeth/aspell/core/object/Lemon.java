@@ -2,6 +2,7 @@ package com.harium.annebeth.aspell.core.object;
 
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
+import com.harium.annebeth.aspell.core.ui.DialogManager;
 import com.harium.annebeth.aspell.core.ui.InventoryManager;
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
@@ -22,12 +23,22 @@ public class Lemon extends PickupableObject {
 
     @Override
     public void onUse(BaseObject with) {
+        if (!inInventory) {
+            negativeDialog();
+            return;
+        }
         if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
             Softener softener = (Softener) with;
+            if (softener.hasAcid) {
+               DialogManager.addDialog("I don't think it needs more acid.");
+               return;
+            }
             Jukebox.playUse();
             softener.hasAcid = true;
             visible = false;
-            shouldRemove = true;
+            removeFromInventory();
+        } else {
+            negativeDialog();
         }
     }
 

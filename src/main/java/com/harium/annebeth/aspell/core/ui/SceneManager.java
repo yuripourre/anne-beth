@@ -8,10 +8,7 @@ import com.harium.annebeth.aspell.core.object.base.BaseObject;
 import com.harium.annebeth.aspell.core.object.base.DummyObject;
 import com.harium.annebeth.aspell.core.object.base.HitBoxObject;
 import com.harium.annebeth.aspell.core.player.Player;
-import com.harium.annebeth.aspell.core.room.BedRoom;
-import com.harium.annebeth.aspell.core.room.Hall;
-import com.harium.annebeth.aspell.core.room.Kitchen;
-import com.harium.annebeth.aspell.core.room.Room;
+import com.harium.annebeth.aspell.core.room.*;
 import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
@@ -121,9 +118,10 @@ public class SceneManager {
     }
 
     private void roomObjects() {
-        rooms.add(new BedRoom(0, 50));
-        rooms.add(new Hall(816, 50));
-        rooms.add(new Kitchen(816 + 720, 50));
+        rooms.add(new BedRoom(0, ROOM_OFFSET));
+        rooms.add(new Hall(816, ROOM_OFFSET));
+        rooms.add(new Kitchen(816 + 720, ROOM_OFFSET));
+        rooms.add(new Dinner(816 + 720 + 816, ROOM_OFFSET));
     }
 
     private void setupEffects(int w, int h) {

@@ -52,6 +52,7 @@ public class InGame extends Application {
         player.update(now);
         dialogManager.update(now);
         sceneManager.update(now);
+        inventoryManager.update(now);
     }
 
     public void draw(Graphics g) {

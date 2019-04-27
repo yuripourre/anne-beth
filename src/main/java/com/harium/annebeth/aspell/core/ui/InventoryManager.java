@@ -28,12 +28,32 @@ public class InventoryManager {
     private static List<InventoryButton> slots = new ArrayList<InventoryButton>(3);
     private static int usedSlots = 0;
 
+    public static boolean shouldRemove = false;
+
     public InventoryManager() {
         upArrow = new ImageLayer(ARROW_X, 420, 48, 64, "ui/arrow_up.png");
         downArrow = new ImageLayer(ARROW_X, 490, 48, 64, "ui/arrow_down.png");
 
         for (int i = 0; i < ROW; i++) {
             addSlot();
+        }
+    }
+
+    public void update(long now) {
+        if (shouldRemove) {
+
+            Iterator<InventoryButton> iterator = slots.iterator();
+            while (iterator.hasNext()) {
+                InventoryButton button = iterator.next();
+                if (button.object != null) {
+                    if (button.object.shouldRemove) {
+                        iterator.remove();
+                        usedSlots--;
+                    }
+                }
+            }
+            updateSlotPositions();
+            shouldRemove = false;
         }
     }
 
@@ -48,6 +68,7 @@ public class InventoryManager {
     }
 
     public static void pickup(PickupableObject object) {
+        object.inInventory = true;
         InventoryButton slot = nextSlot();
         slot.setObject(object);
         usedSlots++;
@@ -86,7 +107,11 @@ public class InventoryManager {
         }
 
         // Update slot positions
+        updateSlotPositions();
+    }
 
+    private static void updateSlotPositions() {
+        Iterator<InventoryButton> iterator;
         int ox = ROW_OFFSET;
         int oy = ox;
         int p = 0;
@@ -107,7 +132,6 @@ public class InventoryManager {
         if (slots.size() < ROW) {
             addSlot();
         }
-
     }
 
     public void draw(Graphics g) {

@@ -48,10 +48,10 @@ public class Washer extends OpenableObject {
         glow.setFrames(6);
         glow.setSpeed(100);
 
-        hasDetergent = true;
+        //hasDetergent = true;
         //hasSoftener = true;
-        hasSock = true;
-        hasPile = true;
+        //hasSock = true;
+        //hasPile = true;
 
         //explode();
     }
@@ -110,15 +110,26 @@ public class Washer extends OpenableObject {
 
     @Override
     public void onUse(BaseObject with) {
-        if (!hasSock || !hasPile || !hasSoftener || !hasDetergent) {
-            DialogManager.addDialog("It's not ready yet.");
+        if (!hasSock || !hasPile) {
+            if (hasSock || hasPile) {
+                DialogManager.addDialog("I think I have more clothes.");
+            } else {
+                DialogManager.addDialog("It needs some clothes.");
+            }
+        } else if (!hasDetergent || !hasSoftener) {
+            if (hasDetergent) {
+                DialogManager.addDialog("It needs some softener.");
+            } else if (hasSoftener) {
+                DialogManager.addDialog("It needs some detergent.");
+            } else {
+                DialogManager.addDialog("It needs detergent and softener.");
+            }
         } else {
             if (isOpen()) {
                 DialogManager.addDialog("It should be closed first.");
             } else {
                 if (explosion && !hasSwitch) {
-                    DialogManager.addDialog("It will not work.");
-                    DialogManager.addDialog("I need a way to reverse the spell.");
+                    DialogManager.addDialog("I must figure a way to REVERSE this situation.");
                 } else {
                     turnOn();
                 }
@@ -162,5 +173,17 @@ public class Washer extends OpenableObject {
         super.setPosition(x, y);
         glow.setLocation(x, y + 16);
         inside.setLocation(x + 10, y + 24);
+    }
+
+    @Override
+    public void onOpen() {
+        super.onOpen();
+        layer.setW(96);
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
+        layer.setW(80);
     }
 }

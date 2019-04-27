@@ -8,7 +8,7 @@ import com.harium.etyl.layer.ImageLayer;
 public class Trash extends DecorativeObject {
 
     public Trash(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.TRASH), x, y, 148, 52);
+        super(LanguageManager.objectName(Dictionary.TRASH), x, y, 52, 64);
         this.originalY = y;
         layer = new ImageLayer(x, y, w, h, "objects/trash.png");
     }

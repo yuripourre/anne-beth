@@ -103,7 +103,9 @@ public class BaseObject implements Turnable {
     }
 
     public void turnUpsideDown() {
-        int offset = ROOM_HEIGHT + ROOM_OFFSET * 2 - originalY - h;
+        // I have no idea where 44 comes from
+        // int offset = ROOM_HEIGHT + ROOM_OFFSET * 2 - originalY - h;
+        int offset = ROOM_HEIGHT + ROOM_OFFSET + 44 - originalY - h;
         y = offset;
     }
 

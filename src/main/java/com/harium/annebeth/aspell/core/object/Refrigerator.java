@@ -1,9 +1,9 @@
 package com.harium.annebeth.aspell.core.object;
 
-import com.harium.annebeth.aspell.i18n.Dictionary;
-import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.core.object.base.OpenableObject;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
+import com.harium.annebeth.aspell.i18n.Dictionary;
+import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
@@ -42,7 +42,7 @@ public class Refrigerator extends OpenableObject {
     public void add(PickupableObject lemon) {
         this.lemon = lemon;
         lemon.visible = false;
-        lemon.setPosition(x - 10, y + 150);
+        lemon.setPosition(x - 10, y + 170);
     }
 
     @Override
@@ -50,6 +50,14 @@ public class Refrigerator extends OpenableObject {
         super.onOpen();
         if (lemon != null) {
             lemon.visible = true;
+        }
+    }
+
+    @Override
+    public void turnUpsideDown() {
+        super.turnUpsideDown();
+        if (lemon != null) {
+            lemon.setPosition(x - 10, y - 300);
         }
     }
 
