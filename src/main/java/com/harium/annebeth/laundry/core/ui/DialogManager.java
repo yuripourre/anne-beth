@@ -80,7 +80,7 @@ public class DialogManager {
 
         String sentence = asWord(interaction);
 
-        if (object != NULL_OBJECT) {
+        if (object != NULL_OBJECT && object != null) {
             sentence += " " + object.name;
             if (interaction == Interaction.USE && object.canUse) {
                 sentence += " with";
