@@ -11,7 +11,7 @@ public class InventoryButton {
     public PickupableObject object;
 
     public InventoryButton(int x, int y) {
-        layer = new ImageLayer(x, y, "ui/inventory.png");
+        layer = new ImageLayer(x, y, 128, 128, "ui/inventory.png");
     }
 
     public void draw(Graphics g, int x, int y) {
