@@ -131,6 +131,9 @@ public class InventoryManager {
         // Fill Row
         if (slots.size() < ROW) {
             addSlot();
+        } else if (slots.size() % ROW == 0) {
+            offsetY = 0;
+            cursor = 0;
         }
     }
 

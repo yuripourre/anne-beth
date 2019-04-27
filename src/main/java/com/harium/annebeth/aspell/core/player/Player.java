@@ -68,7 +68,7 @@ public class Player {
 
     public void pickHigh() {
         idle();
-        pickDelay = 600;
+        pickDelay = 500;
         countPick = true;
         layer.setSrcX(WIDTH * 3);
         layer.setNeedleX(WIDTH * 3);

@@ -28,11 +28,9 @@ public class SceneManager {
     public static boolean DEBUG_MODE = false;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
-    private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
+    //private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
     public int x = 0;
     public int w = 0;
-
-    //private int offset = 0;
 
     DummyObject floor;
     Washer washer;
@@ -45,8 +43,6 @@ public class SceneManager {
 
     Layer flash;
 
-    //ImageLayer room;
-
     public SceneManager(int w, int h) {
         this.w = w;
         floor = new DummyObject(0, 0);
@@ -58,35 +54,28 @@ public class SceneManager {
 
         roomObjects();
 
+        setupEffects(w, h);
 
-        /*
-        objectList.add(new Lemon(880, 240));
-        objectList.add(new Stool(500, 370));
-        objectList.add(new Detergent(630, 90));
-        objectList.add(new Softener(690, 90));
-        */
+        // TODO REMOVE
+        /*offset(-1500);
 
         InventoryManager.pickup(new Sock(0, 0));
         InventoryManager.pickup(new Pile(0, 0));
         InventoryManager.pickup(new Lemon(0, 0));
         InventoryManager.pickup(new Shoyu(0, 0));
         InventoryManager.pickup(new CactusFlower(new Cactus(0, 0)));
-        //InventoryManager.pickup(new Stool(0, 0));
+        InventoryManager.pickup(new Stool(0, 0));
         InventoryManager.pickup(new Softener(0, 0));
         InventoryManager.pickup(new Detergent(0, 0));
-        InventoryManager.pickup(new FanSwitch(0, 0));
+        InventoryManager.pickup(new FanSwitch(0, 0));*/
 
-        setupEffects(w, h);
-
-        // TODO REMOVE
-        offset(-1500);
-
-        washer.explode();
+        /*washer.explode();
         washer.hasSock = true;
         washer.hasPile = true;
+        washer.reversed = true;
         washer.hasDetergent = true;
         washer.hasSoftener = true;
-        washer.hasSwitch = true;
+        washer.hasSwitch = true;*/
     }
 
     public static boolean isUpsideDown() {
@@ -156,11 +145,7 @@ public class SceneManager {
     }
 
     public void draw(Graphics g) {
-        if (normalWorld) {
-            g.setColor(background);
-        } else {
-            g.setColor(upsideDownBG);
-        }
+        g.setColor(background);
         g.fillRect(0, 0, g.getWidth(), InGame.BOTTOM_BAR);
 
         for (Room room : rooms) {
@@ -260,23 +245,21 @@ public class SceneManager {
 
     public void update(long now) {
         washer.update(now);
-        if (!isUpsideDown() && washer.explosion) {
+        if (washer.explosion && !washer.reversed) {
             flashEffect();
             Jukebox.playUpsideDownMusic();
             turnWorldUpsideDown();
             System.out.println("Explosion");
             washer.explosion = false;
-        } else if (isUpsideDown() && washer.reversed && !gameOver) {
+        } else if (washer.explosion && washer.reversed) {
             flashEffect();
-            Jukebox.playNormalMusic();
-            Jukebox.playGameOver();
+            //Jukebox.playNormalMusic();
+            //Jukebox.playGameOver();
 
-
-
-            turnWorldNormal();
+            //turnWorldNormal();
             // TODO GAME OVER
             gameOver = true;
-            System.out.println("Game Over");
+            //System.out.println("Game Over");
         }
     }
 
@@ -343,5 +326,9 @@ public class SceneManager {
         }
         floor.offset(offset, 0);
         flash.offset(offset, 0);
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
     }
 }

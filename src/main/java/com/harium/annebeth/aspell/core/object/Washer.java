@@ -21,6 +21,7 @@ public class Washer extends OpenableObject {
     public boolean turnedOn = false;
     public boolean explosion = false;
     public boolean reversed = false;
+    public boolean exploded = false;
 
     private static final Color BACKGROUND = new Color(0x32, 0x2b, 0x28);
 
@@ -77,6 +78,7 @@ public class Washer extends OpenableObject {
         if (turnedOn) {
             glow.draw(g, x, y);
         }
+        g.resetOpacity();
     }
 
     public void update(long now) {
@@ -85,7 +87,7 @@ public class Washer extends OpenableObject {
         } else if (!explosion) {
             if (lastFrame != 3 && inside.getCurrentFrame() == 3) {
                 count++;
-                if (count == 3) {
+                if (count >= 3) {
                     explode();
                 }
             }
@@ -99,12 +101,12 @@ public class Washer extends OpenableObject {
         if (hasSwitch) {
             reversed = true;
         }
+        exploded = true;
         explosion = true;
         turnedOn = false;
-        // TODO UNCOMMENT!
-        //hasSoftener = false;
-        //hasDetergent = false;
-        //onOpen();
+        hasSoftener = false;
+        hasDetergent = false;
+        onOpen();
         Jukebox.stopWasher();
         Jukebox.playExplosion();
     }
@@ -129,7 +131,7 @@ public class Washer extends OpenableObject {
             if (isOpen()) {
                 DialogManager.addDialog("It should be closed first.");
             } else {
-                if (explosion && !hasSwitch) {
+                if (exploded && !hasSwitch) {
                     DialogManager.addDialog("I must figure a way to REVERSE this situation.");
                 } else {
                     turnOn();

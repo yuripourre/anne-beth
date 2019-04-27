@@ -1,11 +1,11 @@
 package com.harium.annebeth.aspell;
 
 import com.harium.annebeth.aspell.core.player.Player;
-import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.annebeth.aspell.core.ui.ActionUIManager;
 import com.harium.annebeth.aspell.core.ui.DialogManager;
 import com.harium.annebeth.aspell.core.ui.InventoryManager;
 import com.harium.annebeth.aspell.core.ui.SceneManager;
+import com.harium.annebeth.aspell.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.MouseEvent;
@@ -50,6 +50,10 @@ public class InGame extends Application {
         dialogManager.update(now);
         sceneManager.update(now);
         inventoryManager.update(now);
+
+        if (sceneManager.isGameOver()) {
+            nextApplication = new Credits(w, h);
+        }
     }
 
     public void draw(Graphics g) {

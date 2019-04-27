@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.core.object;
 
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
@@ -13,4 +14,9 @@ public class Stool extends PickupableObject {
         inventoryLayer = new ImageLayer("objects/stool.png");
     }
 
+    @Override
+    public PickLevel onPickUp() {
+        super.onPickUp();
+        return PickLevel.DOWN;
+    }
 }

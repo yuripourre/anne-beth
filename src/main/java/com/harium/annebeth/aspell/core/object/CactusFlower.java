@@ -66,4 +66,9 @@ public class CactusFlower extends PickupableObject {
         removeFromInventory();
     }
 
+    @Override
+    public PickLevel onPickUp() {
+        super.onPickUp();
+        return PickLevel.HIGH;
+    }
 }
