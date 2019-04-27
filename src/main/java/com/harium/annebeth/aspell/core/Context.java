@@ -1,5 +1,7 @@
 package com.harium.annebeth.aspell.core;
 
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
+import com.harium.annebeth.aspell.core.player.Player;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
 
@@ -12,7 +14,7 @@ public class Context {
     public static BaseObject object = NULL_OBJECT;
     public static BaseObject with = NULL_OBJECT;
 
-    public static void reachObject() {
+    public static void reachObject(Player player) {
         if (object.disabled || object.name.isEmpty()) {
             reset();
             return;
@@ -31,7 +33,18 @@ public class Context {
                 object.onLook();
                 break;
             case PICK_UP:
-                object.onPickUp();
+                PickLevel level = object.onPickUp();
+                switch (level) {
+                    case DOWN:
+                        player.pickDown();
+                        break;
+                    case MEDIUM:
+                        player.pickMedium();
+                        break;
+                    case HIGH:
+                        player.pickHigh();
+                        break;
+                }
                 break;
             case PULL:
                 object.onPull();

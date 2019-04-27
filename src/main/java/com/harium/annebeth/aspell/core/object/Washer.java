@@ -37,7 +37,7 @@ public class Washer extends OpenableObject {
     public Washer(int x, int y) {
         super(LanguageManager.objectName(Dictionary.WASHER), x, y, 80, 96);
         layer = new ImageLayer(x, y, w, h, "objects/washer.png");
-        openLayer = new ImageLayer(x, y, w, h, "objects/washer_open.png");
+        openLayer = new ImageLayer(x, y, 96, h, "objects/washer_open.png");
         sock = new ImageLayer(x, y, w, h, "objects/washer_sock.png");
         pile = new ImageLayer(x, y, w, h, "objects/washer_pile.png");
         inside = new AnimatedLayer(x + 10, y + 24, 60, 60, "objects/washer_anim.png");
@@ -175,15 +175,4 @@ public class Washer extends OpenableObject {
         inside.setLocation(x + 10, y + 24);
     }
 
-    @Override
-    public void onOpen() {
-        super.onOpen();
-        layer.setW(96);
-    }
-
-    @Override
-    public void onClose() {
-        super.onClose();
-        layer.setW(80);
-    }
 }

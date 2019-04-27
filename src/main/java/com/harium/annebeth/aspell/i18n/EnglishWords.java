@@ -25,6 +25,7 @@ public class EnglishWords implements Dictionary {
         words.put(FAN, "fan");
         words.put(FAN_SWITCH, "fan switch");
         words.put(TV, "television");
+        words.put(TABLE, "table");
         words.put(REFRIGERATOR, "refrigerator");
     }
 

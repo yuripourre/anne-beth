@@ -41,6 +41,7 @@ public class Refrigerator extends OpenableObject {
         if (lemon != null) {
             lemon.visible = true;
         }
+
     }
 
     @Override

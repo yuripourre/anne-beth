@@ -21,6 +21,7 @@ public interface Dictionary {
     String TRASH = "trash";
     String JIMMY_PLANT = "jimmy";
     String LINO = "lino";
+    String TABLE = "table";
 
 
     String asWord(Interaction interaction);

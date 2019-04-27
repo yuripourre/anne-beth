@@ -1,6 +1,7 @@
 package com.harium.annebeth.aspell.core.object;
 
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
 import com.harium.annebeth.aspell.core.ui.DialogManager;
 import com.harium.annebeth.aspell.core.ui.InventoryManager;
@@ -19,11 +20,17 @@ public class Shoyu extends PickupableObject {
     }
 
     @Override
-    public void onPickUp() {
+    public PickLevel onPickUp() {
         if (SceneManager.isUpsideDown() && !InventoryManager.has("stool")) {
             DialogManager.addDialog("I can't reach it");
+            return PickLevel.NONE;
         } else {
             super.onPickUp();
+            if(SceneManager.isUpsideDown()) {
+                return PickLevel.HIGH;
+            } else {
+                return PickLevel.MEDIUM;
+            }
         }
     }
 

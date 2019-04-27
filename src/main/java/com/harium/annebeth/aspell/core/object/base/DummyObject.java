@@ -14,7 +14,8 @@ public class DummyObject extends BaseObject {
     public void onClose() {
     }
 
-    public void onPickUp() {
+    public PickLevel onPickUp() {
+        return PickLevel.NONE;
     }
 
     public void onUse(BaseObject with) {

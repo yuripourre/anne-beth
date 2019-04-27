@@ -31,10 +31,11 @@ public class PickupableObject extends DecorativeObject {
     }
 
     @Override
-    public void onPickUp() {
+    public PickLevel onPickUp() {
         visible = false;
         InventoryManager.pickup(this);
         Jukebox.playPickup();
+        return PickLevel.DOWN;
     }
 
     protected void removeFromInventory() {

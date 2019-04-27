@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.core.object;
 
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
 import com.harium.annebeth.aspell.core.ui.SceneManager;
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
@@ -40,12 +41,13 @@ public class FanSwitch extends PickupableObject {
     }
 
     @Override
-    public void onPickUp() {
+    public PickLevel onPickUp() {
         if (SceneManager.normalWorld) {
             negativeDialog();
-            return;
+            return PickLevel.NONE;
         }
         super.onPickUp();
         picked = true;
+        return PickLevel.MEDIUM;
     }
 }

@@ -65,12 +65,13 @@ public class BaseObject implements Turnable {
         }
     }
 
-    public void onPickUp() {
+    public PickLevel onPickUp() {
         if (!canPickup) {
             negativeDialog();
         } else {
             Jukebox.playPickup();
         }
+        return PickLevel.NONE;
     }
 
     public void onUse(BaseObject with) {

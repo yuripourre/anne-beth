@@ -8,9 +8,10 @@ import com.harium.etyl.layer.AnimatedLayer;
 
 public class Player {
 
-    public static final int WIDTH = 143;
-    public static final int HEIGHT = 150;
-    public static final int ANIMATION_SPEED = 190;
+    public static final int WIDTH = 140;
+    public static final int HEIGHT = 190;
+
+    public static final int ANIMATION_SPEED = 130;
 
     public static final int WALK_SPEED = 4;
 
@@ -24,6 +25,12 @@ public class Player {
 
     SceneManager sceneManager;
 
+    // Pick up animation logic
+    boolean countPick = false;
+    boolean countStarted = false;
+    long pickTime = 0;
+    long pickDelay = 800;
+
     public Player(int x, int y, SceneManager sceneManager) {
         this.sceneManager = sceneManager;
         center = sceneManager.w / 2;
@@ -35,9 +42,37 @@ public class Player {
         state = PlayerState.IDLE;
         layer.setSrcY(0);
         layer.setNeedleY(0);
+        layer.setNeedleX(0);
         layer.setSpeed(ANIMATION_SPEED);
         layer.setFrames(1);
         layer.resetAnimation();
+    }
+
+    public void pickDown() {
+        idle();
+        countPick = true;
+        pickDelay = 300;
+        layer.setSrcX(WIDTH);
+        layer.setNeedleX(WIDTH);
+        state = PlayerState.PICK_DOWN;
+    }
+
+    public void pickMedium() {
+        idle();
+        countPick = true;
+        pickDelay = 200;
+        layer.setSrcX(WIDTH * 2);
+        layer.setNeedleX(WIDTH * 2);
+        state = PlayerState.PICK_MEDIUM;
+    }
+
+    public void pickHigh() {
+        idle();
+        pickDelay = 600;
+        countPick = true;
+        layer.setSrcX(WIDTH * 3);
+        layer.setNeedleX(WIDTH * 3);
+        state = PlayerState.PICK_HIGH;
     }
 
     private void walkRight() {
@@ -59,9 +94,23 @@ public class Player {
     }
 
     public void update(long now) {
+        if (countPick) {
+            if (!countStarted) {
+                pickTime = now;
+                countStarted = true;
+            } else {
+                if (pickTime + pickDelay < now) {
+                    idle();
+                    countPick = false;
+                    countStarted = false;
+                }
+            }
+        }
+
         if (targetX != Context.NULL_OBJECT) {
             reachTarget();
         }
+
         layer.animate(now);
     }
 
@@ -86,9 +135,10 @@ public class Player {
     }
 
     private void reached() {
+        // TODO Idle or pick up
         idle();
         targetX = Context.NULL_OBJECT;
-        Context.reachObject();
+        Context.reachObject(this);
     }
 
     public void setTarget(BaseObject object) {
