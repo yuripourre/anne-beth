@@ -20,12 +20,12 @@ public class Detergent extends HighObject {
     public void onUse(BaseObject with) {
         if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
             Washer washer = (Washer) with;
-            if (washer.isOpen() && !washer.hasDetergent) {
+            //if (washer.isOpen() && !washer.hasDetergent) {
                 washer.hasDetergent = true;
                 Jukebox.playUse();
-            } else {
-                DialogManager.addDialog("The washer should be open first.");
-            }
+            //} else {
+            //    DialogManager.addDialog("The washer should be open first.");
+            //}
         }
     }
 

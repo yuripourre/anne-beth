@@ -1,5 +1,6 @@
 package com.harium.annebeth.aspell.core.object;
 
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
 import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
@@ -30,6 +31,12 @@ public class Pile extends PickupableObject {
                 DialogManager.addDialog("The washer should be open first.");
             }
         }
+    }
+
+    @Override
+    public PickLevel onPickUp() {
+        super.onPickUp();
+        return PickLevel.DOWN;
     }
 
     @Override

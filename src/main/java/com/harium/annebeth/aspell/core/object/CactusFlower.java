@@ -1,6 +1,7 @@
 package com.harium.annebeth.aspell.core.object;
 
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
 import com.harium.annebeth.aspell.core.ui.DialogManager;
 import com.harium.annebeth.aspell.i18n.Dictionary;
@@ -64,4 +65,5 @@ public class CactusFlower extends PickupableObject {
         visible = false;
         removeFromInventory();
     }
+
 }

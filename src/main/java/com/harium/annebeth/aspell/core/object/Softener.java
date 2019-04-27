@@ -37,7 +37,7 @@ public class Softener extends HighObject {
                 String sentence = "Well, it's ";
 
                 if (hasAcid && hasSalty && hasFlower) {
-                    sentence += "full again.";
+                    sentence += "full again";
                 } else if (hasAcid) {
                     sentence += "acid";
                     if (hasSalty && !hasFlower) {
@@ -80,18 +80,19 @@ public class Softener extends HighObject {
             }
 
             Washer washer = (Washer) with;
-            if (washer.isOpen()) {
-                if (step == UNUSED && !washer.hasSoftener) {
-                    step = USED;
-                    washer.hasSoftener = true;
-                    hasAcid = false;
-                    hasFlower = false;
-                    hasSalty = false;
-                    Jukebox.playUse();
-                }
-            } else {
-                DialogManager.addDialog("The washer should be open first.");
+            //if (washer.isOpen()) {
+            if (step == UNUSED && !washer.hasSoftener) {
+                step = USED;
+                hasAcid = false;
+                hasFlower = false;
+                hasSalty = false;
+
             }
+            washer.hasSoftener = true;
+            Jukebox.playUse();
+            //} else {
+            //    DialogManager.addDialog("The washer should be open first.");
+            //}
         } else {
             negativeDialog();
         }

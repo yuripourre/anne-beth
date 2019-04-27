@@ -1,6 +1,7 @@
 package com.harium.annebeth.aspell.core.object;
 
 import com.harium.annebeth.aspell.core.object.base.BaseObject;
+import com.harium.annebeth.aspell.core.object.base.PickLevel;
 import com.harium.annebeth.aspell.core.object.base.PickupableObject;
 import com.harium.annebeth.aspell.core.ui.DialogManager;
 import com.harium.annebeth.aspell.core.ui.InventoryManager;
@@ -43,6 +44,12 @@ public class Lemon extends PickupableObject {
         softener.hasAcid = true;
         visible = false;
         removeFromInventory();
+    }
+
+    @Override
+    public PickLevel onPickUp() {
+        super.onPickUp();
+        return PickLevel.DOWN;
     }
 
     @Override

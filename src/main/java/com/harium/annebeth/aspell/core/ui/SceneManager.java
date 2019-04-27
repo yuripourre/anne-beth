@@ -67,8 +67,11 @@ public class SceneManager {
         */
 
         InventoryManager.pickup(new Sock(0, 0));
+        InventoryManager.pickup(new Pile(0, 0));
         InventoryManager.pickup(new Lemon(0, 0));
-        InventoryManager.pickup(new Stool(0, 0));
+        InventoryManager.pickup(new Shoyu(0, 0));
+        InventoryManager.pickup(new CactusFlower(new Cactus(0, 0)));
+        //InventoryManager.pickup(new Stool(0, 0));
         InventoryManager.pickup(new Softener(0, 0));
         InventoryManager.pickup(new Detergent(0, 0));
         InventoryManager.pickup(new FanSwitch(0, 0));

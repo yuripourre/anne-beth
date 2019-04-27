@@ -35,7 +35,7 @@ public class PickupableObject extends DecorativeObject {
         visible = false;
         InventoryManager.pickup(this);
         Jukebox.playPickup();
-        return PickLevel.DOWN;
+        return PickLevel.MEDIUM;
     }
 
     protected void removeFromInventory() {
