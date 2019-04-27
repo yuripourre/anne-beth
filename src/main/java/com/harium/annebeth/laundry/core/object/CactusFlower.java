@@ -15,10 +15,10 @@ public class CactusFlower extends PickupableObject {
     private Cactus cactus;
 
     public CactusFlower(Cactus cactus) {
-        super(LanguageManager.objectName(Dictionary.CACTUS_FLOWER), cactus.x + 58, cactus.y + 8, 24, 12);
+        super(LanguageManager.objectName(Dictionary.CACTUS_FLOWER), cactus.x + 50, cactus.y + 4, 40, 20);
         this.cactus = cactus;
-        layer = new ImageLayer(x, y, w, h, "objects/cactus_flower.png");
-        inventoryLayer = new ImageLayer("objects/cactus_flower_inv.png");
+        layer = new ImageLayer(x, y, 40, 20, "objects/cactus_flower.png");
+        inventoryLayer = new ImageLayer(x, y, 65, 80, "objects/cactus_flower_inv.png");
     }
 
     @Override
