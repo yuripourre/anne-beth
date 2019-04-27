@@ -116,4 +116,8 @@ public class Jukebox {
     public static void stopWasher() {
         washer.stop();
     }
+
+    public static void playGameOver() {
+
+    }
 }

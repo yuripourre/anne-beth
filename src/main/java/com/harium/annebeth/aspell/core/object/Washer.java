@@ -13,12 +13,12 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Washer extends OpenableObject {
 
-    boolean hasSock = false;
-    boolean hasPile = false;
-    boolean hasDetergent = false;
-    boolean hasSoftener = false;
-    boolean hasSwitch = false;
-    boolean turnedOn = false;
+    public boolean hasSock = false;
+    public boolean hasPile = false;
+    public boolean hasDetergent = false;
+    public boolean hasSoftener = false;
+    public boolean hasSwitch = false;
+    public boolean turnedOn = false;
     public boolean explosion = false;
     public boolean reversed = false;
 
@@ -95,15 +95,16 @@ public class Washer extends OpenableObject {
         glow.animate(now);
     }
 
-    private void explode() {
+    public void explode() {
         if (hasSwitch) {
             reversed = true;
         }
         explosion = true;
         turnedOn = false;
-        hasSoftener = false;
-        hasDetergent = false;
-        onOpen();
+        // TODO UNCOMMENT!
+        //hasSoftener = false;
+        //hasDetergent = false;
+        //onOpen();
         Jukebox.stopWasher();
         Jukebox.playExplosion();
     }

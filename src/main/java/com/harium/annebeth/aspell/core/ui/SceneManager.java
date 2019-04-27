@@ -80,6 +80,13 @@ public class SceneManager {
 
         // TODO REMOVE
         offset(-1500);
+
+        washer.explode();
+        washer.hasSock = true;
+        washer.hasPile = true;
+        washer.hasDetergent = true;
+        washer.hasSoftener = true;
+        washer.hasSwitch = true;
     }
 
     public static boolean isUpsideDown() {
@@ -159,7 +166,6 @@ public class SceneManager {
         for (Room room : rooms) {
             room.draw(g);
         }
-
 
         for (BaseObject object : objectList) {
             drawObject(g, object);
@@ -254,15 +260,19 @@ public class SceneManager {
 
     public void update(long now) {
         washer.update(now);
-        if (normalWorld && washer.explosion) {
+        if (!isUpsideDown() && washer.explosion) {
             flashEffect();
             Jukebox.playUpsideDownMusic();
             turnWorldUpsideDown();
             System.out.println("Explosion");
-
-        } else if (!normalWorld && washer.reversed && !gameOver) {
+            washer.explosion = false;
+        } else if (isUpsideDown() && washer.reversed && !gameOver) {
             flashEffect();
             Jukebox.playNormalMusic();
+            Jukebox.playGameOver();
+
+
+
             turnWorldNormal();
             // TODO GAME OVER
             gameOver = true;

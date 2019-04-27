@@ -1,7 +1,5 @@
-package com.harium.annebeth.aspell;
+package com.harium.annebeth.aspell.tools;
 
-import com.harium.annebeth.aspell.tools.PaleteExtractor;
-import com.harium.annebeth.aspell.tools.ScaleUp;
 import com.harium.etyl.Etyl;
 import com.harium.etyl.commons.context.Application;
 
