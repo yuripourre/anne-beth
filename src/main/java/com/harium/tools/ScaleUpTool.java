@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.tools;
+package com.harium.tools;
 
 import com.harium.etyl.Etyl;
 import com.harium.etyl.commons.context.Application;
