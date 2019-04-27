@@ -28,20 +28,30 @@ public class Lemon extends PickupableObject {
             return;
         }
         if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
-            Softener softener = (Softener) with;
-            if (softener.hasAcid) {
-               DialogManager.addDialog("I don't think it needs more acid.");
-               return;
-            }
-            Jukebox.playUse();
-            softener.hasAcid = true;
-            visible = false;
-            removeFromInventory();
+            combine((Softener) with);
         } else {
             negativeDialog();
         }
     }
 
+    public void combine(Softener softener) {
+        if (softener.hasAcid) {
+           DialogManager.addDialog("I don't think it needs more acid.");
+           return;
+        }
+        Jukebox.playUse();
+        softener.hasAcid = true;
+        visible = false;
+        removeFromInventory();
+    }
 
+    @Override
+    public void turnUpsideDown() {
+        //super.turnUpsideDown();
+    }
 
+    @Override
+    public void turnNormal() {
+        //super.turnNormal();
+    }
 }

@@ -73,8 +73,7 @@ public class Player {
                 reached();
             }
         } else if (state == PlayerState.WALKING_RIGHT) {
-
-            if (targetX.centerX() > center && sceneManager.x>-1652) {
+            if (targetX.centerX() > center && sceneManager.x > -1652) {
                 offset(-WALK_SPEED);
             } else {
                 reached();
@@ -94,7 +93,7 @@ public class Player {
 
     public void setTarget(BaseObject object) {
         if (targetX != object) {
-            if (object.centerX() > sceneManager.w / 2) {
+            if (object.centerX() >= sceneManager.w / 2) {
                 walkRight();
             } else if (object.centerX() < sceneManager.w / 2) {
                 walkLeft();

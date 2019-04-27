@@ -62,7 +62,16 @@ public class Softener extends HighObject {
     }
 
     public void onUse(BaseObject with) {
-        if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
+        if (with.name.equals(LanguageManager.objectName(Dictionary.LEMON))) {
+            Lemon lemon = (Lemon) with;
+            lemon.combine(this);
+        } else if (with.name.equals(LanguageManager.objectName(Dictionary.SHOYU))) {
+            Shoyu shoyu = (Shoyu) with;
+            shoyu.combine(this);
+        } else if (with.name.equals(LanguageManager.objectName(Dictionary.CACTUS_FLOWER))) {
+            CactusFlower flower = (CactusFlower) with;
+            flower.combine(this);
+        } else if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
             if (step == USED) {
                 if (!hasAcid && !hasSalty && !hasFlower) {
                     DialogManager.addDialog("It's empty.");

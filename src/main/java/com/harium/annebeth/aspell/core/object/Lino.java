@@ -6,17 +6,17 @@ import com.harium.annebeth.aspell.i18n.Dictionary;
 import com.harium.annebeth.aspell.i18n.LanguageManager;
 import com.harium.etyl.layer.ImageLayer;
 
-public class CactusJimmy extends DecorativeObject {
+public class Lino extends DecorativeObject {
 
-    boolean looked = false;
-
-    public CactusJimmy(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.JIMMY_PLANT), x, y, 80, 152);
-        layer = new ImageLayer(x, y, w, h, "objects/jimmy_cactus.png");
+    public Lino(int x, int y) {
+        super(LanguageManager.objectName(Dictionary.LINO), x, y, 60, 26);
+        this.originalY = y;
+        layer = new ImageLayer(x, y, w, h, "objects/lino.png");
     }
 
     @Override
     public void onLook() {
-        DialogManager.addDialog("Jimmy the Plant.");
+        DialogManager.addDialog("Hi Lino!");
+        DialogManager.addDialog("Guess what, he is sleeping.");
     }
 }

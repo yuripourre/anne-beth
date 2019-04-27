@@ -9,19 +9,12 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Refrigerator extends OpenableObject {
 
-    private ImageLayer apple;
-    private ImageLayer watermelon;
-    private ImageLayer banana;
     private PickupableObject lemon = null;
 
     public Refrigerator(int x, int y) {
         super(LanguageManager.objectName(Dictionary.REFRIGERATOR), x, y, 108, 168);
         layer = new ImageLayer(x, y, w, h, "objects/fridge.png");
         openLayer = new ImageLayer(x, y, w, h, "objects/fridge_open.png");
-
-        apple = new ImageLayer(x + 49, y + 69, w, h, "objects/apple.png");
-        banana = new ImageLayer(x + 16, y + 102, w, h, "objects/banana.png");
-        watermelon = new ImageLayer(x + 43, y + 106, w, h, "objects/watermelon.png");
     }
 
     @Override
@@ -33,9 +26,6 @@ public class Refrigerator extends OpenableObject {
             layer.draw(g);
         } else {
             openLayer.draw(g);
-            apple.draw(g);
-            banana.draw(g);
-            watermelon.draw(g);
         }
     }
 
@@ -57,17 +47,15 @@ public class Refrigerator extends OpenableObject {
     public void turnUpsideDown() {
         super.turnUpsideDown();
         if (lemon != null) {
-            lemon.setPosition(x - 10, y - 300);
+            lemon.setPosition(x - 10, y + 270);
         }
     }
 
     @Override
-    public void setPosition(int x, int y) {
-        super.setPosition(x, y);
-
-        // NormalWorld
-        apple.setLocation(x + 49, y + 69);
-        banana.setLocation(x + 16, y + 102);
-        watermelon.setLocation(x + 43, y + 106);
+    public void turnNormal() {
+        super.turnNormal();
+        if (lemon != null) {
+            lemon.setPosition(x - 10, y + 170);
+        }
     }
 }

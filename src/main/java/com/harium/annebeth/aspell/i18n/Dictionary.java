@@ -20,6 +20,7 @@ public interface Dictionary {
     String TV = "tv";
     String TRASH = "trash";
     String JIMMY_PLANT = "jimmy";
+    String LINO = "lino";
 
 
     String asWord(Interaction interaction);

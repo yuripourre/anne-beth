@@ -54,6 +54,7 @@ public class SceneManager {
         initBedRoom();
         initHall();
         initKitchen();
+        initDinner();
 
         roomObjects();
 
@@ -74,7 +75,18 @@ public class SceneManager {
 
         setupEffects(w, h);
 
+        // TODO REMOVE
         offset(-1300);
+    }
+
+    public static boolean isUpsideDown() {
+        return !normalWorld;
+    }
+
+    private void initDinner() {
+        int ox = 816 + 720 + 816;
+        int oy = 50;
+        objectList.add(new CactusJimmy(235 + ox, 121 + oy));
     }
 
     private void initKitchen() {
@@ -109,12 +121,14 @@ public class SceneManager {
     }
 
     private void initBedRoom() {
+        int ox = 0;
         int oy = 50;
-        foreground.add(new Fan(358, -50 + oy));
-        foreground.add(new Television(350, 252 + oy));
-        objectList.add(new HitBoxObject("mirror", "Hey, it's me.", 576, 96 + oy, 76, 98));
-        objectList.add(new HitBoxObject("bed", "A very comfortable bed.", 326, 200 + oy, 190, 98));
-        objectList.add(new FanSwitch(528, 131 + oy));
+        foreground.add(new Fan(358 + ox, -50 + oy));
+        foreground.add(new Television(350 + ox, 252 + oy));
+        objectList.add(new HitBoxObject("mirror", "Hey, it's me.", 576 + ox, 96 + oy, 76, 98));
+        objectList.add(new HitBoxObject("bed", "A very comfortable bed.", 326 + ox, 200 + oy, 190, 98));
+        objectList.add(new FanSwitch(528 + ox, 131 + oy));
+        objectList.add(new Lino(133 + ox, 215 + oy));
     }
 
     private void roomObjects() {
@@ -266,6 +280,9 @@ public class SceneManager {
         for (BaseObject object : objectList) {
             object.turnUpsideDown();
         }
+
+        // Fix composite objects
+        offset(0);
     }
 
     public void turnWorldNormal() {

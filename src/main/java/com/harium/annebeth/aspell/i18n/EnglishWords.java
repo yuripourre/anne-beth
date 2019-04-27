@@ -13,6 +13,7 @@ public class EnglishWords implements Dictionary {
         words.put(CACTUS, "cactus");
         words.put(CACTUS_FLOWER, "cactus flower");
         words.put(JIMMY_PLANT, "Jimmy the Plant");
+        words.put(LINO, "Lino");
         words.put(CLOTHES_PILE, "pile of clothes");
         words.put(LEMON, "lemon");
         words.put(SOAP, "laundry detergent");

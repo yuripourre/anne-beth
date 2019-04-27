@@ -48,16 +48,20 @@ public class CactusFlower extends PickupableObject {
         }
         if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
             Softener softener = (Softener) with;
-            if (softener.hasFlower) {
-                DialogManager.addDialog("I don't think it needs more flowers.");
-                return;
-            }
-            Jukebox.playUse();
-            softener.hasFlower = true;
-            visible = false;
-            removeFromInventory();
+            combine(softener);
         } else {
             negativeDialog();
         }
+    }
+
+    public void combine(Softener softener) {
+        if (softener.hasFlower) {
+            DialogManager.addDialog("I don't think it needs more flowers.");
+            return;
+        }
+        Jukebox.playUse();
+        softener.hasFlower = true;
+        visible = false;
+        removeFromInventory();
     }
 }

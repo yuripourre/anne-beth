@@ -35,16 +35,13 @@ public class InGame extends Application {
         actionUiManager = new ActionUIManager();
         inventoryManager = new InventoryManager();
 
-        /*for(int i=0;i<90;i++) {
-            loading = i;
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
-
+        initAnimation();
         Jukebox.playNormalMusic();
+    }
+
+    private void initAnimation() {
+        DialogManager.addDialog("Good Morning!");
+        DialogManager.addDialog("Today is Laundry Day!");
     }
 
     @Override
