@@ -39,8 +39,8 @@ public class Washer extends OpenableObject {
         super(LanguageManager.objectName(Dictionary.WASHER), x, y, 80, 96);
         layer = new ImageLayer(x, y, w, h, "objects/washer.png");
         openLayer = new ImageLayer(x, y, 96, h, "objects/washer_open.png");
-        sock = new ImageLayer(x, y, w, h, "objects/washer_sock.png");
-        pile = new ImageLayer(x, y, w, h, "objects/washer_pile.png");
+        sock = new ImageLayer(x, y, 50, 25, "objects/washer_sock.png");
+        pile = new ImageLayer(x, y, 51, 34, "objects/washer_pile.png");
         inside = new AnimatedLayer(x + 10, y + 24, 60, 60, "objects/washer_anim.png");
         inside.setFrames(4);
         inside.setSpeed(600);
@@ -64,19 +64,19 @@ public class Washer extends OpenableObject {
 
         if (!turnedOn) {
             if (hasPile) {
-                pile.simpleDraw(g, x + 24, y + 44);
+                pile.draw(g);
             }
             if (hasSock) {
-                sock.simpleDraw(g, x + 14, y + 54);
+                sock.draw(g);
             }
         } else {
-            inside.draw(g, x, y);
+            inside.draw(g);
         }
 
         super.draw(g);
 
         if (turnedOn) {
-            glow.draw(g, x, y);
+            glow.draw(g);
         }
         g.resetOpacity();
     }
@@ -174,8 +174,11 @@ public class Washer extends OpenableObject {
     @Override
     public void setPosition(int x, int y) {
         super.setPosition(x, y);
+
         glow.setLocation(x, y + 16);
         inside.setLocation(x + 10, y + 24);
+        pile.setLocation(x + 24, y + 44);
+        sock.setLocation(x + 14, y + 54);
     }
 
 }
