@@ -9,6 +9,7 @@ import com.harium.annebeth.laundry.core.ui.SceneManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
+import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
 public class FanSwitch extends PickupableObject {
@@ -20,6 +21,14 @@ public class FanSwitch extends PickupableObject {
         super(LanguageManager.objectName(Dictionary.FAN_SWITCH), x - HITBOX_MARGIN, y - HITBOX_MARGIN, 20 + HITBOX_MARGIN * 2, 28 + HITBOX_MARGIN * 2);
         layer = new ImageLayer(x, y, 20, 28, "objects/fan_switch.png");
         inventoryLayer = new ImageLayer(0, 0, 57, 70, "objects/fan_switch_inv.png");
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        if (!visible) {
+            return;
+        }
+        layer.draw(g, HITBOX_MARGIN, HITBOX_MARGIN);
     }
 
     @Override

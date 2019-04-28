@@ -9,6 +9,7 @@ import com.harium.annebeth.laundry.core.ui.SceneManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
+import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
 public class Shoyu extends PickupableObject {
@@ -34,6 +35,14 @@ public class Shoyu extends PickupableObject {
                 return PickLevel.MEDIUM;
             }
         }
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        if (!visible) {
+            return;
+        }
+        layer.draw(g, HITBOX_MARGIN, HITBOX_MARGIN);
     }
 
     @Override
