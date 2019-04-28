@@ -9,6 +9,7 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Refrigerator extends OpenableObject {
 
+    private boolean firstOpen = false;
     private PickupableObject lemon = null;
 
     public Refrigerator(int x, int y) {
@@ -38,8 +39,11 @@ public class Refrigerator extends OpenableObject {
     @Override
     public void onOpen() {
         super.onOpen();
-        if (lemon != null) {
-            lemon.visible = true;
+        if (!firstOpen) {
+            if (lemon != null) {
+                lemon.visible = true;
+            }
+            firstOpen = true;
         }
 
     }
