@@ -24,7 +24,10 @@ public class InGame extends Application {
 
     public InGame(int w, int h) {
         super(w, h);
-        loadApplication = new LoadingScreen(w, h);
+        if (Game.loadingScreen == null) {
+            Game.loadingScreen = new LoadingScreen(w, h);
+        }
+        loadApplication = Game.loadingScreen;
     }
 
     public void load() {
