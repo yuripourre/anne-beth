@@ -14,7 +14,7 @@ public class ActionUIManager {
     private ActionButton lookat;
     private ActionButton use;
     private ActionButton pickup;
-    private ActionButton pull;
+    private ActionButton walk;
 
     public ActionUIManager() {
         int x = 22;
@@ -27,7 +27,7 @@ public class ActionUIManager {
         lookat = new ActionButton(LOOK_AT, x + ox, y);
         use = new ActionButton(USE, x + ox, y + oy);
         pickup = new ActionButton(PICK_UP, x + ox * 2, y);
-        pull = new ActionButton(PULL, x + ox * 2, y + oy);
+        walk = new ActionButton(WALK, x + ox * 2, y + oy);
     }
 
     public void draw(Graphics g) {
@@ -38,7 +38,7 @@ public class ActionUIManager {
         lookat.draw(g);
         use.draw(g);
         pickup.draw(g);
-        pull.draw(g);
+        walk.draw(g);
     }
 
     private void drawBackground(Graphics g) {
@@ -53,7 +53,7 @@ public class ActionUIManager {
         checkCollide(lookat, event);
         checkCollide(use, event);
         checkCollide(pickup, event);
-        checkCollide(pull, event);
+        checkCollide(walk, event);
     }
 
     private void checkCollide(ActionButton button, PointerEvent event) {

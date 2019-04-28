@@ -57,6 +57,9 @@ public class SceneManager {
         setupEffects(w, h);
 
         // TODO REMOVE
+        //offset(-500);
+        //InventoryManager.pickup(new Shoyu(0, 0));
+        //InventoryManager.pickup(new Stool(0, 0));
         /*offset(-1500);
 
         InventoryManager.pickup(new Sock(0, 0));
@@ -205,8 +208,7 @@ public class SceneManager {
             if (object.x < event.getX() && object.x + object.w > event.getX() &&
                     object.y < event.getY() && object.y + object.h > event.getY()) {
 
-                player.setTarget(object);
-                Context.setObject(object);
+                defineTarget(player, object);
                 found = true;
                 break;
             }
@@ -222,8 +224,7 @@ public class SceneManager {
                 if (object.x < event.getX() && object.x + object.w > event.getX() &&
                         object.y < event.getY() && object.y + object.h > event.getY()) {
 
-                    player.setTarget(object);
-                    Context.setObject(object);
+                    defineTarget(player, object);
                     found = true;
                     break;
                 }
@@ -237,6 +238,14 @@ public class SceneManager {
 
             player.setTarget(floor);
             Context.setObject(floor);
+        }
+    }
+
+    private void defineTarget(Player player, BaseObject object) {
+        player.setTarget(object);
+        Context.setObject(object);
+        if (Context.interaction == Interaction.NONE) {
+            Context.interaction = Interaction.WALK;
         }
     }
 

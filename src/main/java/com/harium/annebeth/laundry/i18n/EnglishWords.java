@@ -45,7 +45,7 @@ public class EnglishWords implements Dictionary {
             case PULL:
                 return "Pull";
             case WALK:
-                return "Walk to";
+                return "Walk";
             default:
                 return "";
         }

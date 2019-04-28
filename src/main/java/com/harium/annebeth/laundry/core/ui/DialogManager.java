@@ -74,11 +74,15 @@ public class DialogManager {
     }
 
     private void drawBottomSentence(Graphics g) {
-        if (interaction == Interaction.WALK && object == NULL_OBJECT) {
-            return;
-        }
+        //if (interaction == Interaction.NONE) {
+        //    return;
+        //}
 
         String sentence = asWord(interaction);
+
+        if (interaction == Interaction.WALK) {
+            sentence += " to";
+        }
 
         if (object != NULL_OBJECT && object != null) {
             sentence += " " + object.name;

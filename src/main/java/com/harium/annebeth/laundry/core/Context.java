@@ -10,7 +10,7 @@ public class Context {
     public static final BaseObject NULL_OBJECT = new BaseObject("");
     public static final int CONTEXT_SENTENCE = 382;
 
-    public static Interaction interaction = Interaction.WALK;
+    public static Interaction interaction = Interaction.NONE;
     public static BaseObject object = NULL_OBJECT;
     public static BaseObject with = NULL_OBJECT;
 
@@ -70,7 +70,7 @@ public class Context {
     }
 
     private static void reset() {
-        interaction = Interaction.WALK;
+        interaction = Interaction.NONE;
         object = NULL_OBJECT;
         with = NULL_OBJECT;
     }
