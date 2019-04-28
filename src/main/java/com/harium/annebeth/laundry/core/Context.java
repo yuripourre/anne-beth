@@ -15,6 +15,9 @@ public class Context {
     public static BaseObject with = NULL_OBJECT;
 
     public static void reachObject(Player player) {
+        if(object == null) {
+            return;
+        }
         if (object.disabled || object.name.isEmpty()) {
             reset();
             return;
