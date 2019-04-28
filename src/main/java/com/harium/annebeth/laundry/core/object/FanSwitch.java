@@ -14,7 +14,7 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class FanSwitch extends PickupableObject {
 
-    private static final int HITBOX_MARGIN = 3;
+    private static final int HITBOX_MARGIN = 4;
     boolean picked = false;
 
     public FanSwitch(int x, int y) {

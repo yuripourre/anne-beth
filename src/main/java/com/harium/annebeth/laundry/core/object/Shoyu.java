@@ -14,7 +14,7 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Shoyu extends PickupableObject {
 
-    private static final int HITBOX_MARGIN = 3;
+    private static final int HITBOX_MARGIN = 4;
 
     public Shoyu(int x, int y) {
         super(LanguageManager.objectName(Dictionary.SHOYU), x - HITBOX_MARGIN, y - HITBOX_MARGIN, 11 + HITBOX_MARGIN * 2, 23 + HITBOX_MARGIN * 2);
