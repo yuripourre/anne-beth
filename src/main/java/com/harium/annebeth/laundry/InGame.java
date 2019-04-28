@@ -24,10 +24,12 @@ public class InGame extends Application {
 
     public InGame(int w, int h) {
         super(w, h);
+        loadApplication = new LoadingScreen(w, h);
     }
 
     public void load() {
         Jukebox.init();
+
         dialogManager = new DialogManager(w, h);
         sceneManager = new SceneManager(w, h);
         player = new Player(322, 200, sceneManager);

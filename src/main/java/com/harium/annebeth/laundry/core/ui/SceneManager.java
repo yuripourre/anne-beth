@@ -109,6 +109,8 @@ public class SceneManager {
 
         washer = new Washer(ox + 590, 176 + oy);
         objectList.add(washer);
+
+        //foreground.add(new Trash(355 + ox, 294 + oy));
     }
 
     private void initHall() {

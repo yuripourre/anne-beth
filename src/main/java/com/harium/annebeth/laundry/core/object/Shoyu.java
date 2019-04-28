@@ -13,20 +13,22 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Shoyu extends PickupableObject {
 
+    private static final int HITBOX_MARGIN = 3;
+
     public Shoyu(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SHOYU), x, y, 11, 23);
-        layer = new ImageLayer(x, y, w, h, "objects/shoyu.png");
-        inventoryLayer = new ImageLayer("objects/shoyu_inv.png");
+        super(LanguageManager.objectName(Dictionary.SHOYU), x - HITBOX_MARGIN, y - HITBOX_MARGIN, 11 + HITBOX_MARGIN * 2, 23 + HITBOX_MARGIN * 2);
+        layer = new ImageLayer(x, y, 11, 23, "objects/shoyu.png");
+        inventoryLayer = new ImageLayer(x, y, 23, 48, "objects/shoyu_inv.png");
     }
 
     @Override
     public PickLevel onPickUp() {
         if (SceneManager.isUpsideDown() && !InventoryManager.has("stool")) {
-            DialogManager.addDialog("I can't reach it");
+            DialogManager.addDialog("I can't reach it.");
             return PickLevel.NONE;
         } else {
             super.onPickUp();
-            if(SceneManager.isUpsideDown()) {
+            if (SceneManager.isUpsideDown()) {
                 return PickLevel.HIGH;
             } else {
                 return PickLevel.MEDIUM;

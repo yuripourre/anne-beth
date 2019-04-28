@@ -12,7 +12,7 @@ public class HighObject extends PickupableObject {
     @Override
     public PickLevel onPickUp() {
         if (!InventoryManager.has("stool")) {
-            DialogManager.addDialog("I can't reach it");
+            DialogManager.addDialog("I can't reach it.");
             return PickLevel.NONE;
         } else {
             super.onPickUp();

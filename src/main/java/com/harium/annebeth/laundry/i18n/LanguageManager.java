@@ -4,7 +4,7 @@ import com.harium.annebeth.laundry.core.Interaction;
 
 public class LanguageManager {
 
-    static Dictionary dictionary = new EnglishWords();
+    static Dictionary dictionary = new English();
 
     public static String asWord(Interaction interaction) {
         return dictionary.asWord(interaction);

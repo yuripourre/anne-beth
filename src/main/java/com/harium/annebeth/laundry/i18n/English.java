@@ -5,10 +5,9 @@ import com.harium.annebeth.laundry.core.Interaction;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EnglishWords implements Dictionary {
+public class English implements Dictionary {
 
     Map<String, String> words = new HashMap<String, String>();
-
     {
         words.put(CACTUS, "cactus");
         words.put(CACTUS_FLOWER, "cactus flower");

@@ -14,7 +14,7 @@ public class Lemon extends PickupableObject {
     public Lemon(int x, int y) {
         super(LanguageManager.objectName(Dictionary.LEMON), x, y, 27, 23);
         layer = new ImageLayer(x, y, w, h, "objects/lemon.png");
-        inventoryLayer = new ImageLayer("objects/lemon.png");
+        inventoryLayer = new ImageLayer(0, 0, 27, 23, "objects/lemon.png");
     }
 
     public Lemon() {
@@ -36,8 +36,8 @@ public class Lemon extends PickupableObject {
 
     public void combine(Softener softener) {
         if (softener.hasAcid) {
-           DialogManager.addDialog("I don't think it needs more acid.");
-           return;
+            DialogManager.addDialog("I don't think it needs more acid.");
+            return;
         }
         Jukebox.playUse();
         softener.hasAcid = true;
