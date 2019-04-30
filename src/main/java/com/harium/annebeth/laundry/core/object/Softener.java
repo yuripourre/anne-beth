@@ -27,36 +27,36 @@ public class Softener extends HighObject {
 
     @Override
     public void onLook() {
-        DialogManager.addDialog("Magi Softener: acid, salty with a touch of flowers.");
+        DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_LOOK_AT));
         if (step == UNUSED) {
-            DialogManager.addDialog("It is almost empty.");
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.ALMOST_EMPTY));
         } else if (step == USED) {
-            if (!hasAcid && !hasSalty && !hasFlower) {
-                DialogManager.addDialog("It's empty.");
-            } else {
-                String sentence = "Well, it's ";
-
-                if (hasAcid && hasSalty && hasFlower) {
-                    sentence += "full again";
-                } else if (hasAcid) {
-                    sentence += "acid";
-                    if (hasSalty && !hasFlower) {
-                        sentence += " and salty";
-                    } else if (!hasSalty && hasFlower) {
-                        sentence += " with a touch of flowers";
+            if (hasAcid) {
+                if (hasSalty) {
+                    if (hasFlower) {
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.FULL_AGAIN));
+                    } else {
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_ACID_SALTY));
                     }
                 } else {
-                    if (hasSalty && !hasFlower) {
-                        sentence += "salty";
-                    } else if (!hasSalty && hasFlower) {
-                        sentence += "smelling like flowers";
+                    if (hasFlower) {
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_ACID_FLOWERS));
                     } else {
-                        sentence += "salty with a touch of flowers";
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_ACID));
                     }
                 }
-
-                sentence += ".";
-                DialogManager.addDialog(sentence);
+            } else {
+                if (hasSalty) {
+                    if (!hasFlower) {
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_SALTY));
+                    } else {
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_SALTY_FLOWERS));
+                    }
+                } else if (hasFlower) {
+                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_FLOWERS));
+                } else {
+                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY));
+                }
             }
         }
     }
@@ -74,7 +74,7 @@ public class Softener extends HighObject {
         } else if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
             if (step == USED) {
                 if (!hasAcid && !hasSalty && !hasFlower) {
-                    DialogManager.addDialog("It's empty.");
+                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY));
                     return;
                 }
             }

@@ -3,6 +3,8 @@ package com.harium.annebeth.laundry.core.object.base;
 import com.harium.annebeth.laundry.core.Turnable;
 import com.harium.annebeth.laundry.core.ui.DialogHelper;
 import com.harium.annebeth.laundry.core.ui.DialogManager;
+import com.harium.annebeth.laundry.i18n.Dictionary;
+import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 
@@ -96,7 +98,7 @@ public class BaseObject implements Turnable {
     }
 
     public void onLook() {
-        DialogManager.addDialog("It is just a " + name + ".");
+        DialogManager.addDialog(LanguageManager.sentence(Dictionary.STANDARD_LOOK_AT, this));
     }
 
     public int centerX() {

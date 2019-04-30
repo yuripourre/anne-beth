@@ -9,6 +9,7 @@ import com.harium.annebeth.laundry.core.object.base.DummyObject;
 import com.harium.annebeth.laundry.core.object.base.HitBoxObject;
 import com.harium.annebeth.laundry.core.player.Player;
 import com.harium.annebeth.laundry.core.room.*;
+import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
@@ -19,6 +20,8 @@ import com.harium.etyl.core.graphics.Graphics;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 
 public class SceneManager {
 
@@ -130,8 +133,8 @@ public class SceneManager {
         int oy = 50;
         foreground.add(new Fan(358 + ox, -50 + oy));
         foreground.add(new Television(350 + ox, 252 + oy));
-        objectList.add(new HitBoxObject("mirror", "Hey, it's me.", 576 + ox, 96 + oy, 76, 98));
-        objectList.add(new HitBoxObject("bed", "A very comfortable bed.", 326 + ox, 200 + oy, 190, 98));
+        objectList.add(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
+        objectList.add(new HitBoxObject(LanguageManager.sentence(BED), LanguageManager.sentence(BED_LOOK_AT), 326 + ox, 200 + oy, 190, 98));
         objectList.add(new FanSwitch(528 + ox, 131 + oy));
         objectList.add(new Lino(133 + ox, 215 + oy));
     }
@@ -257,7 +260,6 @@ public class SceneManager {
             flashEffect();
             Jukebox.playUpsideDownMusic();
             turnWorldUpsideDown();
-            System.out.println("Explosion");
             washer.explosion = false;
         } else if (washer.explosion && washer.reversed) {
             flashEffect();

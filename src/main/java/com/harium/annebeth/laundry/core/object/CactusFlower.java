@@ -57,6 +57,7 @@ public class CactusFlower extends PickupableObject {
 
     public void combine(Softener softener) {
         if (softener.hasFlower) {
+            // Should never happens
             DialogManager.addDialog("I don't think it needs more flowers.");
             return;
         }

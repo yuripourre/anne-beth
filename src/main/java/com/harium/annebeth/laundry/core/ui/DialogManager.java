@@ -1,6 +1,8 @@
 package com.harium.annebeth.laundry.core.ui;
 
 import com.harium.annebeth.laundry.core.Interaction;
+import com.harium.annebeth.laundry.i18n.Dictionary;
+import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Font;
 import com.harium.etyl.core.graphics.Graphics;
@@ -81,13 +83,13 @@ public class DialogManager {
         String sentence = asWord(interaction);
 
         if (interaction == Interaction.WALK) {
-            sentence += " to";
+            sentence += " " + LanguageManager.sentence(Dictionary.TO);
         }
 
         if (object != NULL_OBJECT && object != null) {
             sentence += " " + object.name;
             if (interaction == Interaction.USE && object.canUse) {
-                sentence += " with";
+                sentence += " " + LanguageManager.sentence(Dictionary.WITH);
                 if (with != NULL_OBJECT) {
                     sentence += " " + with.name;
                 }

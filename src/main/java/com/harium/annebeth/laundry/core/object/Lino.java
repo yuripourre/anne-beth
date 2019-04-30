@@ -16,7 +16,7 @@ public class Lino extends DecorativeObject {
 
     @Override
     public void onLook() {
-        DialogManager.addDialog("Hi Lino!");
-        DialogManager.addDialog("Guess what, he is sleeping.");
+        DialogManager.addDialog(LanguageManager.sentence(Dictionary.LINO_GREETINGS, this));
+        DialogManager.addDialog(LanguageManager.sentence(Dictionary.LINO_SLEEPING));
     }
 }

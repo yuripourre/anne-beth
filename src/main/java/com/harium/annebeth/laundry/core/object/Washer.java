@@ -115,24 +115,24 @@ public class Washer extends OpenableObject {
     public void onUse(BaseObject with) {
         if (!hasSock || !hasPile) {
             if (hasSock || hasPile) {
-                DialogManager.addDialog("I think I have more clothes.");
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_MORE_CLOTHES));
             } else {
-                DialogManager.addDialog("It needs some clothes.");
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_EMPTY));
             }
         } else if (!hasDetergent || !hasSoftener) {
             if (hasDetergent) {
-                DialogManager.addDialog("It needs some softener.");
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER));
             } else if (hasSoftener) {
-                DialogManager.addDialog("It needs some detergent.");
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_DETERGENT));
             } else {
-                DialogManager.addDialog("It needs detergent and softener.");
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_DETERGENT_AND_SOFTENER));
             }
         } else {
             if (isOpen()) {
-                DialogManager.addDialog("It should be closed first.");
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.IT_SHOULD_BE_CLOSED));
             } else {
                 if (exploded && !hasSwitch) {
-                    DialogManager.addDialog("I must figure a way to REVERSE this situation.");
+                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_REVERSE));
                 } else {
                     turnOn();
                 }
@@ -145,7 +145,7 @@ public class Washer extends OpenableObject {
         if (!hasSwitch) {
             super.onLook();
         } else {
-            DialogManager.addDialog("A reversed " + name + ".");
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_REVERSED));
         }
     }
 
@@ -154,21 +154,21 @@ public class Washer extends OpenableObject {
         Jukebox.stopMusics();
         Jukebox.playWasher();
         if (!hasSwitch) {
-            DialogManager.addDialog("Mission Accomplished!");
-            DialogManager.addDialog("Uh oh, something is wrong.");
-            DialogManager.addDialog("...");
-            DialogManager.addDialog("Spider Crap!");
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.MISSION_COMPLETE));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOMETHING_WRONG));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.NO_WORDS));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.SPIDER_CRAP));
         } else {
-            DialogManager.addDialog("Here I go again.");
-            DialogManager.addDialog("It has to work.");
-            DialogManager.addDialog("...");
-            DialogManager.addDialog("It worked!");
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.HERE_I_GO_AGAIN));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.HAS_TO_WORK));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.NO_WORDS));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.NO_WORDS));
         }
     }
 
     @Override
     public void turnUpsideDown() {
-        //Special case
+        // Special case
     }
 
     @Override
