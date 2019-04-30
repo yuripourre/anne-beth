@@ -33,7 +33,7 @@ public class FanSwitch extends PickupableObject {
 
     @Override
     public void onLook() {
-        DialogManager.addDialog("A " + name + " with two spin modes.");
+        DialogManager.addDialog(LanguageManager.sentence(Dictionary.FAN_SWITCH_LOOK_AT));
     }
 
     @Override

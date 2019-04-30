@@ -24,8 +24,8 @@ public class Shoyu extends PickupableObject {
 
     @Override
     public PickLevel onPickUp() {
-        if (SceneManager.isUpsideDown() && !InventoryManager.has("stool")) {
-            DialogManager.addDialog("I can't reach it.");
+        if (SceneManager.isUpsideDown() && !InventoryManager.has(LanguageManager.objectName(Dictionary.STOOL))) {
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_REACH));
             return PickLevel.NONE;
         } else {
             super.onPickUp();

@@ -6,6 +6,8 @@ import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.etyl.layer.ImageLayer;
 
+import static com.harium.annebeth.laundry.i18n.Dictionary.*;
+
 public class Cactus extends DecorativeObject {
 
     boolean looked = false;
@@ -17,12 +19,10 @@ public class Cactus extends DecorativeObject {
 
     @Override
     public void onLook() {
+        super.onLook();
         if (!looked) {
             looked = true;
-            DialogManager.addDialog("It is just a cactus.");
-            DialogManager.addDialog("Oh, wait, is it a flower?");
-        } else {
-            super.onLook();
+            DialogManager.addDialog(LanguageManager.sentence(CACTUS_HAS_FLOWER, this));
         }
     }
 

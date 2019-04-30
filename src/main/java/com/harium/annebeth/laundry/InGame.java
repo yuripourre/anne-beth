@@ -5,12 +5,16 @@ import com.harium.annebeth.laundry.core.ui.ActionUIManager;
 import com.harium.annebeth.laundry.core.ui.DialogManager;
 import com.harium.annebeth.laundry.core.ui.InventoryManager;
 import com.harium.annebeth.laundry.core.ui.SceneManager;
+import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.MouseEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.core.graphics.Graphics;
+
+import static com.harium.annebeth.laundry.i18n.Dictionary.GOOD_MORNING;
+import static com.harium.annebeth.laundry.i18n.Dictionary.LAUNDRY_DAY;
 
 public class InGame extends Application {
 
@@ -45,8 +49,8 @@ public class InGame extends Application {
     }
 
     private void initAnimation() {
-        DialogManager.addDialog("Good Morning!");
-        DialogManager.addDialog("Today is Laundry Day!");
+        DialogManager.addDialog(LanguageManager.sentence(GOOD_MORNING));
+        DialogManager.addDialog(LanguageManager.sentence(LAUNDRY_DAY));
     }
 
     @Override
