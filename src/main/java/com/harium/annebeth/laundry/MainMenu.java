@@ -10,6 +10,8 @@ import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 import com.harium.etyl.loader.FontLoader;
 
+import java.util.Locale;
+
 public class MainMenu extends Application {
 
     Font font;
@@ -27,7 +29,8 @@ public class MainMenu extends Application {
     public void load() {
         loadApplication.load();
         font = FontLoader.getInstance().loadFont("PressStart2P.ttf");
-        LanguageManager.init("");
+        String lang = Locale.getDefault().toString();
+        LanguageManager.init(lang);
         //LanguageManager.init("pt_BR");
         Jukebox.init();
         splash = new ImageLayer("screen/splash.png");
