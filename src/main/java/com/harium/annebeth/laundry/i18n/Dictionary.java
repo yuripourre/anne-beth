@@ -1,8 +1,5 @@
 package com.harium.annebeth.laundry.i18n;
 
-import com.harium.annebeth.laundry.core.Interaction;
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
-
 public interface Dictionary {
 
     String ACTION_OPEN = "open";
@@ -77,9 +74,7 @@ public interface Dictionary {
     String TO = "to";
     String WITH = "with";
 
-
-    String asWord(Interaction interaction);
     String objectName(String key);
+
     String sentence(String key);
-    String sentence(String key, BaseObject object);
 }

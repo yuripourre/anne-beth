@@ -1,8 +1,5 @@
 package com.harium.annebeth.laundry.i18n;
 
-import com.harium.annebeth.laundry.core.Interaction;
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,28 +79,6 @@ public class English implements Dictionary {
     }
 
     @Override
-    public String asWord(Interaction interaction) {
-        switch (interaction) {
-            case OPEN:
-                return sentences.get(ACTION_OPEN);
-            case CLOSE:
-                return sentences.get(ACTION_CLOSE);
-            case USE:
-                return sentences.get(ACTION_USE);
-            case LOOK_AT:
-                return sentences.get(ACTION_LOOK_AT);
-            case PICK_UP:
-                return sentences.get(ACTION_PICK_UP);
-            case PULL:
-                return sentences.get(ACTION_PULL);
-            case WALK:
-                return sentences.get(ACTION_WALK);
-            default:
-                return "";
-        }
-    }
-
-    @Override
     public String objectName(String key) {
         // TODO handle grammatical gender
         return sentence(key);
@@ -119,16 +94,4 @@ public class English implements Dictionary {
         return sentence;
     }
 
-    @Override
-    public String sentence(String key, BaseObject object) {
-        String text = sentence(key);
-        text = interpolate(text, object);
-
-        return text;
-    }
-
-    private String interpolate(String sentence, BaseObject object) {
-        String result = sentence.replaceAll("\\{name\\}", object.name);
-        return result;
-    }
 }
