@@ -7,7 +7,15 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 
 public class LanguageManager {
 
-    static Dictionary dictionary = new English();
+    private static Dictionary dictionary;
+
+    public static void init(String lang) {
+        if ("pt_BR".equals(lang)) {
+           dictionary = new Portuguese();
+        } else {
+            dictionary = new English();
+        }
+    }
 
     public static String asWord(Interaction interaction) {
         switch (interaction) {
@@ -39,15 +47,7 @@ public class LanguageManager {
     }
 
     public static String sentence(String key, BaseObject object) {
-        String text = sentence(key);
-        text = interpolate(text, object);
-
-        return text;
-    }
-
-    private static String interpolate(String sentence, BaseObject object) {
-        String result = sentence.replaceAll("\\{name\\}", object.name);
-        return result;
+        return dictionary.sentence(key, object);
     }
 
 }

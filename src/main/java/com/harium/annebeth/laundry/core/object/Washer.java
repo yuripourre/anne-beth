@@ -121,7 +121,7 @@ public class Washer extends OpenableObject {
             }
         } else if (!hasDetergent || !hasSoftener) {
             if (hasDetergent) {
-                DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER));
+                DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_SOFTENER));
             } else if (hasSoftener) {
                 DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_DETERGENT));
             } else {

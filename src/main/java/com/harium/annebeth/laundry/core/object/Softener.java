@@ -29,12 +29,12 @@ public class Softener extends HighObject {
     public void onLook() {
         DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_LOOK_AT));
         if (step == UNUSED) {
-            DialogManager.addDialog(LanguageManager.sentence(Dictionary.ALMOST_EMPTY));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.ALMOST_EMPTY, this));
         } else if (step == USED) {
             if (hasAcid) {
                 if (hasSalty) {
                     if (hasFlower) {
-                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.FULL_AGAIN));
+                        DialogManager.addDialog(LanguageManager.sentence(Dictionary.FULL_AGAIN, this));
                     } else {
                         DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_ACID_SALTY));
                     }
@@ -55,7 +55,7 @@ public class Softener extends HighObject {
                 } else if (hasFlower) {
                     DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_FLOWERS));
                 } else {
-                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY));
+                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY, this));
                 }
             }
         }

@@ -1,5 +1,7 @@
 package com.harium.annebeth.laundry.i18n;
 
+import com.harium.annebeth.laundry.core.object.base.BaseObject;
+
 public interface Dictionary {
 
     String ACTION_OPEN = "open";
@@ -42,6 +44,7 @@ public interface Dictionary {
     String EMPTY = "empty";
     String FULL_AGAIN = "full";
     String CACTUS_HAS_FLOWER = "cactus_has_flower";
+    String ENOUGH_FLOWERS = "enough_flowers";
     String JIMMY_PLANT_LOOK_AT = "jimmy_look";
     String FAN_SWITCH_LOOK_AT = "fanswitch_look";
     String BED_LOOK_AT = "bed_look";
@@ -77,4 +80,6 @@ public interface Dictionary {
     String objectName(String key);
 
     String sentence(String key);
+
+    String sentence(String key, BaseObject object);
 }

@@ -1,6 +1,7 @@
 package com.harium.annebeth.laundry.core.object;
 
 import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.laundry.core.object.base.HighObject;
 import com.harium.annebeth.laundry.core.object.base.PickLevel;
 import com.harium.annebeth.laundry.core.object.base.PickupableObject;
 import com.harium.annebeth.laundry.core.ui.DialogManager;
@@ -10,7 +11,7 @@ import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
-public class CactusFlower extends PickupableObject {
+public class CactusFlower extends HighObject {
 
     private Cactus cactus;
 
@@ -57,8 +58,8 @@ public class CactusFlower extends PickupableObject {
 
     public void combine(Softener softener) {
         if (softener.hasFlower) {
-            // Should never happens
-            DialogManager.addDialog("I don't think it needs more flowers.");
+            // Should never happen
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.ENOUGH_FLOWERS));
             return;
         }
         Jukebox.playUse();
@@ -67,9 +68,4 @@ public class CactusFlower extends PickupableObject {
         removeFromInventory();
     }
 
-    @Override
-    public PickLevel onPickUp() {
-        super.onPickUp();
-        return PickLevel.HIGH;
-    }
 }

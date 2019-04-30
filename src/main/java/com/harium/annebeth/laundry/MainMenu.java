@@ -1,5 +1,6 @@
 package com.harium.annebeth.laundry;
 
+import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.MouseEvent;
@@ -26,6 +27,8 @@ public class MainMenu extends Application {
     public void load() {
         loadApplication.load();
         font = FontLoader.getInstance().loadFont("PressStart2P.ttf");
+        LanguageManager.init("");
+        //LanguageManager.init("pt_BR");
         Jukebox.init();
         splash = new ImageLayer("screen/splash.png");
         Jukebox.playMenuMusic();

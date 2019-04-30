@@ -1,5 +1,7 @@
 package com.harium.annebeth.laundry.i18n;
 
+import com.harium.annebeth.laundry.core.object.base.BaseObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,10 +51,11 @@ public class English implements Dictionary {
         sentences.put(EMPTY, "It's empty.");
         sentences.put(FULL_AGAIN, "It's full again.");
         sentences.put(CACTUS_HAS_FLOWER, "Oh, wait, is it a flower?");
+        sentences.put(ENOUGH_FLOWERS, "I don't think it needs more flowers.");
         sentences.put(JIMMY_PLANT_LOOK_AT, "Jimmy the Plant.");
         sentences.put(MIRROR_LOOK_AT, "Hey, it's me.");
         sentences.put(BED_LOOK_AT, "A very comfortable bed.");
-        sentences.put(FAN_SWITCH_LOOK_AT, "A {name} with two spin modes.");
+        sentences.put(FAN_SWITCH_LOOK_AT, "A fan switch with two spin modes.");
         sentences.put(LINO_GREETINGS, "Hi {name}!");
         sentences.put(LINO_SLEEPING, "Guess what, he is sleeping.");
         sentences.put(PILE_LOOK_AT, "It is a huge pile of clothes.");
@@ -74,6 +77,7 @@ public class English implements Dictionary {
         sentences.put(MISSION_COMPLETE, "Mission Accomplished!");
         sentences.put(SOMETHING_WRONG, "Uh oh, something is wrong.");
         sentences.put(NO_WORDS, "...");
+        sentences.put(SPIDER_CRAP, "Spider Crap!");
         sentences.put(HERE_I_GO_AGAIN, "Here I go again.");
         sentences.put(HAS_TO_WORK, "It has to work.");
     }
@@ -92,6 +96,18 @@ public class English implements Dictionary {
         }
         String sentence = sentences.get(key);
         return sentence;
+    }
+
+    @Override
+    public String sentence(String key, BaseObject object) {
+        String sentence = sentence(key);
+        sentence = interpolate(sentence, object);
+        return sentence;
+    }
+
+    private static String interpolate(String sentence, BaseObject object) {
+        String result = sentence.replaceAll("\\{name\\}", object.name);
+        return result;
     }
 
 }
