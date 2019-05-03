@@ -1,6 +1,6 @@
 import com.harium.annebeth.laundry.core.object.base.BaseObject;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.English;
+import com.harium.annebeth.laundry.i18n.languages.English;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

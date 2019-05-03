@@ -29,9 +29,7 @@ public class MainMenu extends Application {
     public void load() {
         loadApplication.load();
         font = FontLoader.getInstance().loadFont("PressStart2P.ttf");
-        String lang = Locale.getDefault().toString();
-        LanguageManager.init(lang);
-        //LanguageManager.init("pt_BR");
+        LanguageManager.init();
         Jukebox.init();
         splash = new ImageLayer("screen/splash.png");
         Jukebox.playMenuMusic();

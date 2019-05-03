@@ -1,6 +1,8 @@
-package com.harium.annebeth.laundry.i18n;
+package com.harium.annebeth.laundry.i18n.languages;
 
 import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.laundry.i18n.Dictionary;
+import com.harium.annebeth.laundry.i18n.Gender;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,6 +76,7 @@ public class Portuguese implements Dictionary {
         sentences.put(EMPTY, "Está vazi{det}.");
         sentences.put(FULL_AGAIN, "Está chei{det} novamente.");
         sentences.put(CACTUS_HAS_FLOWER, "Ei, isso é uma flor?");
+        sentences.put(ENOUGH_FLOWERS, "Eu acho que não precisa de mais flores.");
         sentences.put(JIMMY_PLANT_LOOK_AT, "Jimmy a Planta.");
         sentences.put(MIRROR_LOOK_AT, "Ih, sou eu.");
         sentences.put(BED_LOOK_AT, "É uma cama bem confortável.");

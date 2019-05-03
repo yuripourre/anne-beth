@@ -2,6 +2,11 @@ package com.harium.annebeth.laundry.i18n;
 
 import com.harium.annebeth.laundry.core.Interaction;
 import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.laundry.i18n.languages.English;
+import com.harium.annebeth.laundry.i18n.languages.Portuguese;
+import com.harium.annebeth.laundry.i18n.languages.Spanish;
+
+import java.util.Locale;
 
 import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 
@@ -9,9 +14,13 @@ public class LanguageManager {
 
     private static Dictionary dictionary;
 
-    public static void init(String lang) {
-        if ("pt_BR".equals(lang)) {
-           dictionary = new Portuguese();
+    public static void init() {
+        String lang = Locale.getDefault().toString();
+
+        if (lang.startsWith("es_")) {
+            dictionary = new Spanish();
+        } else if (lang.startsWith("pt_")) {
+            dictionary = new Portuguese();
         } else {
             dictionary = new English();
         }

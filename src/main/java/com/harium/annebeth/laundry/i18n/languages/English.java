@@ -1,6 +1,7 @@
-package com.harium.annebeth.laundry.i18n;
+package com.harium.annebeth.laundry.i18n.languages;
 
 import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.laundry.i18n.Dictionary;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,17 +71,17 @@ public class English implements Dictionary {
         sentences.put(WASHER_OPEN, "The washer should be open first.");
         sentences.put(WASHER_MORE_CLOTHES, "I think I have more clothes.");
         sentences.put(WASHER_EMPTY, "It needs some clothes.");
-        sentences.put(WASHER_DETERGENT, "It needs some detergent.");
+        sentences.put(WASHER_DETERGENT, "Necesita un poco de detergente para lavadora.");
         sentences.put(WASHER_SOFTENER, "It needs some softener.");
         sentences.put(WASHER_DETERGENT_AND_SOFTENER, "It needs detergent and softener.");
         sentences.put(WASHER_REVERSE, "I must figure a way to REVERSE this situation.");
         sentences.put(WASHER_REVERSED, "A reversed washer.");
         sentences.put(MISSION_COMPLETE, "Mission Accomplished!");
-        sentences.put(SOMETHING_WRONG, "Uh oh, something is wrong.");
+        sentences.put(SOMETHING_WRONG, "Uh oh, algo esta mal.");
         sentences.put(NO_WORDS, "...");
-        sentences.put(SPIDER_CRAP, "Spider Crap!");
-        sentences.put(HERE_I_GO_AGAIN, "Here I go again.");
-        sentences.put(HAS_TO_WORK, "It has to work.");
+        sentences.put(SPIDER_CRAP, "Araña santa!");
+        sentences.put(HERE_I_GO_AGAIN, "Aquí voy de nuevo.");
+        sentences.put(HAS_TO_WORK, "Tiene que funcionar.");
     }
 
     @Override
