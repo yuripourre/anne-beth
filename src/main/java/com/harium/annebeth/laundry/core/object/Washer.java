@@ -167,6 +167,14 @@ public class Washer extends OpenableObject {
     }
 
     @Override
+    public void onOpen() {
+        if (turnedOn) {
+            return;
+        }
+        super.onOpen();
+    }
+
+    @Override
     public void turnUpsideDown() {
         // Special case
     }
