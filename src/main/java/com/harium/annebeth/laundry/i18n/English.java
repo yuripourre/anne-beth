@@ -45,6 +45,7 @@ public class English implements Dictionary {
         sentences.put(LAUNDRY_DAY, "Today is Laundry Day!");
         sentences.put(STANDARD_LOOK_AT, "It is just a {name}.");
         sentences.put(CANT_REACH, "I can't reach it.");
+        sentences.put(CANT_DO_THAT, "I can't do that.");
         sentences.put(WHY_SOULD_I, "Why should I do that?");
         sentences.put(IT_SHOULD_BE_CLOSED, "It should be closed first.");
         sentences.put(ALMOST_EMPTY, "It is almost empty.");

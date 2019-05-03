@@ -38,6 +38,7 @@ public interface Dictionary {
 
     String STANDARD_LOOK_AT = "std_look";
     String CANT_REACH = "cant_reach";
+    String CANT_DO_THAT = "cant_do";
     String WHY_SOULD_I = "why_should_i";
     String IT_SHOULD_BE_CLOSED = "it_close";
     String ALMOST_EMPTY = "almost_empty";

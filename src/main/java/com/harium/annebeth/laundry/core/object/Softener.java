@@ -74,7 +74,7 @@ public class Softener extends HighObject {
         } else if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
             if (step == USED) {
                 if (!hasAcid && !hasSalty && !hasFlower) {
-                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY));
+                    DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY, this));
                     return;
                 }
             }

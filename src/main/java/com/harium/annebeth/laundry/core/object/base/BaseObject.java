@@ -52,7 +52,7 @@ public class BaseObject implements Turnable {
 
     public void onOpen() {
         if (!canOpen) {
-            DialogManager.addDialog("I can't do that.");
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_DO_THAT));
         } else {
             Jukebox.playOpen();
         }
@@ -61,7 +61,7 @@ public class BaseObject implements Turnable {
 
     public void onClose() {
         if (!canClose) {
-            DialogManager.addDialog("I can't do that.");
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_DO_THAT));
         } else {
             Jukebox.playOpen();
         }

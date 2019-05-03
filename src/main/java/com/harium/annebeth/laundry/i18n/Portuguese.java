@@ -67,6 +67,7 @@ public class Portuguese implements Dictionary {
         sentences.put(LAUNDRY_DAY, "Hoje é dia de lavar roupa!");
         sentences.put(STANDARD_LOOK_AT, "É apenas {undet} {name}.");
         sentences.put(CANT_REACH, "Não consigo alcançar.");
+        sentences.put(CANT_DO_THAT, "Não dá pra fazer isso.");
         sentences.put(WHY_SOULD_I, "Por que eu deveria fazer isso?");
         sentences.put(IT_SHOULD_BE_CLOSED, "Preciso fechar primeiro.");
         sentences.put(ALMOST_EMPTY, "Está quase vazi{det}.");
