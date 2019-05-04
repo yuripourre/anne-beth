@@ -14,14 +14,14 @@ public class Spanish implements Dictionary {
 
     public Spanish() {
         sentences.put(ACTION_OPEN, "Abrir");
-        sentences.put(ACTION_CLOSE, "Fechar");
+        sentences.put(ACTION_CLOSE, "Cerrar");
         sentences.put(ACTION_USE, "Usar");
         sentences.put(ACTION_LOOK_AT, "Examinar");
-        sentences.put(ACTION_PICK_UP, "Pegar");
-        sentences.put(ACTION_PULL, "Puxar");
-        sentences.put(ACTION_WALK, "Andar");
-        sentences.put(TO, "até");
-        sentences.put(WITH, "com");
+        sentences.put(ACTION_PICK_UP, "Recoger");
+        sentences.put(ACTION_PULL, "Tirar");
+        sentences.put(ACTION_WALK, "Caminar");
+        sentences.put(TO, "hasta");
+        sentences.put(WITH, "con");
 
         sentences.put(CACTUS, "cacto");
         sentences.put(CACTUS_FLOWER, "flor de cactus");
@@ -105,6 +105,30 @@ public class Spanish implements Dictionary {
         sentences.put(SPIDER_CRAP, "¡Araña santa!");
         sentences.put(HERE_I_GO_AGAIN, "Aquí voy de nuevo.");
         sentences.put(HAS_TO_WORK, "Tiene que funcionar.");
+    }
+
+    public void loadCredits() {
+        sentences.put(CREDITS_THANK_YOU, "¡Gracias por jugar!");
+        sentences.put(CREDITS_ART, "Arte");
+        sentences.put(CREDITS_ORIGINAL_WITCH, "Imágenes originales de la Bruja por doudoulolita");
+        sentences.put(CREDITS_ORIGINAL_HOUSE, "Imágenes de la Casa por PurpleHeart");
+        sentences.put(CREDITS_CACTUS_FLOWER, "Flor de Cactus por captainluna");
+        sentences.put(CREDITS_ORIGINAL_CAT, "Imagen del gato por GarGar");
+        sentences.put(CREDITS_UI, "UI por Kenney");
+        sentences.put(CREDITS_SPLASH, "Imagen de la abertura por GraphicMama Team");
+        sentences.put(CREDITS_FONT, "Fonte");
+        sentences.put(CREDITS_FONT_NAME, "Press Start 2P");
+        sentences.put(CREDITS_SFX, "Efectos Sonoros");
+        sentences.put(CREDITS_SFX_CREATOR, "SubspaceAudio");
+        sentences.put(CREDITS_MUSIC, "Músicas");
+        sentences.put(CREDITS_MUSIC_HOUSE, "Melody Town Theme por CleytonKauffman");
+        sentences.put(CREDITS_MUSIC_UPSIDE_DOWN, "Facing it por Komiku");
+        sentences.put(CREDITS_MUSIC_MENU, "A Simple Trifle por jestar");
+        sentences.put(CREDITS_TOOLS, "Herramientas");
+        sentences.put(CREDITS_BETA_TESTERS,"Beta Testers Oficiales");
+        sentences.put(CREDITS_MADE_BY,"Hecho Por");
+        sentences.put(CREDITS_SPECIAL_THANKS,"Agradecimientos");
+        sentences.put(CREDITS_THANKS_DISCORD, "Todos en el canal del Discord de la LibGDX");
     }
 
     @Override

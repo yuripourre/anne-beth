@@ -17,9 +17,9 @@ public class LanguageManager {
     public static void init() {
         String lang = Locale.getDefault().toString();
 
-        if (lang.startsWith("es_")) {
+        if (lang.startsWith("es")) {
             dictionary = new Spanish();
-        } else if (lang.startsWith("pt_")) {
+        } else if (lang.startsWith("pt")) {
             dictionary = new Portuguese();
         } else {
             dictionary = new English();
@@ -59,4 +59,7 @@ public class LanguageManager {
         return dictionary.sentence(key, object);
     }
 
+    public static void loadCredits() {
+        dictionary.loadCredits();
+    }
 }

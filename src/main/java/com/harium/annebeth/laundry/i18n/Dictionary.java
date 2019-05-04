@@ -78,6 +78,30 @@ public interface Dictionary {
     String TO = "to";
     String WITH = "with";
 
+    String CREDITS_THANK_YOU = "thank_you";
+    String CREDITS_ART = "art";
+    String CREDITS_ORIGINAL_WITCH = "witchimg";
+    String CREDITS_ORIGINAL_HOUSE = "houseimg";
+    String CREDITS_CACTUS_FLOWER = "flowerimg";
+    String CREDITS_ORIGINAL_CAT = "catimg";
+    String CREDITS_UI = "ui";
+    String CREDITS_SPLASH = "splash";
+    String CREDITS_FONT = "font";
+    String CREDITS_FONT_NAME = "font_name";
+    String CREDITS_SFX = "sfx";
+    String CREDITS_SFX_CREATOR = "sfx_guy";
+    String CREDITS_MUSIC = "music";
+    String CREDITS_MUSIC_MENU = "m_menu";
+    String CREDITS_MUSIC_HOUSE = "m_house";
+    String CREDITS_MUSIC_UPSIDE_DOWN = "m_upside";
+    String CREDITS_TOOLS = "tools";
+    String CREDITS_BETA_TESTERS = "beta";
+    String CREDITS_MADE_BY = "made";
+    String CREDITS_SPECIAL_THANKS = "thanks";
+    String CREDITS_THANKS_DISCORD = "tdiscord";
+
+    void loadCredits();
+
     String objectName(String key);
 
     String sentence(String key);
