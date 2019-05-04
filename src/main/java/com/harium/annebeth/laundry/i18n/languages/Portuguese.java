@@ -107,6 +107,30 @@ public class Portuguese implements Dictionary {
         sentences.put(HAS_TO_WORK, "Tem que funcionar.");
     }
 
+    public void loadCredits() {
+        sentences.put(CREDITS_THANK_YOU, "Obrigado por jogar!");
+        sentences.put(CREDITS_ART, "Arte");
+        sentences.put(CREDITS_ORIGINAL_WITCH, "Imagens Originais da Bruxinha por doudoulolita");
+        sentences.put(CREDITS_ORIGINAL_HOUSE, "Imagens da Casa por PurpleHeart");
+        sentences.put(CREDITS_CACTUS_FLOWER, "Flor de Cacto por captainluna");
+        sentences.put(CREDITS_ORIGINAL_CAT, "Imagem do gato por GarGar");
+        sentences.put(CREDITS_UI, "UI por Kenney");
+        sentences.put(CREDITS_SPLASH, "Imagem de abertura por GraphicMama Team");
+        sentences.put(CREDITS_FONT, "Fonte");
+        sentences.put(CREDITS_FONT_NAME, "Press Start 2P");
+        sentences.put(CREDITS_SFX, "Efeitos Sonoros");
+        sentences.put(CREDITS_SFX_CREATOR, "SubspaceAudio");
+        sentences.put(CREDITS_MUSIC, "Músicas");
+        sentences.put(CREDITS_MUSIC_HOUSE, "Melody Town Theme por CleytonKauffman");
+        sentences.put(CREDITS_MUSIC_UPSIDE_DOWN, "Facing it por Komiku");
+        sentences.put(CREDITS_MUSIC_MENU, "A Simple Trifle por jestar");
+        sentences.put(CREDITS_TOOLS, "Ferramentas");
+        sentences.put(CREDITS_BETA_TESTERS,"Beta Testers Oficiais");
+        sentences.put(CREDITS_MADE_BY,"Feito Por");
+        sentences.put(CREDITS_SPECIAL_THANKS,"Agradecimentos");
+        sentences.put(CREDITS_THANKS_DISCORD, "Todos no canal do Discord da LibGDX");
+    }
+
     @Override
     public String objectName(String key) {
         // TODO handle grammatical gender
