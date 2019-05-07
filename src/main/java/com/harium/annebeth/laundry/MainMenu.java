@@ -27,9 +27,9 @@ public class MainMenu extends Application {
     }
 
     public void load() {
+        LanguageManager.init();
         loadApplication.load();
         font = FontLoader.getInstance().loadFont("PressStart2P.ttf");
-        LanguageManager.init();
         Jukebox.init();
         splash = new ImageLayer("screen/splash.png");
         Jukebox.playMenuMusic();
@@ -42,7 +42,6 @@ public class MainMenu extends Application {
         }
         splash.simpleDraw(g);
     }
-
 
     @Override
     public void updateMouse(PointerEvent event) {

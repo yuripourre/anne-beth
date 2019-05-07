@@ -19,7 +19,12 @@ public class Jukebox {
     private static Sound use;
     private static Music washer;
 
+    private static boolean loaded = false;
+
     public static void init() {
+        if (loaded) {
+            return;
+        }
         menu = new Music("music-menu.mp3");
         menu.setLoop(true);
         normal = new Music("music-ingame.mp3");
@@ -33,6 +38,8 @@ public class Jukebox {
         pickup = new Sound("pickup.wav");
         use = new Sound("use.wav");
         washer = new Music("washer.mp3");
+
+        loaded = true;
     }
 
     public static void playNormalMusic() {

@@ -36,11 +36,7 @@ public class Credits extends Application {
         Jukebox.init();
         splash = new ImageLayer("screen/loading.png");
         Jukebox.playMenuMusic();
-
-        String dummy = LanguageManager.sentence(Dictionary.CREDITS_THANK_YOU);
-        if (dummy == null || dummy.isEmpty()) {
-            LanguageManager.loadCredits();
-        }
+        LanguageManager.loadCredits();
 
         credits.add("");
         credits.add("");

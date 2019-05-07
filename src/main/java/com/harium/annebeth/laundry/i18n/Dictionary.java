@@ -60,6 +60,7 @@ public interface Dictionary {
     String SOFTENER_SALTY = "soft_salt";
     String SOFTENER_SALTY_FLOWERS = "soft_salt_flower";
     String SOFTENER_FLOWERS = "soft_flower";
+    String SOFTENER_NOT_READY = "soft_nready";
     String WASHER_OPEN = "washer_open";
     String WASHER_MORE_CLOTHES = "washer_clothes";
     String WASHER_EMPTY = "washer_empty";

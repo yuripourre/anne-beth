@@ -60,6 +60,9 @@ public class LanguageManager {
     }
 
     public static void loadCredits() {
-        dictionary.loadCredits();
+        String dummy = LanguageManager.sentence(Dictionary.CREDITS_THANK_YOU);
+        if (dummy == null || dummy.isEmpty()) {
+            dictionary.loadCredits();
+        }
     }
 }

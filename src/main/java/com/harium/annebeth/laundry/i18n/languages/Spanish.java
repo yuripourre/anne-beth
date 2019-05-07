@@ -91,6 +91,7 @@ public class Spanish implements Dictionary {
         sentences.put(SOFTENER_SALTY, "Bien, é salgado.");
         sentences.put(SOFTENER_SALTY_FLOWERS, "Bien, é salgado com um toque floral.");
         sentences.put(SOFTENER_FLOWERS, "Bien, tiene un toque de flor.");
+        sentences.put(SOFTENER_NOT_READY, "El suavizante aún no está listo.");
         sentences.put(WASHER_OPEN, "La lavadora debe estar abierta primero.");
         sentences.put(WASHER_MORE_CLOTHES, "Creo que tengo mas ropa.");
         sentences.put(WASHER_EMPTY, "Necesito poner ropa aquí dentro.");

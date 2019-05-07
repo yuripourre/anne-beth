@@ -91,6 +91,7 @@ public class Portuguese implements Dictionary {
         sentences.put(SOFTENER_SALTY, "Bem, é salgado.");
         sentences.put(SOFTENER_SALTY_FLOWERS, "Bem, é salgado com um toque floral.");
         sentences.put(SOFTENER_FLOWERS, "Bem, tem um toque floral.");
+        sentences.put(SOFTENER_NOT_READY, "O amaciante ainda não está pronto.");
         sentences.put(WASHER_OPEN, "A máquina de lavar precisa estar aberta.");
         sentences.put(WASHER_MORE_CLOTHES, "Eu acho que tenho mais roupas.");
         sentences.put(WASHER_EMPTY, "Preciso colocar roupas aqui dentro.");

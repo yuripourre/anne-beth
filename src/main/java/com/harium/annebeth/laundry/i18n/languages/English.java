@@ -68,6 +68,7 @@ public class English implements Dictionary {
         sentences.put(SOFTENER_SALTY, "Well, it's salty.");
         sentences.put(SOFTENER_SALTY_FLOWERS, "Well, it's salty with a touch of flowers.");
         sentences.put(SOFTENER_FLOWERS, "Well, it has a touch of flowers.");
+        sentences.put(SOFTENER_NOT_READY, "The softener is not ready yet.");
         sentences.put(WASHER_OPEN, "The washer should be open first.");
         sentences.put(WASHER_MORE_CLOTHES, "I think I have more clothes.");
         sentences.put(WASHER_EMPTY, "It needs some clothes.");
