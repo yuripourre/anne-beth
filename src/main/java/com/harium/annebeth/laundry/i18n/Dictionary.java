@@ -14,6 +14,7 @@ public interface Dictionary {
 
     String GOOD_MORNING = "good_morning";
     String LAUNDRY_DAY = "laundry day";
+    String SKILL_STOOL = "skill_stool";
 
     String CACTUS = "cactus";
     String CACTUS_FLOWER = "cactus_flower";

@@ -20,6 +20,9 @@ public class Spanish implements Dictionary {
         sentences.put(ACTION_PICK_UP, "Recoger");
         sentences.put(ACTION_PULL, "Tirar");
         sentences.put(ACTION_WALK, "Caminar");
+        sentences.put(SKILL_STOOL, "Ahora puedo alcanzar estantes más altos.");
+
+
         sentences.put(TO, "hasta");
         sentences.put(WITH, "con");
 

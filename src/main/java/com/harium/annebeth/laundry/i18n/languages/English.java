@@ -18,6 +18,7 @@ public class English implements Dictionary {
         sentences.put(ACTION_PICK_UP, "Pick up");
         sentences.put(ACTION_PULL, "Pull");
         sentences.put(ACTION_WALK, "Walk");
+        sentences.put(SKILL_STOOL, "Now I can reach higher shelves.");
         sentences.put(TO, "to");
         sentences.put(WITH, "with");
 

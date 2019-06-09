@@ -1,11 +1,10 @@
 package com.harium.annebeth.laundry;
 
-import com.harium.annebeth.laundry.i18n.LanguageManager;
-//import com.harium.etyl.Etyl;
-import com.harium.etyl.EtylMobile;
+import com.harium.etyl.Etyl;
+//import com.harium.etyl.EtylMobile;
 import com.harium.etyl.commons.context.Application;
 
-public class Main extends EtylMobile {
+public class Main extends Etyl {
 
     public Main() {
         super(1024, 576);

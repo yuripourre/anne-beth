@@ -1,10 +1,7 @@
 package com.harium.annebeth.laundry;
 
 import com.harium.annebeth.laundry.core.player.Player;
-import com.harium.annebeth.laundry.core.ui.ActionUIManager;
-import com.harium.annebeth.laundry.core.ui.DialogManager;
-import com.harium.annebeth.laundry.core.ui.InventoryManager;
-import com.harium.annebeth.laundry.core.ui.SceneManager;
+import com.harium.annebeth.laundry.core.ui.*;
 import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
@@ -22,6 +19,7 @@ public class InGame extends Application {
 
     Player player;
     DialogManager dialogManager;
+    SkillManager skillManager;
     ActionUIManager actionUiManager;
     InventoryManager inventoryManager;
     SceneManager sceneManager;
@@ -41,6 +39,7 @@ public class InGame extends Application {
         sceneManager = new SceneManager(w, h);
         player = new Player(322, 200, sceneManager);
 
+        skillManager = new SkillManager(w, h);
         actionUiManager = new ActionUIManager();
         inventoryManager = new InventoryManager();
 
@@ -72,6 +71,7 @@ public class InGame extends Application {
         sceneManager.draw(g);
         player.draw(g);
         sceneManager.drawForeground(g);
+        skillManager.draw(g);
 
         dialogManager.draw(g);
     }

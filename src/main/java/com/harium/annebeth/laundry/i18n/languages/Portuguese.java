@@ -20,6 +20,7 @@ public class Portuguese implements Dictionary {
         sentences.put(ACTION_PICK_UP, "Pegar");
         sentences.put(ACTION_PULL, "Puxar");
         sentences.put(ACTION_WALK, "Andar");
+        sentences.put(SKILL_STOOL, "Agora eu alcanço prateleiras mais altas.");
         sentences.put(TO, "até");
         sentences.put(WITH, "com");
 

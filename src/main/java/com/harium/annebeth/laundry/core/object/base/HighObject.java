@@ -2,6 +2,7 @@ package com.harium.annebeth.laundry.core.object.base;
 
 import com.harium.annebeth.laundry.core.ui.DialogManager;
 import com.harium.annebeth.laundry.core.ui.InventoryManager;
+import com.harium.annebeth.laundry.core.ui.SkillManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.i18n.LanguageManager;
 
@@ -13,7 +14,7 @@ public class HighObject extends PickupableObject {
 
     @Override
     public PickLevel onPickUp() {
-        if (!InventoryManager.has(LanguageManager.objectName(Dictionary.STOOL))) {
+        if (!SkillManager.has(LanguageManager.objectName(Dictionary.STOOL))) {
             DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_REACH));
             return PickLevel.NONE;
         } else {
