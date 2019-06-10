@@ -1,5 +1,7 @@
 package com.harium.annebeth.laundry;
 
+import com.harium.annebeth.laundry.core.Context;
+import com.harium.annebeth.laundry.core.Interaction;
 import com.harium.annebeth.laundry.core.player.Player;
 import com.harium.annebeth.laundry.core.ui.*;
 import com.harium.annebeth.laundry.i18n.LanguageManager;
@@ -93,6 +95,22 @@ public class InGame extends Application {
     @Override
     public void updateKeyboard(KeyEvent event) {
         super.updateKeyboard(event);
+
+        if (event.isKeyUp(KeyEvent.VK_O)) {
+            Context.interaction = Interaction.OPEN;
+        } else if (event.isKeyUp(KeyEvent.VK_C)) {
+            Context.interaction = Interaction.CLOSE;
+        } else if (event.isKeyUp(KeyEvent.VK_P)) {
+            Context.interaction = Interaction.PICK_UP;
+        } else if (event.isKeyUp(KeyEvent.VK_U)) {
+            Context.interaction = Interaction.USE;
+        } else if (event.isKeyUp(KeyEvent.VK_L)) {
+            Context.interaction = Interaction.LOOK_AT;
+        }/* else if (event.isKeyUp(KeyEvent.VK_W)) {
+            Context.interaction = Interaction.WALK;
+        }*/
+
+        // Debug Only
         /*if (event.isKeyUp(KeyEvent.VK_1)) {
             sceneManager.turnWorldUpsideDown();
         }
