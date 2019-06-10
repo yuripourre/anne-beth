@@ -15,14 +15,14 @@ import java.util.List;
 
 public class InventoryManager {
 
-    private static final int ROW = 3;
+    private static final int ROW = 7;
     private static final int ROW_OFFSET = 138;
     private static int offsetY = 0;
     private static int cursor = 0;
 
     private static final int ARROW_X = 542;
-    private static final int x = 598;
-    private static final int y = 424;
+    private static final int x = 34;
+    private static final int y = 430;
 
     private ImageLayer upArrow;
     private ImageLayer downArrow;

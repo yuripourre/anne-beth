@@ -33,12 +33,12 @@ public class ActionUIManager {
     public void draw(Graphics g) {
         drawBackground(g);
 
-        open.draw(g);
+        /*open.draw(g);
         close.draw(g);
         lookat.draw(g);
         use.draw(g);
         pickup.draw(g);
-        walk.draw(g);
+        walk.draw(g);*/
     }
 
     private void drawBackground(Graphics g) {
