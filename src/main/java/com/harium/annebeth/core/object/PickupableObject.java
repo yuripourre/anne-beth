@@ -1,9 +1,9 @@
-package com.harium.annebeth.laundry.core.object.base;
+package com.harium.annebeth.core.object;
 
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
-import com.harium.annebeth.laundry.core.ui.InventoryManager;
+import com.harium.annebeth.core.ui.InventoryManager;
 
 
 public class PickupableObject extends DecorativeObject {

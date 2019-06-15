@@ -1,6 +1,6 @@
 package com.harium.annebeth.laundry.i18n.languages;
 
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 
 import java.util.HashMap;

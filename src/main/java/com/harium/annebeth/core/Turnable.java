@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core;
+package com.harium.annebeth.core;
 
 public interface Turnable {
 

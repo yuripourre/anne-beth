@@ -1,9 +1,9 @@
 package com.harium.annebeth.laundry.core.object;
 
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
-import com.harium.annebeth.laundry.core.object.base.HighObject;
+import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.object.HighObject;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.layer.ImageLayer;
 

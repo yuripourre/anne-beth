@@ -1,8 +1,8 @@
-package com.harium.annebeth.laundry.core.player;
+package com.harium.annebeth.core.player;
 
-import com.harium.annebeth.laundry.core.Context;
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
-import com.harium.annebeth.laundry.core.ui.SceneManager;
+import com.harium.annebeth.core.Context;
+import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.ui.SceneManager;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.AnimatedLayer;
 

@@ -1,15 +1,15 @@
-package com.harium.annebeth.laundry.core.object.base;
+package com.harium.annebeth.core.object;
 
-import com.harium.annebeth.laundry.core.Turnable;
-import com.harium.annebeth.laundry.core.ui.DialogHelper;
-import com.harium.annebeth.laundry.core.ui.DialogManager;
+import com.harium.annebeth.core.Turnable;
+import com.harium.annebeth.core.i18n.LanguageManager;
+import com.harium.annebeth.core.ui.DialogHelper;
+import com.harium.annebeth.core.ui.DialogManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 
-import static com.harium.annebeth.laundry.core.ui.SceneManager.ROOM_HEIGHT;
-import static com.harium.annebeth.laundry.core.ui.SceneManager.ROOM_OFFSET;
+import static com.harium.annebeth.core.ui.SceneManager.ROOM_HEIGHT;
+import static com.harium.annebeth.core.ui.SceneManager.ROOM_OFFSET;
 
 
 public class BaseObject implements Turnable {
@@ -31,6 +31,7 @@ public class BaseObject implements Turnable {
     public int w;
     public int h;
 
+    protected int border = 1;
     protected int originalY = 0;
 
     public BaseObject(String name) {
@@ -123,5 +124,10 @@ public class BaseObject implements Turnable {
 
     public void offset(int x, int y) {
         setPosition(this.x + x, this.y + y);
+    }
+
+    public boolean collide(int x, int y) {
+        return (this.x - border < x && this.x + this.w + border > x &&
+                this.y - border < y && this.y + this.h + border > y);
     }
 }

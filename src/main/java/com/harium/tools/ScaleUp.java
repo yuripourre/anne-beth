@@ -28,31 +28,34 @@ public class ScaleUp extends Application {
     @Override
     public void dropFiles(int x, int y, List<File> files) {
         for (File file : files) {
-
-            try {
-                BufferedImage in = ImageIO.read(file);
-
-                BufferedImage scaled = scale4x(in);
-
-                String filename = file.getName().substring(0, file.getName().indexOf("."));
-                System.out.println("Saving: " + filename);
-                File out = new File(file.getParent() + File.separator + filename + "-4x.png");
-                ImageIO.write(scaled, "PNG", out);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            scale(file);
         }
     }
 
-    private BufferedImage scale2x(BufferedImage in) {
+    public static void scale(File file) {
+        try {
+            BufferedImage in = ImageIO.read(file);
+
+            BufferedImage scaled = scale4x(in);
+
+            String filename = file.getName().substring(0, file.getName().indexOf("."));
+            System.out.println("Saving: " + filename);
+            File out = new File(file.getParent() + File.separator + filename + "-4x.png");
+            ImageIO.write(scaled, "PNG", out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static BufferedImage scale2x(BufferedImage in) {
         return scalePixelPerfect(in, 2);
     }
 
-    private BufferedImage scale4x(BufferedImage in) {
+    private static BufferedImage scale4x(BufferedImage in) {
         return scalePixelPerfect(in, 4);
     }
 
-    private BufferedImage scalePixelPerfect(BufferedImage in, int scale) {
+    private static BufferedImage scalePixelPerfect(BufferedImage in, int scale) {
         BufferedImage scaled = new BufferedImage(
                 in.getWidth() * scale, in.getHeight() * scale, BufferedImage.TYPE_INT_ARGB);
 

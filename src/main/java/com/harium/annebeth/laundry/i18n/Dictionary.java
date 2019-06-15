@@ -1,6 +1,6 @@
 package com.harium.annebeth.laundry.i18n;
 
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.core.object.BaseObject;
 
 public interface Dictionary {
 

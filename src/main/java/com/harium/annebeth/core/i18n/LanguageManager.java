@@ -1,10 +1,11 @@
-package com.harium.annebeth.laundry.i18n;
+package com.harium.annebeth.core.i18n;
 
-import com.harium.annebeth.laundry.core.Interaction;
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.core.Interaction;
+import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.laundry.i18n.languages.English;
 import com.harium.annebeth.laundry.i18n.languages.Portuguese;
 import com.harium.annebeth.laundry.i18n.languages.Spanish;
+import com.harium.annebeth.laundry.i18n.Dictionary;
 
 import java.util.Locale;
 

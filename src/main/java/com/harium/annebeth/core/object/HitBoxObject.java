@@ -1,6 +1,6 @@
-package com.harium.annebeth.laundry.core.object.base;
+package com.harium.annebeth.core.object;
 
-import com.harium.annebeth.laundry.core.ui.DialogManager;
+import com.harium.annebeth.core.ui.DialogManager;
 
 public class HitBoxObject extends BaseObject {
 

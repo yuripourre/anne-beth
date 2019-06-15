@@ -1,7 +1,7 @@
-package com.harium.annebeth.laundry.core.ui;
+package com.harium.annebeth.core.ui;
 
-import com.harium.annebeth.laundry.core.object.base.PickupableObject;
-import com.harium.annebeth.laundry.core.ui.skill.SkillSlot;
+import com.harium.annebeth.core.object.PickupableObject;
+import com.harium.annebeth.core.ui.skill.SkillSlot;
 import com.harium.etyl.core.graphics.Graphics;
 
 public class SkillManager {

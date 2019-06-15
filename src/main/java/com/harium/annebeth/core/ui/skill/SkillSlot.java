@@ -1,17 +1,17 @@
-package com.harium.annebeth.laundry.core.ui.inventory;
+package com.harium.annebeth.core.ui.skill;
 
-import com.harium.annebeth.laundry.core.object.base.PickupableObject;
+import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.etyl.commons.layer.GeometricLayer;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
-public class InventoryButton {
+public class SkillSlot {
 
     public ImageLayer layer;
     public PickupableObject object;
 
-    public InventoryButton(int x, int y) {
-        layer = new ImageLayer(x, y, 128, 128, "ui/inventory.png");
+    public SkillSlot(int x, int y) {
+        layer = new ImageLayer(x, y, 96, 96, "ui/skill.png");
     }
 
     public void draw(Graphics g, int x, int y) {
@@ -39,10 +39,9 @@ public class InventoryButton {
 
         ImageLayer objectInventoryLayer = this.object.getInventoryLayer();
         int centerX = layer.getX() + layer.getW() / 2;
+        int centerY = layer.getY() + layer.getH() / 2;
         objectInventoryLayer.setX(centerX - objectInventoryLayer.getW() / 2);
-
-        int baseY = this.layer.getY() + 96;
-        objectInventoryLayer.setY(baseY - objectInventoryLayer.getH());
+        objectInventoryLayer.setY(centerY - objectInventoryLayer.getH() / 2);
     }
 
     public void updatePosition(int x, int y) {

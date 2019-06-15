@@ -1,9 +1,10 @@
-package com.harium.annebeth.laundry.core;
+package com.harium.annebeth.core;
 
-import com.harium.annebeth.laundry.core.object.base.PickLevel;
-import com.harium.annebeth.laundry.core.player.Player;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.core.i18n.LanguageManager;
+import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.object.PickLevel;
+import com.harium.annebeth.core.player.Player;
+import com.harium.annebeth.core.ui.ActionUIManager;
 
 public class Context {
 
@@ -15,13 +16,13 @@ public class Context {
     public static BaseObject with = NULL_OBJECT;
 
     public static void reachObject(Player player) {
-        if(object == null) {
+        if (object == null) {
             return;
-        }
-        if (object.disabled || object.name.isEmpty()) {
+        } else if (object.disabled || object.name.isEmpty()) {
             reset();
             return;
         }
+
         switch (interaction) {
             case OPEN:
                 object.onOpen();

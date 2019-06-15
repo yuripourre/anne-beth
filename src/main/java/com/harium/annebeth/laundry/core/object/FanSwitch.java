@@ -1,13 +1,13 @@
 package com.harium.annebeth.laundry.core.object;
 
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
-import com.harium.annebeth.laundry.core.object.base.PickLevel;
-import com.harium.annebeth.laundry.core.object.base.PickupableObject;
-import com.harium.annebeth.laundry.core.ui.DialogManager;
-import com.harium.annebeth.laundry.core.ui.InventoryManager;
-import com.harium.annebeth.laundry.core.ui.SceneManager;
+import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.object.PickLevel;
+import com.harium.annebeth.core.object.PickupableObject;
+import com.harium.annebeth.core.ui.DialogManager;
+import com.harium.annebeth.core.ui.InventoryManager;
+import com.harium.annebeth.core.ui.SceneManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
@@ -19,8 +19,11 @@ public class FanSwitch extends PickupableObject {
 
     public FanSwitch(int x, int y) {
         super(LanguageManager.objectName(Dictionary.FAN_SWITCH), x - HITBOX_MARGIN, y - HITBOX_MARGIN, 20 + HITBOX_MARGIN * 2, 28 + HITBOX_MARGIN * 2);
+
         layer = new ImageLayer(x, y, 20, 28, "objects/fan_switch.png");
         inventoryLayer = new ImageLayer(0, 0, 57, 70, "objects/fan_switch_inv.png");
+
+        this.border = HITBOX_MARGIN;
     }
 
     @Override

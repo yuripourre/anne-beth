@@ -1,8 +1,8 @@
-package com.harium.annebeth.laundry.core.ui;
+package com.harium.annebeth.core.ui;
 
-import com.harium.annebeth.laundry.core.Interaction;
+import com.harium.annebeth.core.Interaction;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Font;
 import com.harium.etyl.core.graphics.Graphics;
@@ -11,7 +11,7 @@ import com.harium.etyl.loader.FontLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.harium.annebeth.laundry.core.Context.*;
+import static com.harium.annebeth.core.Context.*;
 
 public class DialogManager {
 

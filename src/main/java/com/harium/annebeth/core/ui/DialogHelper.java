@@ -1,7 +1,7 @@
-package com.harium.annebeth.laundry.core.ui;
+package com.harium.annebeth.core.ui;
 
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 
 public class DialogHelper {
 

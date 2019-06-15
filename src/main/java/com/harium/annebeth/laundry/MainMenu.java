@@ -1,6 +1,6 @@
 package com.harium.annebeth.laundry;
 
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.MouseEvent;
@@ -9,8 +9,6 @@ import com.harium.etyl.core.graphics.Font;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 import com.harium.etyl.loader.FontLoader;
-
-import java.util.Locale;
 
 public class MainMenu extends Application {
 

@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object.base;
+package com.harium.annebeth.core.object;
 
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;

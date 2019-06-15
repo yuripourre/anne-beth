@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object.base;
+package com.harium.annebeth.core.object;
 
 public class DummyObject extends BaseObject {
 

@@ -1,15 +1,15 @@
-package com.harium.annebeth.laundry.core.ui;
+package com.harium.annebeth.core.ui;
 
+import com.harium.annebeth.core.Context;
+import com.harium.annebeth.core.Interaction;
+import com.harium.annebeth.core.i18n.LanguageManager;
+import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.object.DummyObject;
+import com.harium.annebeth.core.object.HitBoxObject;
+import com.harium.annebeth.core.player.Player;
 import com.harium.annebeth.laundry.InGame;
-import com.harium.annebeth.laundry.core.Context;
-import com.harium.annebeth.laundry.core.Interaction;
 import com.harium.annebeth.laundry.core.object.*;
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
-import com.harium.annebeth.laundry.core.object.base.DummyObject;
-import com.harium.annebeth.laundry.core.object.base.HitBoxObject;
-import com.harium.annebeth.laundry.core.player.Player;
 import com.harium.annebeth.laundry.core.room.*;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
@@ -23,6 +23,7 @@ import java.util.List;
 
 import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 
+// TODO Split this class between generic SceneManager and Laundry SceneManager
 public class SceneManager {
 
     public static final int ROOM_HEIGHT = 310;
@@ -46,8 +47,12 @@ public class SceneManager {
 
     Layer flash;
 
-    public SceneManager(int w, int h) {
+    private ActionUIManager actionUIManager;
+
+    public SceneManager(int w, int h, ActionUIManager actionUIManager) {
         this.w = w;
+        this.actionUIManager = actionUIManager;
+
         floor = new DummyObject(0, 0);
 
         initBedRoom();
@@ -154,7 +159,7 @@ public class SceneManager {
 
     public void draw(Graphics g) {
         g.setColor(background);
-        g.fillRect(0, 0, g.getWidth(), InGame.BOTTOM_BAR);
+        g.fillRect(0, 0, g.getWidth(), InventoryManager.INVENTORY_BAR_Y);
 
         for (Room room : rooms) {
             room.draw(g);
@@ -210,13 +215,12 @@ public class SceneManager {
             if (!object.visible) {
                 continue;
             }
-            if (object.x < event.getX() && object.x + object.w > event.getX() &&
-                    object.y < event.getY() && object.y + object.h > event.getY()) {
 
+            /*if (object.collide(event.getX(), event.getY())) {
                 defineTarget(player, object);
                 found = true;
                 break;
-            }
+            }*/
         }
 
         if (!found) {
@@ -229,14 +233,15 @@ public class SceneManager {
                 if (object.x < event.getX() && object.x + object.w > event.getX() &&
                         object.y < event.getY() && object.y + object.h > event.getY()) {
 
-                    defineTarget(player, object);
+                    //defineTarget(player, object);
+                    openMenu(player, object);
                     found = true;
                     break;
                 }
             }
         }
 
-        if (!found) {
+        if (!found && Context.object==Context.NULL_OBJECT) {
             Context.interaction = Interaction.WALK;
             // just walk
             floor.setPosition(event.getX(), event.getY());
@@ -246,12 +251,8 @@ public class SceneManager {
         }
     }
 
-    private void defineTarget(Player player, BaseObject object) {
-        player.setTarget(object);
-        Context.setObject(object);
-        if (Context.interaction == Interaction.NONE) {
-            Context.interaction = Interaction.WALK;
-        }
+    private void openMenu(Player player, BaseObject object) {
+        actionUIManager.openMenu(player, object);
     }
 
     public void update(long now) {

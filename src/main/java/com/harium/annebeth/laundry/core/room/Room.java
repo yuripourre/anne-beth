@@ -1,6 +1,6 @@
 package com.harium.annebeth.laundry.core.room;
 
-import com.harium.annebeth.laundry.core.Turnable;
+import com.harium.annebeth.core.Turnable;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 

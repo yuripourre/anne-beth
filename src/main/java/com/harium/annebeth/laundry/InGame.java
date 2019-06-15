@@ -1,10 +1,10 @@
 package com.harium.annebeth.laundry;
 
-import com.harium.annebeth.laundry.core.Context;
-import com.harium.annebeth.laundry.core.Interaction;
-import com.harium.annebeth.laundry.core.player.Player;
-import com.harium.annebeth.laundry.core.ui.*;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.Context;
+import com.harium.annebeth.core.Interaction;
+import com.harium.annebeth.core.i18n.LanguageManager;
+import com.harium.annebeth.core.player.Player;
+import com.harium.annebeth.core.ui.*;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
@@ -17,7 +17,7 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.LAUNDRY_DAY;
 
 public class InGame extends Application {
 
-    public static final int BOTTOM_BAR = 410;
+    //public static final int BOTTOM_BAR = 410;
 
     Player player;
     DialogManager dialogManager;
@@ -38,12 +38,12 @@ public class InGame extends Application {
         Jukebox.init();
 
         dialogManager = new DialogManager(w, h);
-        sceneManager = new SceneManager(w, h);
+        actionUiManager = new ActionUIManager(w, h);
+        sceneManager = new SceneManager(w, h, actionUiManager);
         player = new Player(322, 200, sceneManager);
 
         skillManager = new SkillManager(w, h);
-        actionUiManager = new ActionUIManager();
-        inventoryManager = new InventoryManager();
+        inventoryManager = new InventoryManager(w, h);
 
         initAnimation();
         Jukebox.playNormalMusic();
@@ -67,14 +67,15 @@ public class InGame extends Application {
     }
 
     public void draw(Graphics g) {
-        actionUiManager.draw(g);
         inventoryManager.draw(g);
 
         sceneManager.draw(g);
         player.draw(g);
         sceneManager.drawForeground(g);
-        skillManager.draw(g);
 
+        actionUiManager.draw(g);
+
+        skillManager.draw(g);
         dialogManager.draw(g);
     }
 
@@ -83,11 +84,11 @@ public class InGame extends Application {
         super.updateMouse(event);
 
         if (event.isButtonDown(MouseEvent.MOUSE_BUTTON_LEFT)) {
-            if (event.getY() < BOTTOM_BAR) {
+            if (event.getY() < InventoryManager.INVENTORY_BAR_Y) {
+                actionUiManager.updateMouse(event);
                 sceneManager.updateMouse(event, player);
             } else {
                 inventoryManager.updateMouse(event);
-                actionUiManager.updateMouse(event);
             }
         }
     }

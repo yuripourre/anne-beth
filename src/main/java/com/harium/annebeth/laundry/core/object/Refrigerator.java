@@ -1,9 +1,9 @@
 package com.harium.annebeth.laundry.core.object;
 
-import com.harium.annebeth.laundry.core.object.base.OpenableObject;
-import com.harium.annebeth.laundry.core.object.base.PickupableObject;
+import com.harium.annebeth.core.object.OpenableObject;
+import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 

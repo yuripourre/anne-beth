@@ -1,11 +1,12 @@
-package com.harium.annebeth.laundry.core.ui;
+package com.harium.annebeth.core.ui;
 
-import com.harium.annebeth.laundry.core.Context;
-import com.harium.annebeth.laundry.core.Interaction;
-import com.harium.annebeth.laundry.core.object.base.PickupableObject;
-import com.harium.annebeth.laundry.core.ui.inventory.InventoryButton;
+import com.harium.annebeth.core.Context;
+import com.harium.annebeth.core.Interaction;
+import com.harium.annebeth.core.object.PickupableObject;
+import com.harium.annebeth.core.ui.inventory.InventoryButton;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.event.PointerState;
+import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class InventoryManager {
 
+    public static final int INVENTORY_BAR_Y = 410;
+
     private static final int ROW = 7;
     private static final int ROW_OFFSET = 138;
     private static int offsetY = 0;
@@ -23,6 +26,8 @@ public class InventoryManager {
     private static final int ARROW_X = 542;
     private static final int x = 34;
     private static final int y = 430;
+    private final int w;
+    private final int h;
 
     private ImageLayer upArrow;
     private ImageLayer downArrow;
@@ -31,7 +36,9 @@ public class InventoryManager {
 
     public static boolean shouldRemove = false;
 
-    public InventoryManager() {
+    public InventoryManager(int w, int h) {
+        this.w = w;
+        this.h = h;
         upArrow = new ImageLayer(ARROW_X, 420, 48, 64, "ui/arrow_up.png");
         downArrow = new ImageLayer(ARROW_X, 490, 48, 64, "ui/arrow_down.png");
 
@@ -139,6 +146,7 @@ public class InventoryManager {
     }
 
     public void draw(Graphics g) {
+        drawBackground(g);
         if (usedSlots > ROW) {
             if (cursor > 0) {
                 upArrow.simpleDraw(g);
@@ -195,6 +203,11 @@ public class InventoryManager {
                 checkCollide(button, event);
             }
         }
+    }
+
+    private void drawBackground(Graphics g) {
+        g.setColor(Color.WHITE);
+        g.fillRect(0, INVENTORY_BAR_Y, 1024, 576 - INVENTORY_BAR_Y);
     }
 
     private void checkCollide(InventoryButton button, PointerEvent event) {

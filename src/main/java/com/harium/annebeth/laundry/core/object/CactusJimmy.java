@@ -1,8 +1,8 @@
 package com.harium.annebeth.laundry.core.object;
 
-import com.harium.annebeth.laundry.core.object.base.DecorativeObject;
-import com.harium.annebeth.laundry.core.ui.DialogManager;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.object.DecorativeObject;
+import com.harium.annebeth.core.ui.DialogManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.etyl.layer.ImageLayer;
 
 import static com.harium.annebeth.laundry.i18n.Dictionary.JIMMY_PLANT;
