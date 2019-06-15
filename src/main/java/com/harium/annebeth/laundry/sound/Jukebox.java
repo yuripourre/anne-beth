@@ -17,6 +17,7 @@ public class Jukebox {
     private static Sound open;
     private static Sound pickup;
     private static Sound use;
+    private static Sound knob;
     private static Music washer;
 
     private static boolean loaded = false;
@@ -37,6 +38,7 @@ public class Jukebox {
         open = new Sound("open.wav");
         pickup = new Sound("pickup.wav");
         use = new Sound("use.wav");
+        knob = new Sound("knob.wav");
         washer = new Music("washer.mp3");
 
         loaded = true;
@@ -92,6 +94,13 @@ public class Jukebox {
             return;
         }
         use.play();
+    }
+
+    public static void playKnob() {
+        if (!SOUND_ON) {
+            return;
+        }
+        knob.play();
     }
 
     public static void playPickup() {
