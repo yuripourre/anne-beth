@@ -1,6 +1,6 @@
 package com.harium.annebeth.laundry.i18n.languages;
 
-import com.harium.annebeth.laundry.core.object.base.BaseObject;
+import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 
 import java.util.HashMap;
@@ -18,6 +18,7 @@ public class English implements Dictionary {
         sentences.put(ACTION_PICK_UP, "Pick up");
         sentences.put(ACTION_PULL, "Pull");
         sentences.put(ACTION_WALK, "Walk");
+        sentences.put(SKILL_STOOL, "Now I can reach higher shelves.");
         sentences.put(TO, "to");
         sentences.put(WITH, "with");
 
@@ -75,12 +76,13 @@ public class English implements Dictionary {
         sentences.put(WASHER_DETERGENT, "It needs some detergent.");
         sentences.put(WASHER_SOFTENER, "It needs some softener.");
         sentences.put(WASHER_DETERGENT_AND_SOFTENER, "It needs detergent and softener.");
-        sentences.put(WASHER_REVERSE, "I must figure a way to REVERSE this situation.");
+        sentences.put(WASHER_REVERSE, "I must figure a way to REVERSE the washer.");
         sentences.put(WASHER_REVERSED, "A reversed washer.");
         sentences.put(MISSION_COMPLETE, "Mission Accomplished!");
         sentences.put(SOMETHING_WRONG, "Uh oh, something is wrong.");
         sentences.put(NO_WORDS, "...");
         sentences.put(SPIDER_CRAP, "Holy spider!");
+        sentences.put(WASHER_HINT, "I feel like I will have to wash the clothes again.");
         sentences.put(HERE_I_GO_AGAIN, "Here I go again.");
         sentences.put(HAS_TO_WORK, "It has to work.");
     }
@@ -92,6 +94,7 @@ public class English implements Dictionary {
         sentences.put(CREDITS_ORIGINAL_HOUSE, "House Objects by PurpleHeart");
         sentences.put(CREDITS_CACTUS_FLOWER, "Cactus Flower by captainluna");
         sentences.put(CREDITS_ORIGINAL_CAT, "Original sleepy cat by GarGar");
+        sentences.put(CREDITS_MAGNIFYING_GLASS, "Original magnifying glass by Angrycheese");
         sentences.put(CREDITS_UI, "UI by Kenney");
         sentences.put(CREDITS_SPLASH, "Original Splash Screen by GraphicMama Team");
         sentences.put(CREDITS_FONT, "Font");
@@ -103,9 +106,9 @@ public class English implements Dictionary {
         sentences.put(CREDITS_MUSIC_UPSIDE_DOWN, "Facing it by Komiku");
         sentences.put(CREDITS_MUSIC_MENU, "A Simple Trifle by jestar");
         sentences.put(CREDITS_TOOLS, "Tools");
-        sentences.put(CREDITS_BETA_TESTERS,"Official Beta Testers");
-        sentences.put(CREDITS_MADE_BY,"Made by");
-        sentences.put(CREDITS_SPECIAL_THANKS,"Special Thanks");
+        sentences.put(CREDITS_BETA_TESTERS, "Official Beta Testers");
+        sentences.put(CREDITS_MADE_BY, "Made by");
+        sentences.put(CREDITS_SPECIAL_THANKS, "Special Thanks");
         sentences.put(CREDITS_THANKS_DISCORD, "Everyone in LibGDX's Discord Channel");
     }
 

@@ -1,7 +1,7 @@
 package com.harium.annebeth.laundry;
 
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.MouseEvent;
@@ -63,6 +63,9 @@ public class Credits extends Application {
         credits.add("");
         credits.add(LanguageManager.sentence(Dictionary.CREDITS_ORIGINAL_CAT));
         //credits.add("https://www.deviantart.com/gargar/art/Sleeping-cat-pixel-art-55626013");
+        credits.add("");
+        credits.add(LanguageManager.sentence(Dictionary.CREDITS_MAGNIFYING_GLASS));
+        //credits.add("https://opengameart.org/content/magnifying-glass-0");
         credits.add("");
         credits.add(LanguageManager.sentence(Dictionary.CREDITS_UI));
         //credits.add("https://opengameart.org/content/pixel-ui-pack-750-assets");

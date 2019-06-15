@@ -1,11 +1,10 @@
 package com.harium.annebeth.laundry;
 
-import com.harium.annebeth.laundry.core.player.Player;
-import com.harium.annebeth.laundry.core.ui.ActionUIManager;
-import com.harium.annebeth.laundry.core.ui.DialogManager;
-import com.harium.annebeth.laundry.core.ui.InventoryManager;
-import com.harium.annebeth.laundry.core.ui.SceneManager;
-import com.harium.annebeth.laundry.i18n.LanguageManager;
+import com.harium.annebeth.core.Context;
+import com.harium.annebeth.core.Interaction;
+import com.harium.annebeth.core.i18n.LanguageManager;
+import com.harium.annebeth.core.player.Player;
+import com.harium.annebeth.core.ui.*;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
@@ -18,10 +17,11 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.LAUNDRY_DAY;
 
 public class InGame extends Application {
 
-    public static final int BOTTOM_BAR = 410;
+    //public static final int BOTTOM_BAR = 410;
 
     Player player;
     DialogManager dialogManager;
+    SkillManager skillManager;
     ActionUIManager actionUiManager;
     InventoryManager inventoryManager;
     SceneManager sceneManager;
@@ -38,11 +38,12 @@ public class InGame extends Application {
         Jukebox.init();
 
         dialogManager = new DialogManager(w, h);
-        sceneManager = new SceneManager(w, h);
+        actionUiManager = new ActionUIManager(w, h);
+        sceneManager = new SceneManager(w, h, actionUiManager);
         player = new Player(322, 200, sceneManager);
 
-        actionUiManager = new ActionUIManager();
-        inventoryManager = new InventoryManager();
+        skillManager = new SkillManager(w, h);
+        inventoryManager = new InventoryManager(w, h);
 
         initAnimation();
         Jukebox.playNormalMusic();
@@ -66,13 +67,15 @@ public class InGame extends Application {
     }
 
     public void draw(Graphics g) {
-        actionUiManager.draw(g);
         inventoryManager.draw(g);
 
         sceneManager.draw(g);
         player.draw(g);
         sceneManager.drawForeground(g);
 
+        actionUiManager.draw(g);
+
+        skillManager.draw(g);
         dialogManager.draw(g);
     }
 
@@ -81,11 +84,11 @@ public class InGame extends Application {
         super.updateMouse(event);
 
         if (event.isButtonDown(MouseEvent.MOUSE_BUTTON_LEFT)) {
-            if (event.getY() < BOTTOM_BAR) {
+            if (event.getY() < InventoryManager.INVENTORY_BAR_Y) {
+                actionUiManager.updateMouse(event);
                 sceneManager.updateMouse(event, player);
             } else {
                 inventoryManager.updateMouse(event);
-                actionUiManager.updateMouse(event);
             }
         }
     }
@@ -93,6 +96,22 @@ public class InGame extends Application {
     @Override
     public void updateKeyboard(KeyEvent event) {
         super.updateKeyboard(event);
+
+        if (event.isKeyUp(KeyEvent.VK_O)) {
+            Context.interaction = Interaction.OPEN;
+        } else if (event.isKeyUp(KeyEvent.VK_C)) {
+            Context.interaction = Interaction.CLOSE;
+        } else if (event.isKeyUp(KeyEvent.VK_P)) {
+            Context.interaction = Interaction.PICK_UP;
+        } else if (event.isKeyUp(KeyEvent.VK_U)) {
+            Context.interaction = Interaction.USE;
+        } else if (event.isKeyUp(KeyEvent.VK_L)) {
+            Context.interaction = Interaction.LOOK_AT;
+        }/* else if (event.isKeyUp(KeyEvent.VK_W)) {
+            Context.interaction = Interaction.WALK;
+        }*/
+
+        // Debug Only
         /*if (event.isKeyUp(KeyEvent.VK_1)) {
             sceneManager.turnWorldUpsideDown();
         }
