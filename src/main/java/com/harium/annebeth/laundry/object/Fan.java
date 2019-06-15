@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.core.i18n.LanguageManager;

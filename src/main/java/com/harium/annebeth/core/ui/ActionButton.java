@@ -26,6 +26,8 @@ public class ActionButton {
             return;
         }
         layer.draw(g);
+        g.setColor(Color.BLACK);
+        g.drawString(LanguageManager.asWord(interaction), layer, DialogManager.SHADOW_SIZE, DialogManager.SHADOW_SIZE);
         g.setColor(Color.WHITE);
         g.drawString(LanguageManager.asWord(interaction), layer);
     }

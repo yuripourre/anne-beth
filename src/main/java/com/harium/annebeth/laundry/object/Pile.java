@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.PickLevel;
@@ -30,6 +30,8 @@ public class Pile extends PickupableObject {
             } else {
                 DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_OPEN));
             }
+        } else {
+            cantUse();
         }
     }
 

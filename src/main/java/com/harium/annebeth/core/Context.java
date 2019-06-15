@@ -4,7 +4,6 @@ import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.PickLevel;
 import com.harium.annebeth.core.player.Player;
-import com.harium.annebeth.core.ui.ActionUIManager;
 
 public class Context {
 
@@ -12,8 +11,8 @@ public class Context {
     public static final int CONTEXT_SENTENCE = 382;
 
     public static Interaction interaction = Interaction.NONE;
-    public static BaseObject object = NULL_OBJECT;
-    public static BaseObject with = NULL_OBJECT;
+    private static BaseObject object = NULL_OBJECT;
+    private static BaseObject with = NULL_OBJECT;
 
     public static void reachObject(Player player) {
         if (object == null) {
@@ -65,18 +64,33 @@ public class Context {
         return LanguageManager.asWord(interaction);
     }
 
-    public static void setObject(BaseObject object) {
-        if (Context.object == NULL_OBJECT) {
+    public static void changeObject(BaseObject object) {
+        if (!hasObject()) {
             Context.object = object;
         } else if (Context.interaction == Interaction.USE) {
             with = object;
         }
     }
 
-    private static void reset() {
+    public static void reset() {
         interaction = Interaction.NONE;
         object = NULL_OBJECT;
         with = NULL_OBJECT;
     }
 
+    public static boolean hasObject() {
+        return object != NULL_OBJECT;
+    }
+
+    public static BaseObject getObject() {
+        return object;
+    }
+
+    public static BaseObject getWith() {
+        return with;
+    }
+
+    public static void resetObject() {
+        object = NULL_OBJECT;
+    }
 }

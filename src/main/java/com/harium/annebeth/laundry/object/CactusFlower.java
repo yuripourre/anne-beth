@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.HighObject;
@@ -50,7 +50,7 @@ public class CactusFlower extends HighObject {
             Softener softener = (Softener) with;
             combine(softener);
         } else {
-            negativeDialog();
+            cantUse();
         }
     }
 

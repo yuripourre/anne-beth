@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.PickLevel;
@@ -14,12 +14,11 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Shoyu extends PickupableObject {
 
-    private static final int HITBOX_MARGIN = 4;
-
     public Shoyu(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SHOYU), x - HITBOX_MARGIN, y - HITBOX_MARGIN, 11 + HITBOX_MARGIN * 2, 23 + HITBOX_MARGIN * 2);
+        super(LanguageManager.objectName(Dictionary.SHOYU), x, y, 11, 23);
         layer = new ImageLayer(x, y, 11, 23, "objects/shoyu.png");
         inventoryLayer = new ImageLayer(x, y, 23, 48, "objects/shoyu_inv.png");
+        border = 12;
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Shoyu extends PickupableObject {
         if (!visible) {
             return;
         }
-        layer.draw(g, HITBOX_MARGIN, HITBOX_MARGIN);
+        layer.draw(g);
     }
 
     @Override
@@ -54,7 +53,7 @@ public class Shoyu extends PickupableObject {
         if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
             combine((Softener) with);
         } else {
-            negativeDialog();
+            cantUse();
         }
     }
 

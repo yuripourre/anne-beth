@@ -4,6 +4,7 @@ import com.harium.annebeth.core.Context;
 import com.harium.annebeth.core.Interaction;
 import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.core.ui.inventory.InventoryButton;
+import com.harium.annebeth.laundry.object.MagnifyingGlass;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.event.PointerState;
 import com.harium.etyl.commons.graphics.Color;
@@ -18,33 +19,34 @@ public class InventoryManager {
 
     public static final int INVENTORY_BAR_Y = 410;
 
-    private static final int ROW = 7;
-    private static final int ROW_OFFSET = 138;
     private static int offsetY = 0;
     private static int cursor = 0;
 
+    private static final int ROW = 8;
+    private static final int ROW_OFFSET = InventoryButton.SIZE + 6;
     private static final int ARROW_X = 542;
-    private static final int x = 34;
+    private static final int x = 12;
     private static final int y = 430;
     private final int w;
     private final int h;
 
-    private ImageLayer upArrow;
-    private ImageLayer downArrow;
     private static List<InventoryButton> slots = new ArrayList<InventoryButton>(3);
     private static int usedSlots = 0;
 
     public static boolean shouldRemove = false;
+    private MagnifyingGlass magnifyingGlass;
 
     public InventoryManager(int w, int h) {
         this.w = w;
         this.h = h;
-        upArrow = new ImageLayer(ARROW_X, 420, 48, 64, "ui/arrow_up.png");
-        downArrow = new ImageLayer(ARROW_X, 490, 48, 64, "ui/arrow_down.png");
 
         for (int i = 0; i < ROW; i++) {
             addSlot();
         }
+
+        // Start the game with a glass
+        magnifyingGlass = new MagnifyingGlass();
+        pickup(magnifyingGlass);
     }
 
     public void update(long now) {
@@ -147,14 +149,14 @@ public class InventoryManager {
 
     public void draw(Graphics g) {
         drawBackground(g);
-        if (usedSlots > ROW) {
+        /*if (usedSlots > ROW) {
             if (cursor > 0) {
                 upArrow.simpleDraw(g);
             }
             if ((cursor + 1) * ROW < usedSlots) {
                 downArrow.simpleDraw(g);
             }
-        }
+        }*/
 
         int count = 0;
         for (InventoryButton button : slots) {
@@ -168,12 +170,12 @@ public class InventoryManager {
     }
 
     public void updateMouse(PointerEvent event) {
-        if (event.getX() < ARROW_X) {
+        /*if (event.getX() < ARROW_X) {
             return;
-        }
+        }*/
 
         if (event.getState() == PointerState.PRESSED) {
-            if (usedSlots > ROW) {
+            /*if (usedSlots > ROW) {
                 if (checkCollideArrow(upArrow, event)) {
                     if (cursor > 0) {
                         offsetY += ROW_OFFSET;
@@ -185,7 +187,7 @@ public class InventoryManager {
                         cursor++;
                     }
                 }
-            }
+            }*/
 
             Iterator<InventoryButton> it = slots.iterator();
             while (it.hasNext()) {
@@ -211,8 +213,25 @@ public class InventoryManager {
     }
 
     private void checkCollide(InventoryButton button, PointerEvent event) {
-        if (checkCollide(button.layer, event)) {
-            if (Context.interaction == Interaction.LOOK_AT) {
+        if (button.object != InventoryButton.NULL_PICKABLE && checkCollide(button.layer, event)) {
+            if (button.object == magnifyingGlass) {
+                Context.interaction = Interaction.LOOK_AT;
+                if (Context.hasObject()) {
+                    ActionUIManager.defineTarget(ActionUIManager.player, Context.getObject());
+                    //Context.reachObject(null);
+                    ActionUIManager.hideMenu();
+                }
+            } else {
+                if (Context.interaction == Interaction.USE) {
+                    Context.changeObject(button.object);
+                    Context.reachObject(null);
+                } else {
+                    Context.interaction = Interaction.USE;
+                    Context.changeObject(button.object);
+                }
+            }
+
+            /*if (Context.interaction == Interaction.LOOK_AT) {
                 Context.object = button.object;
                 Context.reachObject(null);
             } else {
@@ -223,7 +242,7 @@ public class InventoryManager {
                     Context.interaction = Interaction.USE;
                     Context.object = button.object;
                 }
-            }
+            }*/
         }
     }
 

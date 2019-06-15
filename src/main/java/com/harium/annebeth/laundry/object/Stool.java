@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.PickLevel;
 import com.harium.annebeth.core.object.PickupableObject;

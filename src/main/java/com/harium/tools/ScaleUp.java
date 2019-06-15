@@ -36,7 +36,7 @@ public class ScaleUp extends Application {
         try {
             BufferedImage in = ImageIO.read(file);
 
-            BufferedImage scaled = scale4x(in);
+            BufferedImage scaled = scale2x(in);
 
             String filename = file.getName().substring(0, file.getName().indexOf("."));
             System.out.println("Saving: " + filename);

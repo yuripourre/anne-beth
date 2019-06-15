@@ -1,5 +1,7 @@
 package com.harium.annebeth.core.object;
 
+import com.harium.annebeth.laundry.sound.Jukebox;
+
 public class DummyObject extends BaseObject {
 
     public DummyObject(int x, int y) {
@@ -19,6 +21,7 @@ public class DummyObject extends BaseObject {
     }
 
     public void onUse(BaseObject with) {
+
     }
 
     public void onPull() {

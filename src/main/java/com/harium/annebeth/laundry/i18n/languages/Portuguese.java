@@ -105,6 +105,7 @@ public class Portuguese implements Dictionary {
         sentences.put(SOMETHING_WRONG, "Uh oh, isso não está certo.");
         sentences.put(NO_WORDS, "...");
         sentences.put(SPIDER_CRAP, "Aranha do céu!");
+        sentences.put(WASHER_HINT, "Eu sinto que vou ter que lavar as roupas de novo.");
         sentences.put(HERE_I_GO_AGAIN, "Lá vou eu de novo.");
         sentences.put(HAS_TO_WORK, "Tem que funcionar.");
     }
@@ -116,6 +117,7 @@ public class Portuguese implements Dictionary {
         sentences.put(CREDITS_ORIGINAL_HOUSE, "Imagens da Casa por PurpleHeart");
         sentences.put(CREDITS_CACTUS_FLOWER, "Flor de Cacto por captainluna");
         sentences.put(CREDITS_ORIGINAL_CAT, "Imagem do gato por GarGar");
+        sentences.put(CREDITS_MAGNIFYING_GLASS, "Imagem da lupa por Angrycheese");
         sentences.put(CREDITS_UI, "UI por Kenney");
         sentences.put(CREDITS_SPLASH, "Imagem de abertura por GraphicMama Team");
         sentences.put(CREDITS_FONT, "Fonte");

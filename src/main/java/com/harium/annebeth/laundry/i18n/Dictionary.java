@@ -74,7 +74,8 @@ public interface Dictionary {
     String MISSION_COMPLETE = "mission_complete";
     String SOMETHING_WRONG = "something_wrong";
     String NO_WORDS = "...";
-    String SPIDER_CRAP = "spider_crap";
+    String SPIDER_CRAP = "scrap";
+    String WASHER_HINT = "wash_hint";
     String HERE_I_GO_AGAIN = "here_again";
     String HAS_TO_WORK = "has_work";
     String TO = "to";
@@ -86,6 +87,7 @@ public interface Dictionary {
     String CREDITS_ORIGINAL_HOUSE = "houseimg";
     String CREDITS_CACTUS_FLOWER = "flowerimg";
     String CREDITS_ORIGINAL_CAT = "catimg";
+    String CREDITS_MAGNIFYING_GLASS = "magimg";
     String CREDITS_UI = "ui";
     String CREDITS_SPLASH = "splash";
     String CREDITS_FONT = "font";

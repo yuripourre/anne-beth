@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.PickLevel;
@@ -30,7 +30,7 @@ public class Lemon extends PickupableObject {
         if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
             combine((Softener) with);
         } else {
-            negativeDialog();
+            cantUse();
         }
     }
 

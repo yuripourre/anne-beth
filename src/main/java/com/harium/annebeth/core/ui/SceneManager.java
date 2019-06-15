@@ -7,9 +7,8 @@ import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.DummyObject;
 import com.harium.annebeth.core.object.HitBoxObject;
 import com.harium.annebeth.core.player.Player;
-import com.harium.annebeth.laundry.InGame;
-import com.harium.annebeth.laundry.core.object.*;
-import com.harium.annebeth.laundry.core.room.*;
+import com.harium.annebeth.laundry.object.*;
+import com.harium.annebeth.laundry.room.*;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
@@ -138,7 +137,7 @@ public class SceneManager {
         int oy = 50;
         foreground.add(new Fan(358 + ox, -50 + oy));
         foreground.add(new Television(350 + ox, 252 + oy));
-        objectList.add(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
+        objectList.add(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
         objectList.add(new HitBoxObject(LanguageManager.sentence(BED), LanguageManager.sentence(BED_LOOK_AT), 326 + ox, 200 + oy, 190, 98));
         objectList.add(new FanSwitch(528 + ox, 131 + oy));
         objectList.add(new Lino(133 + ox, 215 + oy));
@@ -211,47 +210,42 @@ public class SceneManager {
     public void updateMouse(PointerEvent event, Player player) {
         boolean found = false;
 
-        for (BaseObject object : foreground) {
+        for (int i = objectList.size() - 1; i >= 0; i--) {
+            BaseObject object = objectList.get(i);
+
             if (!object.visible) {
                 continue;
             }
-
-            /*if (object.collide(event.getX(), event.getY())) {
-                defineTarget(player, object);
-                found = true;
-                break;
-            }*/
-        }
-
-        if (!found) {
-            for (int i = objectList.size() - 1; i >= 0; i--) {
-                BaseObject object = objectList.get(i);
-
-                if (!object.visible) {
-                    continue;
-                }
-                if (object.x < event.getX() && object.x + object.w > event.getX() &&
-                        object.y < event.getY() && object.y + object.h > event.getY()) {
-
-                    //defineTarget(player, object);
+            if (object.collide(event.getX(), event.getY())) {
+                if (Context.interaction == Interaction.LOOK_AT) {
+                    ActionUIManager.defineTarget(player, object);
+                } else if (Context.interaction == Interaction.USE) {
+                    ActionUIManager.defineTarget(player, object);
+                    found = true;
+                } else if (Context.interaction == Interaction.WALK || Context.interaction == Interaction.NONE) {
                     openMenu(player, object);
                     found = true;
-                    break;
                 }
+                break;
             }
         }
 
-        if (!found && Context.object==Context.NULL_OBJECT) {
-            Context.interaction = Interaction.WALK;
-            // just walk
-            floor.setPosition(event.getX(), event.getY());
+        if (!found) {
+            // No object selected or Use with
+            if (!Context.hasObject() || Context.interaction == Interaction.USE || Context.interaction == Interaction.NONE) {
+                Context.reset();
+                Context.interaction = Interaction.WALK;
+                // just walk
+                floor.setPosition(event.getX(), event.getY());
 
-            player.setTarget(floor);
-            Context.setObject(floor);
+                player.setTarget(floor);
+                Context.changeObject(floor);
+            }
         }
     }
 
     private void openMenu(Player player, BaseObject object) {
+        Context.changeObject(object);
         actionUIManager.openMenu(player, object);
     }
 

@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.HighObject;
@@ -25,6 +25,8 @@ public class Detergent extends HighObject {
             //} else {
             //    DialogManager.addDialog("The washer should be open first.");
             //}
+        } else {
+            cantUse();
         }
     }
 

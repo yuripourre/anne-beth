@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.OpenableObject;
@@ -158,6 +158,7 @@ public class Washer extends OpenableObject {
             DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOMETHING_WRONG));
             DialogManager.addDialog(LanguageManager.sentence(Dictionary.NO_WORDS));
             DialogManager.addDialog(LanguageManager.sentence(Dictionary.SPIDER_CRAP));
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_HINT));
         } else {
             DialogManager.addDialog(LanguageManager.sentence(Dictionary.HERE_I_GO_AGAIN));
             DialogManager.addDialog(LanguageManager.sentence(Dictionary.HAS_TO_WORK));

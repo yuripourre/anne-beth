@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.object;
+package com.harium.annebeth.laundry.object;
 
 import com.harium.annebeth.core.object.PickLevel;
 import com.harium.annebeth.laundry.i18n.Dictionary;
@@ -30,6 +30,8 @@ public class Sock extends PickupableObject {
             } else {
                 DialogManager.addDialog("The washer should be open first.");
             }
+        } else {
+            cantUse();
         }
     }
 

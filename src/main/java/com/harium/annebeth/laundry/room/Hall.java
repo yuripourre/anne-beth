@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.room;
+package com.harium.annebeth.laundry.room;
 
 public class Hall extends Room {
 

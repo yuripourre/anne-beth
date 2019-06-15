@@ -107,6 +107,7 @@ public class Spanish implements Dictionary {
         sentences.put(SOMETHING_WRONG, "Uh oh, isso não está certo.");
         sentences.put(NO_WORDS, "...");
         sentences.put(SPIDER_CRAP, "¡Araña santa!");
+        sentences.put(WASHER_HINT, "Siento que tendré que volver a lavar la ropa.");
         sentences.put(HERE_I_GO_AGAIN, "Aquí voy de nuevo.");
         sentences.put(HAS_TO_WORK, "Tiene que funcionar.");
     }
@@ -118,6 +119,7 @@ public class Spanish implements Dictionary {
         sentences.put(CREDITS_ORIGINAL_HOUSE, "Imágenes de la Casa por PurpleHeart");
         sentences.put(CREDITS_CACTUS_FLOWER, "Flor de Cactus por captainluna");
         sentences.put(CREDITS_ORIGINAL_CAT, "Imagen del gato por GarGar");
+        sentences.put(CREDITS_MAGNIFYING_GLASS, "Imagen da lupa por Angrycheese");
         sentences.put(CREDITS_UI, "UI por Kenney");
         sentences.put(CREDITS_SPLASH, "Imagen de la abertura por GraphicMama Team");
         sentences.put(CREDITS_FONT, "Fonte");

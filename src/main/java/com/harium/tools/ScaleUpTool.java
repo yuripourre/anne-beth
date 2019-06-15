@@ -15,7 +15,8 @@ public class ScaleUpTool extends Etyl {
         /*ScaleUpTool main = new ScaleUpTool();
         main.setTitle("Scale Pixel Perfect");
         main.init();*/
-        String path = "/home/yuri/Games/Witch-contra.png";
+        //String path = "/home/yuri/Games/Witch-contra.png";
+        String path = "/home/yuri/Downloads/magnifying-glass.png";
         ScaleUp.scale(new File(path));
     }
 

@@ -7,11 +7,15 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class InventoryButton {
 
+    public static final int SIZE = 120;
+
     public ImageLayer layer;
-    public PickupableObject object;
+    public PickupableObject object = NULL_PICKABLE;
+
+    public static final PickupableObject NULL_PICKABLE = new PickupableObject("", 0, 0, 0, 0);
 
     public InventoryButton(int x, int y) {
-        layer = new ImageLayer(x, y, 128, 128, "ui/inventory.png");
+        layer = new ImageLayer(x, y, SIZE, SIZE, "ui/inventory.png");
     }
 
     public void draw(Graphics g, int x, int y) {
@@ -36,6 +40,9 @@ public class InventoryButton {
             return;
         }
         this.object = object;
+        if (object == NULL_PICKABLE) {
+            return;
+        }
 
         ImageLayer objectInventoryLayer = this.object.getInventoryLayer();
         int centerX = layer.getX() + layer.getW() / 2;

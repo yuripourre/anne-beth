@@ -1,4 +1,4 @@
-package com.harium.annebeth.laundry.core.room;
+package com.harium.annebeth.laundry.room;
 
 import com.harium.annebeth.core.Turnable;
 import com.harium.etyl.core.graphics.Graphics;
