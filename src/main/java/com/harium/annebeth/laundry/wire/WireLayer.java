@@ -3,17 +3,17 @@ package com.harium.annebeth.laundry.wire;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
-public abstract class WireSingle {
+public class WireLayer {
 
     Wire wire;
     ImageLayer layerOn;
     ImageLayer layerOff;
 
-    public WireSingle(Wire wire) {
+    public WireLayer(Wire wire) {
         this.wire = wire;
     }
 
-    public WireSingle(Knob a, int ai, Knob b, int bi) {
+    public WireLayer(Knob a, int ai, Knob b, int bi) {
         this.wire = new Wire(a, ai, b, bi);
     }
 
@@ -23,14 +23,12 @@ public abstract class WireSingle {
             return;
         }
 
-        if (isCharged() && wire.isConnected()) {
+        if (wire.isCharged() && wire.isConnected()) {
             layerOn.simpleDraw(g);
         } else {
             layerOff.simpleDraw(g);
         }
     }
-
-    protected abstract boolean isCharged();
 
     public void setOn(ImageLayer layer) {
         layerOn = layer;

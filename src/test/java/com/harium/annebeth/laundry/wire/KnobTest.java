@@ -25,14 +25,6 @@ public class KnobTest {
 
         Knob a = new Knob();
         a.setConnections(true, false, false, false, false, false);
-        //source.connect(0, a, 0);
-
-        /*Assert.assertTrue(a.isChargedRed());
-        source.rotate();
-        Assert.assertFalse(a.isChargedRed());
-        source.rotate();
-        Assert.assertTrue(a.isChargedRed());
-        Assert.assertFalse(a.isChargedBlack());*/
     }
 
 }

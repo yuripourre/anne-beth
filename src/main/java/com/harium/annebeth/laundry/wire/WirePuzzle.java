@@ -8,24 +8,38 @@ import com.harium.etyl.core.animation.OnCompleteListener;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class WirePuzzle extends Application {
 
     private ImageLayer background;
+
+    private Knob[] knobs;
+    private Wire[] red;
+    private Wire[] black;
+
     private Knob source;
     private Knob knobA;
     private Knob knobB;
     private Knob knobC;
     private Knob end;
 
-    private WireRed sourceA;
-    private WireRed abR;
-    private WireRed sourceBRed;
-    private WireRed bEnd;
+    // Red Layer
+    private WireLayer sourceA;
+    private WireLayer sourceBRed;
+    private WireLayer abLeft;
+    private WireLayer abRight;
+    private WireLayer aEnd;
+    private WireLayer bEndRed;
 
-    private List<Wire> wires = new ArrayList<>();
+    // Black Layer
+    private WireLayer sourceC;
+    private WireLayer sourceBBlack;
+    private WireLayer bcLeft;
+    private WireLayer bcRight;
+    private WireLayer bEndBlack;
+    private WireLayer cEnd;
+
+    private Circuit redCircuit;
+    private Circuit blackCircuit;
 
     public WirePuzzle(int w, int h) {
         super(w, h);
@@ -36,6 +50,10 @@ public class WirePuzzle extends Application {
         background = new ImageLayer("wire/circuit_bg.png");
 
         initKnobs();
+        initRedCircuit();
+        initBlackCircuit();
+
+        updateWires();
     }
 
     private void initKnobs() {
@@ -63,21 +81,77 @@ public class WirePuzzle extends Application {
         end.setLayer(new ImageLayer(714 + offset, 213 + offset, "wire/knob_e.png"));
         end.setConnections(true, true, false, false, true, false);
 
-        sourceA = new WireRed(source, 2, knobA, 0);
+        knobs = new Knob[5];
+        knobs[0] = source;
+        knobs[1] = knobA;
+        knobs[2] = knobB;
+        knobs[3] = knobC;
+        knobs[4] = end;
+    }
+
+    private void initRedCircuit() {
+        sourceA = new WireLayer(source, 2, knobA, 0);
         sourceA.setOn(new ImageLayer(240, 102, "wire/sa_on.png"));
         sourceA.setOff(new ImageLayer(240, 102, "wire/sa_off.png"));
 
-        sourceBRed = new WireRed(source, 3, knobB, 0);
+        sourceBRed = new WireLayer(source, 3, knobB, 0);
         sourceBRed.setOn(new ImageLayer(324, 273, "wire/wire_h_on.png"));
         sourceBRed.setOff(new ImageLayer(324, 273, "wire/wire_h_off.png"));
 
-        bEnd = new WireRed(knobB, 3, end, 0);
-        bEnd.setOn(new ImageLayer(602, 273, "wire/wire_h_on.png"));
-        bEnd.setOff(new ImageLayer(602, 273, "wire/wire_h_off.png"));
+        abLeft = new WireLayer(knobA, 5, knobB, 1);
+        //abLeft.setOn(new ImageLayer(318,103, "wire/abr_on.png"));
+        //abLeft.setOff(new ImageLayer(318,103, "wire/abr_off.png"));
 
-        abR = new WireRed(knobA, 4, knobB, 2);
-        abR.setOn(new ImageLayer(518,103, "wire/abr_on.png"));
-        abR.setOff(new ImageLayer(518,103, "wire/abr_off.png"));
+        abRight = new WireLayer(knobA, 4, knobB, 2);
+        abRight.setOn(new ImageLayer(518,103, "wire/abr_on.png"));
+        abRight.setOff(new ImageLayer(518,103, "wire/abr_off.png"));
+
+        aEnd = new WireLayer(knobA, 3, end, 1);
+        aEnd.setOn(new ImageLayer(518,103, "wire/abr_on.png"));
+        aEnd.setOff(new ImageLayer(518,103, "wire/abr_off.png"));
+
+        bEndRed = new WireLayer(knobB, 3, end, 0);
+        bEndRed.setOn(new ImageLayer(602, 273, "wire/wire_h_on.png"));
+        bEndRed.setOff(new ImageLayer(602, 273, "wire/wire_h_off.png"));
+
+        red = new Wire[6];
+        red[Circuit.A] = sourceA.wire;
+        red[Circuit.B] = sourceBRed.wire;
+        red[Circuit.C] = abLeft.wire;
+        red[Circuit.D] = abRight.wire;
+        red[Circuit.E] = aEnd.wire;
+        red[Circuit.F] = bEndRed.wire;
+
+        redCircuit = new Circuit();
+        redCircuit.setKnobs(knobs);
+        redCircuit.setWires(red);
+    }
+
+    private void initBlackCircuit() {
+        // Same pins as sourceBRed
+        sourceBBlack = new WireLayer(source, 3, knobB, 0);
+
+        sourceC = new WireLayer(source, 4, knobC, 0);
+
+        bcLeft = new WireLayer(knobB, 5, knobC, 1);
+
+        bcRight = new WireLayer(knobB, 4, knobC, 2);
+
+        bEndBlack = new WireLayer(knobB, 4, end, 0);
+
+        cEnd = new WireLayer(knobC, 3, end, 5);
+
+        black = new Wire[6];
+        black[Circuit.A] = sourceBBlack.wire;
+        black[Circuit.B] = sourceC.wire;
+        black[Circuit.C] = bcLeft.wire;
+        black[Circuit.D] = bcRight.wire;
+        black[Circuit.E] = bEndBlack.wire;
+        black[Circuit.F] = cEnd.wire;
+
+        blackCircuit = new Circuit();
+        blackCircuit.setKnobs(knobs);
+        blackCircuit.setWires(black);
     }
 
     public void draw(Graphics g) {
@@ -89,8 +163,8 @@ public class WirePuzzle extends Application {
     private void drawWires(Graphics g) {
         sourceA.draw(g);
         sourceBRed.draw(g);
-        abR.draw(g);
-        bEnd.draw(g);
+        abLeft.draw(g);
+        bEndRed.draw(g);
     }
 
     private void drawKnobs(Graphics g) {
@@ -153,38 +227,8 @@ public class WirePuzzle extends Application {
     }
 
     private void updateWires() {
-        //source.updateWires();
-
-        if (sourceA.wire.isConnected()) {
-            knobA.setChargedRed(true);
-
-            if (abR.wire.isConnected()) {
-                abR.wire.setCharged(true);
-            } else {
-                abR.wire.setCharged(false);
-            }
-        } else {
-            knobA.setChargedRed(false);
-        }
-
-        if (abR.wire.isCharged()) {
-            if (knobA.isChargedRed()) {
-                knobB.setChargedRed(true);
-            }
-
-            if (abR.wire.isConnected()) {
-                bEnd.wire.setCharged(true);
-            }
-        }
-
-        /*if (sourceBRed.wire.isConnected()) {
-            if (bEnd.wire.isConnected()) {
-                bEnd.wire.setCharged(true);
-            } else {
-                bEnd.wire.setCharged(false);
-            }
-        }*/
+        redCircuit.updateWires();
+        blackCircuit.updateWires();
     }
-
 
 }

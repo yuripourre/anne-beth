@@ -19,7 +19,6 @@
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
         <dependency>
             <groupId>com.harium.etyl</groupId>
@@ -51,15 +50,21 @@
             <artifactId>geometry</artifactId>
             <version>[1.0.3,)</version>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>com.harium.util</groupId>
             <artifactId>os-detector</artifactId>
             <version>[1.0.0,)</version>
-        </dependency>
+        </dependency-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
