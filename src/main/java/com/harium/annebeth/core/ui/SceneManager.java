@@ -96,7 +96,7 @@ public class SceneManager {
         int ox = 816 + 720 + 816;
         int oy = 50;
         objectList.add(new CactusJimmy(235 + ox, 121 + oy));
-        foreground.add(new Table(-110 + ox, 220 + oy));
+        //foreground.add(new Table(-110 + ox, 220 + oy));
     }
 
     private void initKitchen() {
