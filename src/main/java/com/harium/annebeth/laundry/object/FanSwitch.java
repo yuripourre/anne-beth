@@ -17,7 +17,7 @@ public class FanSwitch extends PickupableObject {
     boolean picked = false;
 
     public FanSwitch(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.FAN_SWITCH), x, y, 20, 28);
+        super(LanguageManager.objectName(Dictionary.FAN_SWITCH), x, y, 20, 28, 57, 70);
 
         layer = new ImageLayer(x, y, 20, 28, "objects/fan_switch.png");
         inventoryLayer = new ImageLayer(0, 0, 57, 70, "objects/fan_switch_inv.png");

@@ -30,7 +30,7 @@ public class Portuguese implements Dictionary {
         sentences.put(LINO, "Lino");
         sentences.put(CLOTHES_PILE, "pilha de roupas");
         sentences.put(LEMON, "limão");
-        sentences.put(SOAP, "sabão em pó líquido");
+        sentences.put(DETERGENT, "sabão em pó líquido");
         sentences.put(SOFTENER, "amaciante");
         sentences.put(STOOL, "banquinho");
         sentences.put(SOCK, "meia suja");
@@ -51,7 +51,7 @@ public class Portuguese implements Dictionary {
         genders.put(sentences.get(LINO), Gender.MASCULINE);
         genders.put(sentences.get(CLOTHES_PILE), Gender.FEMININE);
         genders.put(sentences.get(LEMON), Gender.MASCULINE);
-        genders.put(sentences.get(SOAP), Gender.MASCULINE);
+        genders.put(sentences.get(DETERGENT), Gender.MASCULINE);
         genders.put(sentences.get(SOFTENER), Gender.MASCULINE);
         genders.put(sentences.get(STOOL), Gender.MASCULINE);
         genders.put(sentences.get(SOCK), Gender.FEMININE);

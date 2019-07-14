@@ -12,8 +12,17 @@ public class PickupableObject extends DecorativeObject {
     public boolean shouldRemove = false;
     protected ImageLayer inventoryLayer;
 
+    public int invW;
+    public int invH;
+
     public PickupableObject(String name, int x, int y, int w, int h) {
+        this(name, x, y, w, h, w, h);
+    }
+
+    public PickupableObject(String name, int x, int y, int w, int h, int invW, int invH) {
         super(name, x, y, w, h);
+        this.invW = invW;
+        this.invH = invH;
         canPickup = true;
         canUse = true;
     }
@@ -42,4 +51,5 @@ public class PickupableObject extends DecorativeObject {
         shouldRemove = true;
         InventoryManager.shouldRemove = true;
     }
+
 }

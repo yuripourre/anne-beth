@@ -7,8 +7,8 @@ import com.harium.annebeth.core.i18n.LanguageManager;
 
 public class HighObject extends PickupableObject {
 
-    public HighObject(String name, int x, int y, int w, int h) {
-        super(name, x, y, w, h);
+    public HighObject(String name, int x, int y, int w, int h, int invW, int invH) {
+        super(name, x, y, w, h, invW, invH);
     }
 
     @Override

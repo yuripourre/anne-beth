@@ -28,7 +28,7 @@ public class English implements Dictionary {
         sentences.put(LINO, "Lino");
         sentences.put(CLOTHES_PILE, "pile of clothes");
         sentences.put(LEMON, "lemon");
-        sentences.put(SOAP, "laundry detergent");
+        sentences.put(DETERGENT, "laundry detergent");
         sentences.put(SOFTENER, "fabric softener");
         sentences.put(STOOL, "stool");
         sentences.put(SOCK, "dirty sock");

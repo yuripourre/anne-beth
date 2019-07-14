@@ -216,4 +216,16 @@ public class Player {
     public PlayerState getState() {
         return state;
     }
+
+    public int getX() {
+        return layer.getX();
+    }
+
+    public int getY() {
+        return layer.getY();
+    }
+
+    public void setPosition(int px, int py) {
+        layer.setLocation(px, py);
+    }
 }

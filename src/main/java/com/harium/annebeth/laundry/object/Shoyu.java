@@ -15,7 +15,7 @@ import com.harium.etyl.layer.ImageLayer;
 public class Shoyu extends PickupableObject {
 
     public Shoyu(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SHOYU), x, y, 11, 23);
+        super(LanguageManager.objectName(Dictionary.SHOYU), x, y, 11, 23, 23, 48);
         layer = new ImageLayer(x, y, 11, 23, "objects/shoyu.png");
         inventoryLayer = new ImageLayer(x, y, 23, 48, "objects/shoyu_inv.png");
         border = 12;

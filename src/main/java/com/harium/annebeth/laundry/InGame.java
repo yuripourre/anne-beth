@@ -1,10 +1,15 @@
 package com.harium.annebeth.laundry;
 
+import android.app.SharedPreferencesImpl;
+import android.content.SharedPreferences;
 import com.harium.annebeth.core.Context;
 import com.harium.annebeth.core.Interaction;
 import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.player.Player;
+import com.harium.annebeth.core.state.GameState;
+import com.harium.annebeth.core.state.GameStateHandler;
 import com.harium.annebeth.core.ui.*;
+import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
@@ -15,9 +20,10 @@ import com.harium.etyl.core.graphics.Graphics;
 import static com.harium.annebeth.laundry.i18n.Dictionary.GOOD_MORNING;
 import static com.harium.annebeth.laundry.i18n.Dictionary.LAUNDRY_DAY;
 
-public class InGame extends Application {
+public class InGame extends Application implements GameStateHandler {
 
     //public static final int BOTTOM_BAR = 410;
+    private static final String PREFERENCES_FILE = "ANNE_BETH_LAUNDRY";
 
     Player player;
     DialogManager dialogManager;
@@ -25,6 +31,9 @@ public class InGame extends Application {
     ActionUIManager actionUiManager;
     InventoryManager inventoryManager;
     SceneManager sceneManager;
+    SharedPreferences preferences;
+
+    GameState state;
 
     public InGame(int w, int h) {
         super(w, h);
@@ -45,8 +54,24 @@ public class InGame extends Application {
         skillManager = new SkillManager(w, h);
         inventoryManager = new InventoryManager(w, h);
 
+        Jukebox.turnMusicOff();
+        Jukebox.turnSoundOff();
+
+        preferences = getPreferences();
+        state = new GameState(preferences);
+        LaundryStateHandler.load(this, state);
+
+        Jukebox.turnMusicOn();
+        Jukebox.turnSoundOn();
+
         initAnimation();
         Jukebox.playNormalMusic();
+    }
+
+    private SharedPreferences getPreferences() {
+        /*Activity activity = session.get("ANDROID_ACTIVITY");
+        return activity.getSharedPreferences(PREFERENCES_FILE, android.content.Context.MODE_PRIVATE);*/
+        return new SharedPreferencesImpl(PREFERENCES_FILE);
     }
 
     private void initAnimation() {
@@ -111,6 +136,14 @@ public class InGame extends Application {
             Context.interaction = Interaction.WALK;
         }*/
 
+        /*if (event.isKeyUp(KeyEvent.VK_F2)) {
+            save(state);
+        }
+        if (event.isKeyUp(KeyEvent.VK_F3)) {
+            // Re init game
+            load(state);
+        }*/
+
         // Debug Only
         /*if (event.isKeyUp(KeyEvent.VK_1)) {
             sceneManager.turnWorldUpsideDown();
@@ -122,5 +155,15 @@ public class InGame extends Application {
         if (event.isKeyUp(KeyEvent.VK_SPACE)) {
             SceneManager.DEBUG_MODE = !SceneManager.DEBUG_MODE;
         }*/
+    }
+
+    @Override
+    public void save(GameState state) {
+        LaundryStateHandler.save(this, state);
+    }
+
+    @Override
+    public void load(GameState state) {
+        LaundryStateHandler.load(this, state);
     }
 }
