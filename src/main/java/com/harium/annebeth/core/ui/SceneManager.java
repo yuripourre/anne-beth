@@ -6,6 +6,7 @@ import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.DummyObject;
 import com.harium.annebeth.core.object.HitBoxObject;
+import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.core.player.Player;
 import com.harium.annebeth.laundry.object.*;
 import com.harium.annebeth.laundry.room.*;
@@ -18,7 +19,9 @@ import com.harium.etyl.core.animation.OnCompleteListener;
 import com.harium.etyl.core.graphics.Graphics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 
@@ -36,12 +39,17 @@ public class SceneManager {
     public int w = 0;
 
     DummyObject floor;
-    Washer washer;
+    // Openable objects
+    public Washer washer;
+    public Refrigerator refrigerator;
+
     public static boolean normalWorld = true;
     public static boolean gameOver = false;
 
     List<Room> rooms = new ArrayList<Room>();
     List<BaseObject> objectList = new ArrayList<BaseObject>();
+
+    Map<String, PickupableObject> pickupObject = new HashMap<>();
     List<BaseObject> foreground = new ArrayList<BaseObject>();
 
     Layer flash;
@@ -95,27 +103,38 @@ public class SceneManager {
     private void initDinner() {
         int ox = 816 + 720 + 816;
         int oy = 50;
-        objectList.add(new CactusJimmy(235 + ox, 121 + oy));
-        foreground.add(new Table(-110 + ox, 220 + oy));
+        addObjectList(new CactusJimmy(235 + ox, 121 + oy));
+        //foreground.add(new Table(-110 + ox, 220 + oy));
+    }
+
+    private void addObjectList(BaseObject baseObject) {
+        objectList.add(baseObject);
+        if(baseObject instanceof PickupableObject) {
+            pickupObject.put(baseObject.name, (PickupableObject) baseObject);
+        }
+    }
+
+    public PickupableObject getPickupObject(String name) {
+        return pickupObject.get(name);
     }
 
     private void initKitchen() {
         int ox = 816 + 720;
         int oy = 50;
 
-        objectList.add(new Detergent(505 + ox, 85 + oy));
-        objectList.add(new Softener(538 + ox, 89 + oy));
-        objectList.add(new Shoyu(505 + ox, 174 + oy));
+        addObjectList(new Detergent(505 + ox, 85 + oy));
+        addObjectList(new Softener(538 + ox, 89 + oy));
+        addObjectList(new Shoyu(505 + ox, 174 + oy));
 
-        Refrigerator refrigerator = new Refrigerator(ox + 10, 106 + oy);
-        objectList.add(refrigerator);
+        refrigerator = new Refrigerator(ox + 10, 106 + oy);
+        addObjectList(refrigerator);
 
         Lemon lemon = new Lemon(290, 90 + oy);
         refrigerator.add(lemon);
-        objectList.add(lemon);
+        addObjectList(lemon);
 
         washer = new Washer(ox + 590, 176 + oy);
-        objectList.add(washer);
+        addObjectList(washer);
 
         //foreground.add(new Trash(355 + ox, 294 + oy));
     }
@@ -125,11 +144,11 @@ public class SceneManager {
         int oy = 50;
 
         Cactus cactus = new Cactus(525 + ox, 102 + oy);
-        objectList.add(cactus);
-        objectList.add(new CactusFlower(cactus));
-        objectList.add(new Stool(290 + ox, 278 + oy));
-        objectList.add(new Sock(390 + ox, 278 + oy));
-        objectList.add(new Pile(-70 + ox, 270 + oy));
+        addObjectList(cactus);
+        addObjectList(new CactusFlower(cactus));
+        addObjectList(new Stool(290 + ox, 278 + oy));
+        addObjectList(new Sock(390 + ox, 278 + oy));
+        addObjectList(new Pile(-70 + ox, 270 + oy));
     }
 
     private void initBedRoom() {
@@ -137,10 +156,10 @@ public class SceneManager {
         int oy = 50;
         foreground.add(new Fan(358 + ox, -50 + oy));
         foreground.add(new Television(350 + ox, 252 + oy));
-        objectList.add(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
-        objectList.add(new HitBoxObject(LanguageManager.sentence(BED), LanguageManager.sentence(BED_LOOK_AT), 326 + ox, 200 + oy, 190, 98));
-        objectList.add(new FanSwitch(528 + ox, 131 + oy));
-        objectList.add(new Lino(133 + ox, 215 + oy));
+        addObjectList(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
+        addObjectList(new HitBoxObject(LanguageManager.sentence(BED), LanguageManager.sentence(BED_LOOK_AT), 326 + ox, 200 + oy, 190, 98));
+        addObjectList(new FanSwitch(528 + ox, 131 + oy));
+        addObjectList(new Lino(133 + ox, 215 + oy));
     }
 
     private void roomObjects() {

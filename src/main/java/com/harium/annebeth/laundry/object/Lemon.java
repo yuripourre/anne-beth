@@ -11,6 +11,8 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Lemon extends PickupableObject {
 
+    boolean picked = false;
+
     public Lemon(int x, int y) {
         super(LanguageManager.objectName(Dictionary.LEMON), x, y, 27, 23);
         layer = new ImageLayer(x, y, w, h, "objects/lemon.png");
@@ -48,6 +50,7 @@ public class Lemon extends PickupableObject {
     @Override
     public PickLevel onPickUp() {
         super.onPickUp();
+        picked = true;
         return PickLevel.DOWN;
     }
 
@@ -59,5 +62,9 @@ public class Lemon extends PickupableObject {
     @Override
     public void turnNormal() {
         //super.turnNormal();
+    }
+
+    public boolean isPicked() {
+        return picked;
     }
 }

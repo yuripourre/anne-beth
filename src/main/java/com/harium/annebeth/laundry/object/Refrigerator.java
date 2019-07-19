@@ -9,8 +9,8 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class Refrigerator extends OpenableObject {
 
-    private boolean firstOpen = false;
-    private PickupableObject lemon = null;
+    private boolean wasOpen = false;
+    public Lemon lemon = null;
 
     public Refrigerator(int x, int y) {
         super(LanguageManager.objectName(Dictionary.REFRIGERATOR), x, y, 108, 168);
@@ -30,7 +30,7 @@ public class Refrigerator extends OpenableObject {
         }
     }
 
-    public void add(PickupableObject lemon) {
+    public void add(Lemon lemon) {
         this.lemon = lemon;
         lemon.visible = false;
         lemon.setPosition(x - 10, y + 170);
@@ -39,13 +39,12 @@ public class Refrigerator extends OpenableObject {
     @Override
     public void onOpen() {
         super.onOpen();
-        if (!firstOpen) {
+        if (!wasOpen) {
             if (lemon != null) {
                 lemon.visible = true;
             }
-            firstOpen = true;
+            wasOpen = true;
         }
-
     }
 
     @Override
@@ -62,5 +61,13 @@ public class Refrigerator extends OpenableObject {
         if (lemon != null) {
             lemon.setPosition(x - 10, y + 170);
         }
+    }
+
+    public boolean wasOpen() {
+        return wasOpen;
+    }
+
+    public void hideLemon() {
+        lemon.visible = false;
     }
 }

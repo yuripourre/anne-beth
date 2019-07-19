@@ -20,7 +20,7 @@ public interface Dictionary {
     String CACTUS_FLOWER = "cactus_flower";
     String CLOTHES_PILE = "pile";
     String LEMON = "lemon";
-    String SOAP = "soap";
+    String DETERGENT = "soap";
     String SOFTENER = "softener";
     String STOOL = "stool";
     String SOCK = "sock";

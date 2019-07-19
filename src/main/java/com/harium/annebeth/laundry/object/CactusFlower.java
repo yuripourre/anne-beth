@@ -1,10 +1,10 @@
 package com.harium.annebeth.laundry.object;
 
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.HighObject;
 import com.harium.annebeth.core.ui.DialogManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 import com.harium.etyl.layer.ImageLayer;
@@ -13,8 +13,14 @@ public class CactusFlower extends HighObject {
 
     private Cactus cactus;
 
+    public CactusFlower() {
+        super(LanguageManager.objectName(Dictionary.CACTUS_FLOWER), 0, 0, 40, 20, 65, 80);
+        layer = new ImageLayer(x, y, 40, 20, "objects/cactus_flower.png");
+        inventoryLayer = new ImageLayer(x, y, 65, 80, "objects/cactus_flower_inv.png");
+    }
+
     public CactusFlower(Cactus cactus) {
-        super(LanguageManager.objectName(Dictionary.CACTUS_FLOWER), cactus.x + 50, cactus.y + 4, 40, 20);
+        super(LanguageManager.objectName(Dictionary.CACTUS_FLOWER), cactus.x + 50, cactus.y + 4, 40, 20, 65, 80);
         this.cactus = cactus;
         layer = new ImageLayer(x, y, 40, 20, "objects/cactus_flower.png");
         inventoryLayer = new ImageLayer(x, y, 65, 80, "objects/cactus_flower_inv.png");

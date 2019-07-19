@@ -10,7 +10,7 @@ import com.harium.etyl.layer.ImageLayer;
 public class Detergent extends HighObject {
 
     public Detergent(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.SOAP), x, y, 25, 40);
+        super(LanguageManager.objectName(Dictionary.DETERGENT), x, y, 25, 40, 49, 80);
         layer = new ImageLayer(x, y, w, h, "objects/detergent.png");
         inventoryLayer = new ImageLayer(0, 0, 49, 80, "objects/detergent_inv.png");
     }

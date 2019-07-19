@@ -46,10 +46,10 @@ public class InventoryButton {
 
         ImageLayer objectInventoryLayer = this.object.getInventoryLayer();
         int centerX = layer.getX() + layer.getW() / 2;
-        objectInventoryLayer.setX(centerX - objectInventoryLayer.getW() / 2);
+        objectInventoryLayer.setX(centerX - object.invW / 2);
 
         int baseY = this.layer.getY() + 96;
-        objectInventoryLayer.setY(baseY - objectInventoryLayer.getH());
+        objectInventoryLayer.setY(baseY - object.invH);
     }
 
     public void updatePosition(int x, int y) {

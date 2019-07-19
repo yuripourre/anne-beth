@@ -32,7 +32,7 @@ public class Spanish implements Dictionary {
         sentences.put(LINO, "Lino");
         sentences.put(CLOTHES_PILE, "pila de ropa");
         sentences.put(LEMON, "limón");
-        sentences.put(SOAP, "detergente para lavadora");
+        sentences.put(DETERGENT, "detergente para lavadora");
         sentences.put(SOFTENER, "suavizante");
         sentences.put(STOOL, "escabel");
         sentences.put(SOCK, "calcetín sucio");
@@ -53,7 +53,7 @@ public class Spanish implements Dictionary {
         genders.put(sentences.get(LINO), Gender.MASCULINE);
         genders.put(sentences.get(CLOTHES_PILE), Gender.FEMININE);
         genders.put(sentences.get(LEMON), Gender.MASCULINE);
-        genders.put(sentences.get(SOAP), Gender.MASCULINE);
+        genders.put(sentences.get(DETERGENT), Gender.MASCULINE);
         genders.put(sentences.get(SOFTENER), Gender.MASCULINE);
         genders.put(sentences.get(STOOL), Gender.MASCULINE);
         genders.put(sentences.get(SOCK), Gender.FEMININE);

@@ -14,6 +14,8 @@ public class Player {
     public static final int ANIMATION_SPEED = 130;
 
     public static final int WALK_SPEED = 4;
+    public static final int RIGHT_OFFSET = -1652;
+    public static final int LEFT_OFFSET = 0;
 
     BaseObject targetX = Context.NULL_OBJECT;
 
@@ -108,29 +110,84 @@ public class Player {
         }
 
         if (targetX != Context.NULL_OBJECT) {
-            reachTarget();
+            walkMove();
         }
 
         layer.animate(now);
     }
 
-    private void reachTarget() {
+    private void walkMove() {
         if (state == PlayerState.WALKING_LEFT) {
-            if (targetX.centerX() < center && sceneManager.x < 0) {
-                offset(WALK_SPEED);
+            int layerCenter = layer.getX() + WIDTH / 2;
+            // Anne Beth at maximum right of screen
+            if (sceneManager.x <= RIGHT_OFFSET) {
+                // Walk left to be in the default situation
+                if (layerCenter < center) {
+                    offsetScene(WALK_SPEED);
+                } else {
+                    layer.offsetX(-WALK_SPEED);
+                    if (targetX.centerX() > center) {
+                        if (layerCenter < targetX.centerX()) {
+                            reached();
+                        }
+                    }
+                }
+            } else if (sceneManager.x < LEFT_OFFSET) {// Default Situation
+                if (targetX.centerX() < center) {
+                    if (layerCenter > center) {
+                        layer.offsetX(-WALK_SPEED);
+                    } else {
+                        offsetScene(WALK_SPEED);
+                    }
+                } else {
+                    reached();
+                }
+
             } else {
-                reached();
+                // Anne Beth at maximum left of screen
+                if (layerCenter > targetX.centerX()) {
+                    layer.offsetX(-WALK_SPEED);
+                } else {
+                    reached();
+                }
             }
         } else if (state == PlayerState.WALKING_RIGHT) {
-            if (targetX.centerX() > center && sceneManager.x > -1652) {
-                offset(-WALK_SPEED);
+            int layerCenter = layer.getX() + WIDTH / 2;
+
+            // Anne Beth at maximum right of screen
+            if (sceneManager.x <= RIGHT_OFFSET) {
+                if (layerCenter < targetX.centerX()) {
+                    layer.offsetX(WALK_SPEED);
+                } else {
+                    reached();
+                }
+            } else if (sceneManager.x < LEFT_OFFSET) {// Default Situation
+                if (targetX.centerX() > center) {
+                    if (layerCenter < center) {
+                        layer.offsetX(WALK_SPEED);
+                    } else {
+                        offsetScene(-WALK_SPEED);
+                    }
+                } else {
+                    reached();
+                }
             } else {
-                reached();
+                // Anne Beth at maximum left of screen
+                if (layerCenter > center) {
+                    offsetScene(-WALK_SPEED);
+                } else {
+                    layer.offsetX(WALK_SPEED);
+                    if (targetX.centerX() < center) {
+                        if (layerCenter > targetX.centerX()) {
+                            reached();
+                        }
+                    }
+                }
             }
         }
     }
 
-    private void offset(int i) {
+    private void offsetScene(int i) {
         sceneManager.offset(i);
     }
 
@@ -143,9 +200,9 @@ public class Player {
 
     public void setTarget(BaseObject object) {
         if (targetX != object) {
-            if (object.centerX() >= sceneManager.w / 2) {
+            if (object.centerX() >= layer.getX()) {
                 walkRight();
-            } else if (object.centerX() < sceneManager.w / 2) {
+            } else if (object.centerX() < layer.getX()) {
                 walkLeft();
             }
             targetX = object;
@@ -158,5 +215,17 @@ public class Player {
 
     public PlayerState getState() {
         return state;
+    }
+
+    public int getX() {
+        return layer.getX();
+    }
+
+    public int getY() {
+        return layer.getY();
+    }
+
+    public void setPosition(int px, int py) {
+        layer.setLocation(px, py);
     }
 }

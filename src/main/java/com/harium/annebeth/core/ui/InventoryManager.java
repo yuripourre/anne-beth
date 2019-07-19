@@ -78,6 +78,7 @@ public class InventoryManager {
     }
 
     public static void pickup(PickupableObject object) {
+        object.visible = false;
         object.inInventory = true;
         InventoryButton slot = nextSlot();
         slot.setObject(object);
@@ -101,6 +102,14 @@ public class InventoryManager {
             }
         }
         return false;
+    }
+
+    public static String get(int index) {
+        if (slots.get(index).object != null) {
+            return slots.get(index).object.name;
+        }
+
+        return "";
     }
 
     public static void remove(String item) {
@@ -218,11 +227,13 @@ public class InventoryManager {
                 Context.interaction = Interaction.LOOK_AT;
                 if (Context.hasObject()) {
                     ActionUIManager.defineTarget(ActionUIManager.player, Context.getObject());
-                    //Context.reachObject(null);
                     ActionUIManager.hideMenu();
                 }
             } else {
-                if (Context.interaction == Interaction.USE) {
+                if (Context.interaction == Interaction.LOOK_AT) {
+                    button.object.onLook();
+                    Context.reset();
+                } else if (Context.interaction == Interaction.USE) {
                     Context.changeObject(button.object);
                     Context.reachObject(null);
                 } else {

@@ -18,6 +18,7 @@ public class SkillManager {
     }
 
     public static void pickup(PickupableObject object) {
+        object.visible = false;
         object.inInventory = true;
         slots[usedSlots].setObject(object);
         usedSlots++;
