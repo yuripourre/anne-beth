@@ -2,6 +2,7 @@ package com.harium.annebeth.core.ui;
 
 import com.harium.annebeth.core.Context;
 import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.core.player.Player;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.core.graphics.Graphics;
@@ -37,12 +38,12 @@ public class ActionUIManager {
     }
 
     public void openMenu(Player player, BaseObject object) {
+        int cx = object.x + object.w / 2;
+        int cy = object.y + object.h / 2;
+
         this.player = player;
         this.object = object;
         drawMenu = true;
-
-        int cx = object.x + object.w / 2;
-        int cy = object.y + object.h / 2;
 
         int verticalOffset = 74;
         int horizontalOffset = 20;
@@ -80,6 +81,24 @@ public class ActionUIManager {
             lookat.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT / 2);
             pickup.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT / 2);
         }
+    }
+
+    public void openInventoryMenu(Player player, PickupableObject object, int cx, int cy) {
+        this.player = player;
+        this.object = object;
+        drawMenu = true;
+
+        int verticalOffset = 74;
+        int horizontalOffset = 20;
+
+        open.disabled = true;
+        close.disabled = true;
+        pickup.disabled = true;
+        use.disabled = false;
+        lookat.disabled = false;
+
+        lookat.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT);
+        use.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT);
     }
 
     public void draw(Graphics g) {
@@ -145,4 +164,5 @@ public class ActionUIManager {
     public static void hideMenu() {
         drawMenu = false;
     }
+
 }

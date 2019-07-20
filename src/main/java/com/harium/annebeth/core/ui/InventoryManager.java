@@ -1,10 +1,7 @@
 package com.harium.annebeth.core.ui;
 
-import com.harium.annebeth.core.Context;
-import com.harium.annebeth.core.Interaction;
 import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.core.ui.inventory.InventoryButton;
-import com.harium.annebeth.laundry.object.MagnifyingGlass;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.event.PointerState;
 import com.harium.etyl.commons.graphics.Color;
@@ -34,11 +31,13 @@ public class InventoryManager {
     private static int usedSlots = 0;
 
     public static boolean shouldRemove = false;
+    private ActionUIManager actionUIManager;
     //private MagnifyingGlass magnifyingGlass;
 
-    public InventoryManager(int w, int h) {
+    public InventoryManager(int w, int h, ActionUIManager actionUIManager) {
         this.w = w;
         this.h = h;
+        this.actionUIManager = actionUIManager;
 
         for (int i = 0; i < ROW; i++) {
             addSlot();
@@ -223,13 +222,30 @@ public class InventoryManager {
 
     private void checkCollide(InventoryButton button, PointerEvent event) {
         if (button.object != InventoryButton.NULL_PICKABLE && checkCollide(button.layer, event)) {
+            int cx = button.getLayer().getX() + button.layer.getW()/2;
+            actionUIManager.openInventoryMenu(ActionUIManager.player, button.object, cx, button.layer.getY());
+
+            //ActionUIManager.defineTarget(ActionUIManager.player, Context.getObject());
+
+            /*if (Context.getInteraction() == Interaction.LOOK_AT) {
+                button.object.onLook();
+                Context.reset();
+            } else if (Context.getInteraction() == Interaction.USE_WITH) {
+                // Combine
+                Context.changeObject(button.object);
+                Context.reachObject(null);
+            } else {
+                Context.setInteraction(Interaction.USE_WITH);
+                Context.changeObject(button.object);
+            }*/
+
             /*if (button.object == magnifyingGlass) {
                 Context.interaction = Interaction.LOOK_AT;
                 if (Context.hasObject()) {
                     ActionUIManager.defineTarget(ActionUIManager.player, Context.getObject());
                     ActionUIManager.hideMenu();
                 }
-            } else {*/
+            } else {
                 if (Context.getInteraction() == Interaction.LOOK_AT) {
                     button.object.onLook();
                     Context.reset();
@@ -241,7 +257,7 @@ public class InventoryManager {
                     Context.setInteraction(Interaction.USE_WITH);
                     Context.changeObject(button.object);
                 }
-            //}
+            }*/
 
             /*if (Context.interaction == Interaction.LOOK_AT) {
                 Context.object = button.object;

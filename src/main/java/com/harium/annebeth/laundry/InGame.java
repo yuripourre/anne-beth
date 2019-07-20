@@ -52,7 +52,7 @@ public class InGame extends Application implements GameStateHandler {
         player = new Player(322, 200, sceneManager);
 
         skillManager = new SkillManager(w, h);
-        inventoryManager = new InventoryManager(w, h);
+        inventoryManager = new InventoryManager(w, h, actionUiManager);
 
         Jukebox.turnMusicOff();
         Jukebox.turnSoundOff();
