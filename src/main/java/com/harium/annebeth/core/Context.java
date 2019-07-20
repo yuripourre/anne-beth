@@ -10,7 +10,7 @@ public class Context {
     public static final BaseObject NULL_OBJECT = new BaseObject("");
     public static final int CONTEXT_SENTENCE = 382;
 
-    public static Interaction interaction = Interaction.NONE;
+    private static Interaction interaction = Interaction.NONE;
     private static BaseObject object = NULL_OBJECT;
     private static BaseObject with = NULL_OBJECT;
 
@@ -76,6 +76,14 @@ public class Context {
         interaction = Interaction.NONE;
         object = NULL_OBJECT;
         with = NULL_OBJECT;
+    }
+
+    public static void setInteraction(Interaction interaction) {
+        Context.interaction = interaction;
+    }
+
+    public static Interaction getInteraction() {
+        return interaction;
     }
 
     public static boolean hasObject() {

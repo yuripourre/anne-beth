@@ -26,6 +26,8 @@ public class BaseObject implements Turnable {
     public boolean canPickup = false;
     public boolean canPull = false;
 
+    protected boolean isOpen = false;
+
     public int x;
     public int y;
     public int w;
@@ -136,5 +138,9 @@ public class BaseObject implements Turnable {
     public boolean collide(int x, int y) {
         return (this.x - border < x && this.x + this.w + border > x &&
                 this.y - border < y && this.y + this.h + border > y);
+    }
+
+    public boolean isOpen() {
+        return isOpen;
     }
 }

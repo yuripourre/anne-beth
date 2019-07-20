@@ -17,6 +17,7 @@ public class ActionUIManager {
     public static Player player;
     private BaseObject object;
 
+    private ActionButton lookat;
     private ActionButton open;
     private ActionButton close;
     private ActionButton use;
@@ -28,6 +29,7 @@ public class ActionUIManager {
         this.w = w;
         this.h = h;
 
+        lookat = new ActionButton(LOOK_AT);
         open = new ActionButton(OPEN);
         close = new ActionButton(CLOSE);
         use = new ActionButton(USE);
@@ -45,26 +47,38 @@ public class ActionUIManager {
         int verticalOffset = 74;
         int horizontalOffset = 20;
 
-        if (object.canPickup) {
+        if (object.canOpen) {
+            use.disabled = false;
+            pickup.disabled = true;
+            lookat.disabled = false;
+
+            lookat.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - verticalOffset);
+            use.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy + verticalOffset - BUTTON_HEIGHT);
+
+            if (object.isOpen()) {
+                open.disabled = true;
+                close.disabled = false;
+                close.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy + verticalOffset - BUTTON_HEIGHT);
+            } else {
+                open.disabled = false;
+                close.disabled = true;
+                open.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy + verticalOffset - BUTTON_HEIGHT);
+            }
+        } else {
             open.disabled = true;
             close.disabled = true;
             use.disabled = true;
             pickup.disabled = false;
+            lookat.disabled = false;
 
             //final int ANIMATION_DELAY = 300;
             //Animation.animate(pickup.layer).move().from(cx-BUTTON_WIDTH/2,cy - BUTTON_HEIGHT / 2).to(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT / 2).during(ANIMATION_DELAY).start();
             //Animation.animate(lookat.layer).move().from(cx-BUTTON_WIDTH/2,cy - BUTTON_HEIGHT / 2).to(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT / 2).during(ANIMATION_DELAY).start();
 
-            pickup.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - BUTTON_HEIGHT-horizontalOffset);
-        } else {
-            open.disabled = false;
-            close.disabled = false;
-            use.disabled = false;
-            pickup.disabled = true;
-
-            use.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - verticalOffset);
-            open.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy + verticalOffset - BUTTON_HEIGHT);
-            close.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy + verticalOffset - BUTTON_HEIGHT);
+            //lookat.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - verticalOffset);
+            lookat.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT / 2);
+            //pickup.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - BUTTON_HEIGHT - horizontalOffset);
+            pickup.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT / 2);
         }
     }
 
@@ -73,6 +87,7 @@ public class ActionUIManager {
             return;
         }
 
+        lookat.draw(g);
         pickup.draw(g);
         open.draw(g);
         close.draw(g);
@@ -90,6 +105,7 @@ public class ActionUIManager {
 
         boolean collide = false;
 
+        collide |= checkCollide(lookat, event);
         collide |= checkCollide(open, event);
         collide |= checkCollide(close, event);
         collide |= checkCollide(use, event);
@@ -118,7 +134,7 @@ public class ActionUIManager {
 
         if (x < event.getX() && x + w > event.getX() &&
                 y < event.getY() && y + h > event.getY()) {
-            Context.interaction = button.interaction;
+            Context.setInteraction(button.interaction);
             defineTarget(player, object);
             return true;
         }

@@ -34,7 +34,7 @@ public class InventoryManager {
     private static int usedSlots = 0;
 
     public static boolean shouldRemove = false;
-    private MagnifyingGlass magnifyingGlass;
+    //private MagnifyingGlass magnifyingGlass;
 
     public InventoryManager(int w, int h) {
         this.w = w;
@@ -45,8 +45,8 @@ public class InventoryManager {
         }
 
         // Start the game with a glass
-        magnifyingGlass = new MagnifyingGlass();
-        pickup(magnifyingGlass);
+        /*magnifyingGlass = new MagnifyingGlass();
+        pickup(magnifyingGlass);*/
     }
 
     public void update(long now) {
@@ -223,24 +223,25 @@ public class InventoryManager {
 
     private void checkCollide(InventoryButton button, PointerEvent event) {
         if (button.object != InventoryButton.NULL_PICKABLE && checkCollide(button.layer, event)) {
-            if (button.object == magnifyingGlass) {
+            /*if (button.object == magnifyingGlass) {
                 Context.interaction = Interaction.LOOK_AT;
                 if (Context.hasObject()) {
                     ActionUIManager.defineTarget(ActionUIManager.player, Context.getObject());
                     ActionUIManager.hideMenu();
                 }
-            } else {
-                if (Context.interaction == Interaction.LOOK_AT) {
+            } else {*/
+                if (Context.getInteraction() == Interaction.LOOK_AT) {
                     button.object.onLook();
                     Context.reset();
-                } else if (Context.interaction == Interaction.USE) {
+                } else if (Context.getInteraction() == Interaction.USE) {
+                    // Combine
                     Context.changeObject(button.object);
                     Context.reachObject(null);
                 } else {
-                    Context.interaction = Interaction.USE;
+                    Context.setInteraction(Interaction.USE);
                     Context.changeObject(button.object);
                 }
-            }
+            //}
 
             /*if (Context.interaction == Interaction.LOOK_AT) {
                 Context.object = button.object;

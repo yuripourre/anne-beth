@@ -123,15 +123,15 @@ public class InGame extends Application implements GameStateHandler {
         super.updateKeyboard(event);
 
         if (event.isKeyUp(KeyEvent.VK_O)) {
-            Context.interaction = Interaction.OPEN;
+            Context.setInteraction(Interaction.OPEN);
         } else if (event.isKeyUp(KeyEvent.VK_C)) {
-            Context.interaction = Interaction.CLOSE;
+            Context.setInteraction(Interaction.CLOSE);
         } else if (event.isKeyUp(KeyEvent.VK_P)) {
-            Context.interaction = Interaction.PICK_UP;
+            Context.setInteraction(Interaction.PICK_UP);
         } else if (event.isKeyUp(KeyEvent.VK_U)) {
-            Context.interaction = Interaction.USE;
+            Context.setInteraction(Interaction.USE);
         } else if (event.isKeyUp(KeyEvent.VK_L)) {
-            Context.interaction = Interaction.LOOK_AT;
+            Context.setInteraction(Interaction.LOOK_AT);
         }/* else if (event.isKeyUp(KeyEvent.VK_W)) {
             Context.interaction = Interaction.WALK;
         }*/

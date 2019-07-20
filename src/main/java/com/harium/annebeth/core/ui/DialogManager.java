@@ -82,9 +82,9 @@ public class DialogManager {
         //    return;
         //}
 
-        String sentence = asWord(interaction);
+        String sentence = asWord(Context.getInteraction());
 
-        if (interaction == Interaction.WALK) {
+        if (Context.getInteraction() == Interaction.WALK) {
             sentence += " " + LanguageManager.sentence(Dictionary.TO);
         }
 
@@ -93,7 +93,7 @@ public class DialogManager {
 
         if (Context.hasObject() && Context.getObject() != null) {
             sentence += " " + Context.getObject().name;
-            if (interaction == Interaction.USE && object.canUse) {
+            if (Context.getInteraction() == Interaction.USE && object.canUse) {
                 sentence += " " + LanguageManager.sentence(Dictionary.WITH);
                 if (with != NULL_OBJECT) {
                     sentence += " " + with.name;

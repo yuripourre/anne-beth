@@ -236,12 +236,12 @@ public class SceneManager {
                 continue;
             }
             if (object.collide(event.getX(), event.getY())) {
-                if (Context.interaction == Interaction.LOOK_AT) {
+                if (Context.getInteraction() == Interaction.LOOK_AT) {
                     ActionUIManager.defineTarget(player, object);
-                } else if (Context.interaction == Interaction.USE) {
+                } else if (Context.getInteraction() == Interaction.USE) {
                     ActionUIManager.defineTarget(player, object);
                     found = true;
-                } else if (Context.interaction == Interaction.WALK || Context.interaction == Interaction.NONE) {
+                } else if (Context.getInteraction() == Interaction.WALK || Context.getInteraction() == Interaction.NONE) {
                     openMenu(player, object);
                     found = true;
                 }
@@ -251,9 +251,9 @@ public class SceneManager {
 
         if (!found) {
             // No object selected or Use with
-            if (!Context.hasObject() || Context.interaction == Interaction.USE || Context.interaction == Interaction.NONE) {
+            if (!Context.hasObject() || /*Context.getInteraction() == Interaction.USE ||*/ Context.getInteraction() == Interaction.NONE) {
                 Context.reset();
-                Context.interaction = Interaction.WALK;
+                Context.setInteraction(Interaction.WALK);
                 // just walk
                 floor.setPosition(event.getX(), event.getY());
 

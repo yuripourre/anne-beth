@@ -6,7 +6,6 @@ import com.harium.etyl.layer.ImageLayer;
 
 public class OpenableObject extends BaseObject {
 
-    protected boolean isOpen = false;
     public ImageLayer layer;
     public ImageLayer openLayer;
 
@@ -43,10 +42,6 @@ public class OpenableObject extends BaseObject {
         super.setPosition(x, y);
         layer.setLocation(x, y);
         openLayer.setLocation(x, y);
-    }
-
-    public boolean isOpen() {
-        return isOpen;
     }
 
     @Override
