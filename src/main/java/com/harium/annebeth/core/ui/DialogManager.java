@@ -17,6 +17,7 @@ import static com.harium.annebeth.core.Context.*;
 
 public class DialogManager {
 
+    public static final int CONTEXT_SENTENCE_Y = 426;
     public static final float FONT_SIZE = 18f;
     public static final int SHADOW_SIZE = 2;
     public static final Color SHADOW_COLOR = Color.BLACK;
@@ -92,17 +93,17 @@ public class DialogManager {
         BaseObject with = Context.getWith();
 
         if (Context.hasObject() && Context.getObject() != null) {
-            sentence += " " + Context.getObject().name;
+            sentence += " " + Context.getObject().getName();
             if ((Context.getInteraction() == Interaction.USE || Context.getInteraction() == Interaction.USE_WITH) && object.canUse) {
                 sentence += " " + LanguageManager.sentence(Dictionary.WITH);
                 if (with != NULL_OBJECT) {
-                    sentence += " " + with.name;
+                    sentence += " " + with.getName();
                 }
             }
         }
 
         // Draw action
-        drawWithShadow(g, CONTEXT_SENTENCE, sentence);
+        drawWithShadow(g, CONTEXT_SENTENCE_Y, sentence);
     }
 
     public static void addDialog(String sentence) {

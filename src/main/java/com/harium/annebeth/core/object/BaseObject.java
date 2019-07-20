@@ -14,7 +14,7 @@ import static com.harium.annebeth.core.ui.SceneManager.ROOM_OFFSET;
 
 public class BaseObject implements Turnable {
 
-    public String name;
+    private String name;
 
     public boolean visible = true;
     public boolean disabled = false;
@@ -51,6 +51,10 @@ public class BaseObject implements Turnable {
 
     public void draw(Graphics g) {
 
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void onOpen() {

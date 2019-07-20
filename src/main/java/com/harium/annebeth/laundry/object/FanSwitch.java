@@ -43,12 +43,12 @@ public class FanSwitch extends PickupableObject {
         /*if (!picked) {
             DialogManager.addDialog("The fan is broken.");
         } else */
-        if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
+        if (Washer.isWasher(with)) {
             Washer washer = (Washer) with;
             Jukebox.playUse();
             washer.hasSwitch = true;
             visible = false;
-            InventoryManager.remove(this.name);
+            InventoryManager.remove(this.getName());
         } else {
             cantUse();
         }

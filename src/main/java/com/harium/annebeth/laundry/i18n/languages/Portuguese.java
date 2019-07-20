@@ -99,8 +99,9 @@ public class Portuguese implements Dictionary {
         sentences.put(WASHER_DETERGENT, "Isso precisa de sabão em pó.");
         sentences.put(WASHER_SOFTENER, "Isso precisa de amaciante.");
         sentences.put(WASHER_DETERGENT_AND_SOFTENER, "Isso precisa de sabão em pó e amaciante.");
-        sentences.put(WASHER_REVERSE, "Preciso encontrar um jeito de REVERTER essa situação.");
+        sentences.put(WASHER_REVERSE, "Preciso encontrar um jeito de REVERTER essa máquina de lavar.");
         sentences.put(WASHER_REVERSED, "Uma máquina de lavar invertida.");
+        sentences.put(WASHER_REVERSED_NAME, "máquina de lavar invertida");
         sentences.put(MISSION_COMPLETE, "Missão Cumprida!");
         sentences.put(SOMETHING_WRONG, "Uh oh, isso não está certo.");
         sentences.put(NO_WORDS, "...");
@@ -159,9 +160,9 @@ public class Portuguese implements Dictionary {
     }
 
     private String interpolate(String sentence, BaseObject object) {
-        String undet = undet(object.name);
-        String det = det(object.name);
-        String result = sentence.replaceAll("\\{name\\}", object.name);
+        String undet = undet(object.getName());
+        String det = det(object.getName());
+        String result = sentence.replaceAll("\\{name\\}", object.getName());
         result = result.replaceAll("\\{undet\\}", undet);
         result = result.replaceAll("\\{det\\}", det);
         return result;

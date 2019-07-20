@@ -1,5 +1,7 @@
 package com.harium.annebeth.core.ui;
 
+import com.harium.annebeth.core.Context;
+import com.harium.annebeth.core.Interaction;
 import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.core.ui.inventory.InventoryButton;
 import com.harium.etyl.commons.event.PointerEvent;
@@ -11,6 +13,7 @@ import com.harium.etyl.layer.ImageLayer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InventoryManager {
 
@@ -23,7 +26,7 @@ public class InventoryManager {
     private static final int ROW_OFFSET = InventoryButton.SIZE + 6;
     private static final int ARROW_X = 542;
     private static final int x = 12;
-    private static final int y = 430;
+    private static final int y = 450;
     private final int w;
     private final int h;
 
@@ -95,7 +98,7 @@ public class InventoryManager {
     public static boolean has(String item) {
         for (InventoryButton button : slots) {
             if (button.object != null) {
-                if (button.object.name.equals(item)) {
+                if (button.object.getName().equals(item)) {
                     return true;
                 }
             }
@@ -105,7 +108,7 @@ public class InventoryManager {
 
     public static String get(int index) {
         if (slots.get(index).object != null) {
-            return slots.get(index).object.name;
+            return slots.get(index).object.getName();
         }
 
         return "";
@@ -116,7 +119,7 @@ public class InventoryManager {
         while (iterator.hasNext()) {
             InventoryButton button = iterator.next();
             if (button.object != null) {
-                if (button.object.name.equals(item)) {
+                if (button.object.getName().equals(item)) {
                     iterator.remove();
                     usedSlots--;
                     break;
@@ -222,8 +225,18 @@ public class InventoryManager {
 
     private void checkCollide(InventoryButton button, PointerEvent event) {
         if (button.object != InventoryButton.NULL_PICKABLE && checkCollide(button.layer, event)) {
-            int cx = button.getLayer().getX() + button.layer.getW()/2;
-            actionUIManager.openInventoryMenu(ActionUIManager.player, button.object, cx, button.layer.getY());
+            int cx = button.getLayer().getX() + button.layer.getW() / 2;
+
+            if (Context.getInteraction()== Interaction.USE_WITH) {
+                //Context.changeObject(button.object);
+                Context.getObject().onUse(button.object);
+                Context.reset();
+            } else {
+                Context.reset();
+                Context.changeObject(button.object);
+                actionUIManager.openInventoryMenu(ActionUIManager.player, button.object, cx, button.layer.getY());
+            }
+
 
             //ActionUIManager.defineTarget(ActionUIManager.player, Context.getObject());
 

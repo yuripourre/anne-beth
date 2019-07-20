@@ -29,7 +29,7 @@ public class SkillManager {
     public static boolean has(String item) {
         for (SkillSlot slot : slots) {
             if (slot.object != null) {
-                if (slot.object.name.equals(item)) {
+                if (slot.object.getName().equals(item)) {
                     return true;
                 }
             }

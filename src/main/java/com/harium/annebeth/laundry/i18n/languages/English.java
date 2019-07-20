@@ -78,6 +78,7 @@ public class English implements Dictionary {
         sentences.put(WASHER_DETERGENT_AND_SOFTENER, "It needs detergent and softener.");
         sentences.put(WASHER_REVERSE, "I must figure a way to REVERSE the washer.");
         sentences.put(WASHER_REVERSED, "A reversed washer.");
+        sentences.put(WASHER_REVERSED_NAME, "reversed washer");
         sentences.put(MISSION_COMPLETE, "Mission Accomplished!");
         sentences.put(SOMETHING_WRONG, "Uh oh, something is wrong.");
         sentences.put(NO_WORDS, "...");
@@ -136,7 +137,7 @@ public class English implements Dictionary {
     }
 
     private static String interpolate(String sentence, BaseObject object) {
-        String result = sentence.replaceAll("\\{name\\}", object.name);
+        String result = sentence.replaceAll("\\{name\\}", object.getName());
         return result;
     }
 

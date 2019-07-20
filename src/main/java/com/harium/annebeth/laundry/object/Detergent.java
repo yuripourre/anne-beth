@@ -1,9 +1,9 @@
 package com.harium.annebeth.laundry.object;
 
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.HighObject;
 import com.harium.annebeth.laundry.i18n.Dictionary;
-import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.layer.ImageLayer;
 
@@ -17,7 +17,8 @@ public class Detergent extends HighObject {
 
     @Override
     public void onUse(BaseObject with) {
-        if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
+
+        if (isWasher(with.getName())) {
             Washer washer = (Washer) with;
             //if (washer.isOpen() && !washer.hasDetergent) {
             washer.hasDetergent = true;
@@ -28,6 +29,11 @@ public class Detergent extends HighObject {
         } else {
             cantUse();
         }
+    }
+
+    private static boolean isWasher(String name) {
+        return LanguageManager.objectName(Dictionary.WASHER).equals(name) ||
+                LanguageManager.objectName(Dictionary.WASHER_REVERSED_NAME).equals(name);
     }
 
 }

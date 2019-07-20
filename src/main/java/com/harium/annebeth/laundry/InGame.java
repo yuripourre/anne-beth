@@ -59,6 +59,12 @@ public class InGame extends Application implements GameStateHandler {
 
         preferences = getPreferences();
         state = new GameState(preferences);
+
+        state.save(LaundryStateHandler.INVENTORY0, Dictionary.CLOTHES_PILE);
+        state.save(LaundryStateHandler.INVENTORY1, Dictionary.SOCK);
+        state.save(LaundryStateHandler.INVENTORY2, Dictionary.LEMON);
+        state.save(LaundryStateHandler.INVENTORY2, Dictionary.SHOYU);
+
         LaundryStateHandler.load(this, state);
 
         Jukebox.turnMusicOn();

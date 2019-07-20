@@ -181,6 +181,14 @@ public class Washer extends OpenableObject {
     }
 
     @Override
+    public String getName() {
+        if (!hasSwitch) {
+            return super.getName();
+        }
+        return LanguageManager.sentence(Dictionary.WASHER_REVERSED_NAME);
+    }
+
+    @Override
     public void setPosition(int x, int y) {
         super.setPosition(x, y);
 
@@ -188,6 +196,11 @@ public class Washer extends OpenableObject {
         inside.setLocation(x + 10, y + 24);
         pile.setLocation(x + 24, y + 44);
         sock.setLocation(x + 14, y + 54);
+    }
+
+    public static boolean isWasher(BaseObject object) {
+        return LanguageManager.objectName(Dictionary.WASHER).equals(object.getName()) ||
+                LanguageManager.objectName(Dictionary.WASHER_REVERSED_NAME).equals(object.getName());
     }
 
 }

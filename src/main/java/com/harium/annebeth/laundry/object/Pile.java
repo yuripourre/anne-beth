@@ -20,13 +20,13 @@ public class Pile extends PickupableObject {
 
     @Override
     public void onUse(BaseObject with) {
-        if (with.name.equals(LanguageManager.objectName(Dictionary.WASHER))) {
+        if (Washer.isWasher(with)) {
             Washer washer = (Washer) with;
             if (washer.isOpen()) {
                 Jukebox.playUse();
                 washer.hasPile = true;
                 visible = false;
-                InventoryManager.remove(this.name);
+                InventoryManager.remove(this.getName());
             } else {
                 DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_OPEN));
             }

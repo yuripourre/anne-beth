@@ -70,6 +70,7 @@ public interface Dictionary {
     String WASHER_DETERGENT_AND_SOFTENER = "washer_detandsoft";
     String WASHER_REVERSE = "washer_reverse";
     String WASHER_REVERSED = "washer_reversed";
+    String WASHER_REVERSED_NAME = "washer_reversed_name";
 
     String MISSION_COMPLETE = "mission_complete";
     String SOMETHING_WRONG = "something_wrong";
