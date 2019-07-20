@@ -233,12 +233,12 @@ public class InventoryManager {
                 if (Context.getInteraction() == Interaction.LOOK_AT) {
                     button.object.onLook();
                     Context.reset();
-                } else if (Context.getInteraction() == Interaction.USE) {
+                } else if (Context.getInteraction() == Interaction.USE_WITH) {
                     // Combine
                     Context.changeObject(button.object);
                     Context.reachObject(null);
                 } else {
-                    Context.setInteraction(Interaction.USE);
+                    Context.setInteraction(Interaction.USE_WITH);
                     Context.changeObject(button.object);
                 }
             //}

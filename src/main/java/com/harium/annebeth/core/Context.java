@@ -29,6 +29,7 @@ public class Context {
             case CLOSE:
                 object.onClose();
                 break;
+            case USE_WITH:
             case USE:
                 object.onUse(with);
                 break;
@@ -67,7 +68,7 @@ public class Context {
     public static void changeObject(BaseObject object) {
         if (!hasObject()) {
             Context.object = object;
-        } else if (Context.interaction == Interaction.USE) {
+        } else if (Context.interaction == Interaction.USE || Context.interaction == Interaction.USE_WITH) {
             with = object;
         }
     }

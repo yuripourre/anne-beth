@@ -34,6 +34,7 @@ public class LanguageManager {
             case CLOSE:
                 return dictionary.sentence(ACTION_CLOSE);
             case USE:
+            case USE_WITH:
                 return dictionary.sentence(ACTION_USE);
             case LOOK_AT:
                 return dictionary.sentence(ACTION_LOOK_AT);

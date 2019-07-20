@@ -238,7 +238,7 @@ public class SceneManager {
             if (object.collide(event.getX(), event.getY())) {
                 if (Context.getInteraction() == Interaction.LOOK_AT) {
                     ActionUIManager.defineTarget(player, object);
-                } else if (Context.getInteraction() == Interaction.USE) {
+                } else if (Context.getInteraction() == Interaction.USE || Context.getInteraction() == Interaction.USE_WITH) {
                     ActionUIManager.defineTarget(player, object);
                     found = true;
                 } else if (Context.getInteraction() == Interaction.WALK || Context.getInteraction() == Interaction.NONE) {
@@ -251,7 +251,7 @@ public class SceneManager {
 
         if (!found) {
             // No object selected or Use with
-            if (!Context.hasObject() || /*Context.getInteraction() == Interaction.USE ||*/ Context.getInteraction() == Interaction.NONE) {
+            if (!Context.hasObject() || Context.getInteraction() == Interaction.USE_WITH || Context.getInteraction() == Interaction.NONE) {
                 Context.reset();
                 Context.setInteraction(Interaction.WALK);
                 // just walk

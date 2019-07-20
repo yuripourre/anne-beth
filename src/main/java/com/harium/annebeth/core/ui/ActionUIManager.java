@@ -76,9 +76,9 @@ public class ActionUIManager {
             //Animation.animate(lookat.layer).move().from(cx-BUTTON_WIDTH/2,cy - BUTTON_HEIGHT / 2).to(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT / 2).during(ANIMATION_DELAY).start();
 
             //lookat.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - verticalOffset);
-            lookat.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT / 2);
             //pickup.layer.setLocation(cx - BUTTON_WIDTH / 2, cy - BUTTON_HEIGHT - horizontalOffset);
-            pickup.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT / 2);
+            lookat.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT / 2);
+            pickup.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT / 2);
         }
     }
 

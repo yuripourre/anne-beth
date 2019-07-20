@@ -93,7 +93,7 @@ public class DialogManager {
 
         if (Context.hasObject() && Context.getObject() != null) {
             sentence += " " + Context.getObject().name;
-            if (Context.getInteraction() == Interaction.USE && object.canUse) {
+            if ((Context.getInteraction() == Interaction.USE || Context.getInteraction() == Interaction.USE_WITH) && object.canUse) {
                 sentence += " " + LanguageManager.sentence(Dictionary.WITH);
                 if (with != NULL_OBJECT) {
                     sentence += " " + with.name;
