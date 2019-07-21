@@ -4,11 +4,11 @@ import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.PickLevel;
 import com.harium.annebeth.core.player.Player;
+import org.lwjgl.Sys;
 
 public class Context {
 
     public static final BaseObject NULL_OBJECT = new BaseObject("");
-    public static final int CONTEXT_SENTENCE = 382;
 
     private static Interaction interaction = Interaction.NONE;
     private static BaseObject object = NULL_OBJECT;
@@ -17,7 +17,7 @@ public class Context {
     public static void reachObject(Player player) {
         if (object == null) {
             return;
-        } else if (object.disabled || object.name.isEmpty()) {
+        } else if (object.disabled || object.getName().isEmpty()) {
             reset();
             return;
         }
@@ -30,6 +30,7 @@ public class Context {
                 object.onClose();
                 break;
             case USE_WITH:
+                return;
             case USE:
                 object.onUse(with);
                 break;

@@ -52,7 +52,7 @@ public class CactusFlower extends HighObject {
             negativeDialog();
             return;
         }
-        if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
+        if (with.getName().equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
             Softener softener = (Softener) with;
             combine(softener);
         } else {

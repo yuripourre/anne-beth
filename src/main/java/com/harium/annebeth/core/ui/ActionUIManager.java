@@ -22,8 +22,10 @@ public class ActionUIManager {
     private ActionButton open;
     private ActionButton close;
     private ActionButton use;
+    private ActionButton useWith;
     private ActionButton pickup;
 
+    boolean inventory = false;
     private static boolean drawMenu = false;
 
     public ActionUIManager(int w, int h) {
@@ -34,6 +36,7 @@ public class ActionUIManager {
         open = new ActionButton(OPEN);
         close = new ActionButton(CLOSE);
         use = new ActionButton(USE);
+        useWith = new ActionButton(USE_WITH);
         pickup = new ActionButton(PICK_UP);
     }
 
@@ -44,10 +47,12 @@ public class ActionUIManager {
         this.player = player;
         this.object = object;
         drawMenu = true;
+        inventory = false;
 
         int verticalOffset = 74;
         int horizontalOffset = 20;
 
+        useWith.disabled = true;
         if (object.canOpen) {
             use.disabled = false;
             pickup.disabled = true;
@@ -87,6 +92,7 @@ public class ActionUIManager {
         this.player = player;
         this.object = object;
         drawMenu = true;
+        inventory = true;
 
         int verticalOffset = 74;
         int horizontalOffset = 20;
@@ -94,11 +100,28 @@ public class ActionUIManager {
         open.disabled = true;
         close.disabled = true;
         pickup.disabled = true;
-        use.disabled = false;
+        use.disabled = true;
+        useWith.disabled = false;
         lookat.disabled = false;
 
-        lookat.layer.setLocation(cx + BUTTON_WIDTH - horizontalOffset * 6, cy - BUTTON_HEIGHT);
-        use.layer.setLocation(cx - BUTTON_WIDTH - horizontalOffset * 2, cy - BUTTON_HEIGHT);
+        int my = cy - BUTTON_HEIGHT - horizontalOffset*2;
+
+        int offset = 0;
+        int ix = cx - BUTTON_WIDTH - horizontalOffset * 2;
+        if (ix < -10) {
+            offset = 10 - ix;
+            lookat.layer.setLocation(offset + cx - BUTTON_WIDTH + horizontalOffset * 2, my);
+            useWith.layer.setLocation(offset + cx - BUTTON_WIDTH - horizontalOffset * 2, my - BUTTON_HEIGHT);
+        } else if (ix < 10) {
+            offset = -ix;
+            lookat.layer.setLocation(offset + cx + BUTTON_WIDTH - horizontalOffset * 7, my);
+            useWith.layer.setLocation(offset + cx - BUTTON_WIDTH - horizontalOffset, my);
+        } else {
+            lookat.layer.setLocation(offset + cx + BUTTON_WIDTH - horizontalOffset * 7, my);
+            useWith.layer.setLocation(offset + cx - BUTTON_WIDTH - horizontalOffset, my);
+        }
+
+
     }
 
     public void draw(Graphics g) {
@@ -111,6 +134,7 @@ public class ActionUIManager {
         open.draw(g);
         close.draw(g);
         use.draw(g);
+        useWith.draw(g);
     }
 
     public void updateMouse(PointerEvent event) {
@@ -128,6 +152,7 @@ public class ActionUIManager {
         collide |= checkCollide(open, event);
         collide |= checkCollide(close, event);
         collide |= checkCollide(use, event);
+        collide |= checkCollide(useWith, event);
         collide |= checkCollide(pickup, event);
 
         if (!collide) {
@@ -154,7 +179,15 @@ public class ActionUIManager {
         if (x < event.getX() && x + w > event.getX() &&
                 y < event.getY() && y + h > event.getY()) {
             Context.setInteraction(button.interaction);
-            defineTarget(player, object);
+            if (!inventory) {
+                defineTarget(player, object);
+            } else {
+                //Context.changeObject(object);
+                if (button.interaction == LOOK_AT) {
+                    object.onLook();
+                    Context.setInteraction(MENU);
+                }
+            }
             return true;
         }
 

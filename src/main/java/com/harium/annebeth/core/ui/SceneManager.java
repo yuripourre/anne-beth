@@ -110,7 +110,7 @@ public class SceneManager {
     private void addObjectList(BaseObject baseObject) {
         objectList.add(baseObject);
         if(baseObject instanceof PickupableObject) {
-            pickupObject.put(baseObject.name, (PickupableObject) baseObject);
+            pickupObject.put(baseObject.getName(), (PickupableObject) baseObject);
         }
     }
 
@@ -200,7 +200,7 @@ public class SceneManager {
             g.setColor(Color.BLUE);
         }
         g.drawRect(object.x, object.y, object.w, object.h);
-        g.drawString(object.name, object.x, object.y, object.w, object.h);
+        g.drawString(object.getName(), object.x, object.y, object.w, object.h);
     }
 
     private void drawObject(Graphics g, BaseObject object) {
@@ -238,7 +238,11 @@ public class SceneManager {
             if (object.collide(event.getX(), event.getY())) {
                 if (Context.getInteraction() == Interaction.LOOK_AT) {
                     ActionUIManager.defineTarget(player, object);
-                } else if (Context.getInteraction() == Interaction.USE || Context.getInteraction() == Interaction.USE_WITH) {
+                } else if (Context.getInteraction() == Interaction.USE) {
+                    ActionUIManager.defineTarget(player, object);
+                    found = true;
+                } else if (Context.getInteraction() == Interaction.USE_WITH) {
+                    Context.setInteraction(Interaction.USE);
                     ActionUIManager.defineTarget(player, object);
                     found = true;
                 } else if (Context.getInteraction() == Interaction.WALK || Context.getInteraction() == Interaction.NONE) {
@@ -251,7 +255,11 @@ public class SceneManager {
 
         if (!found) {
             // No object selected or Use with
-            if (!Context.hasObject() || Context.getInteraction() == Interaction.USE_WITH || Context.getInteraction() == Interaction.NONE) {
+            if (Context.getInteraction() == Interaction.MENU) {
+                Context.reset();
+                return;
+            }
+            if (!Context.hasObject() /*|| Context.getInteraction() == Interaction.USE_WITH*/ || Context.getInteraction() == Interaction.NONE) {
                 Context.reset();
                 Context.setInteraction(Interaction.WALK);
                 // just walk

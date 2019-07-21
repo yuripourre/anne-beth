@@ -29,7 +29,7 @@ public class Lemon extends PickupableObject {
             negativeDialog();
             return;
         }
-        if (with.name.equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
+        if (with.getName().equals(LanguageManager.objectName(Dictionary.SOFTENER))) {
             combine((Softener) with);
         } else {
             cantUse();
