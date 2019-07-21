@@ -4,7 +4,6 @@ import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.PickLevel;
 import com.harium.annebeth.core.player.Player;
-import org.lwjgl.Sys;
 
 public class Context {
 

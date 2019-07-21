@@ -22,7 +22,7 @@ public class DialogManager {
     public static final int SHADOW_SIZE = 2;
     public static final Color SHADOW_COLOR = Color.BLACK;
     public static final Color FONT_COLOR = Color.WHITE;
-    static long DIALOG_DELAY = 2500;
+    static long DIALOG_DELAY = 2300;
 
     static List<String> dialogs = new ArrayList<String>();
     String currentDialog = "";
