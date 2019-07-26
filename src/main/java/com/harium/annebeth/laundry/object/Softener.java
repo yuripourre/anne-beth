@@ -75,9 +75,11 @@ public class Softener extends HighObject {
             if (step == USED) {
                 if (!hasAcid && !hasSalty && !hasFlower) {
                     DialogManager.addDialog(LanguageManager.sentence(Dictionary.EMPTY, this));
+                    onLook();
                     return;
                 } else if (!hasAcid || !hasSalty || !hasFlower) {
                     DialogManager.addDialog(LanguageManager.sentence(Dictionary.SOFTENER_NOT_READY, this));
+                    onLook();
                     return;
                 }
             }

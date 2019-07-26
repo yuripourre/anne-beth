@@ -227,14 +227,17 @@ public class InventoryManager {
         if (button.object != InventoryButton.NULL_PICKABLE && checkCollide(button.layer, event)) {
             int cx = button.getLayer().getX() + button.layer.getW() / 2;
 
-            if (Context.getInteraction()== Interaction.USE_WITH) {
+            if (Context.getInteraction() == Interaction.USE_WITH) {
                 //Context.changeObject(button.object);
                 Context.getObject().onUse(button.object);
                 Context.reset();
-            } else {
-                Context.reset();
+            }else {
+                Context.setInteraction(Interaction.USE_WITH);
                 Context.changeObject(button.object);
-                actionUIManager.openInventoryMenu(ActionUIManager.player, button.object, cx, button.layer.getY());
+                // Inventory Menu
+                /*Context.reset();
+                Context.changeObject(button.object);
+                actionUIManager.openInventoryMenu(ActionUIManager.player, button.object, cx, button.layer.getY());*/
             }
 
 
