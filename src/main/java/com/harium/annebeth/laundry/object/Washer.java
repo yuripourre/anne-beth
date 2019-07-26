@@ -23,6 +23,9 @@ public class Washer extends OpenableObject {
     public boolean reversed = false;
     public boolean exploded = false;
 
+    public boolean startPuzzle = false;
+    public boolean completePuzzle = false;
+
     private static final Color BACKGROUND = new Color(0x32, 0x2b, 0x28);
 
     private AnimatedLayer inside;
@@ -133,7 +136,11 @@ public class Washer extends OpenableObject {
             } else {
                 if (exploded && !hasSwitch) {
                     DialogManager.addDialog(LanguageManager.sentence(Dictionary.WASHER_REVERSE));
+                } else if(exploded) {
+                    startPuzzle = true;
                 } else {
+                    // TODO REMOVE
+                    startPuzzle = true;
                     turnOn();
                 }
             }

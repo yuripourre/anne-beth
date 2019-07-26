@@ -363,4 +363,8 @@ public class SceneManager {
     public boolean isGameOver() {
         return gameOver;
     }
+
+    public boolean shouldStartPuzzle() {
+        return washer.startPuzzle && !washer.completePuzzle;
+    }
 }

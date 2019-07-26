@@ -11,6 +11,7 @@ import com.harium.annebeth.core.state.GameStateHandler;
 import com.harium.annebeth.core.ui.*;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.sound.Jukebox;
+import com.harium.annebeth.laundry.wire.WirePuzzle;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
 import com.harium.etyl.commons.event.MouseEvent;
@@ -23,7 +24,8 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.LAUNDRY_DAY;
 public class InGame extends Application implements GameStateHandler {
 
     //public static final int BOTTOM_BAR = 410;
-    private static final String PREFERENCES_FILE = "ANNE_BETH_LAUNDRY";
+    private static final String PREFERENCES_FILE = "anne_beth_laundry";
+    private static final String GAME_STATE = "game_state";
 
     Player player;
     DialogManager dialogManager;
@@ -57,13 +59,17 @@ public class InGame extends Application implements GameStateHandler {
         Jukebox.turnMusicOff();
         Jukebox.turnSoundOff();
 
-        preferences = getPreferences();
-        state = new GameState(preferences);
+        if (session.contains(GAME_STATE)) {
+            state = (GameState) session.get(GAME_STATE);
+        } else {
+            preferences = getPreferences();
+            state = new GameState(preferences);
 
-        state.save(LaundryStateHandler.INVENTORY0, Dictionary.CLOTHES_PILE);
-        state.save(LaundryStateHandler.INVENTORY1, Dictionary.SOCK);
-        state.save(LaundryStateHandler.INVENTORY2, Dictionary.LEMON);
-        state.save(LaundryStateHandler.INVENTORY2, Dictionary.SHOYU);
+            state.save(LaundryStateHandler.INVENTORY0, Dictionary.CLOTHES_PILE);
+            state.save(LaundryStateHandler.INVENTORY1, Dictionary.SOCK);
+            state.save(LaundryStateHandler.INVENTORY2, Dictionary.LEMON);
+            state.save(LaundryStateHandler.INVENTORY2, Dictionary.SHOYU);
+        }
 
         LaundryStateHandler.load(this, state);
 
@@ -94,6 +100,11 @@ public class InGame extends Application implements GameStateHandler {
 
         if (sceneManager.isGameOver()) {
             nextApplication = new Credits(w, h);
+        }
+        if (sceneManager.shouldStartPuzzle()) {
+            // Save state locally
+            session.put(GAME_STATE, state);
+            nextApplication = new WirePuzzle(w, h);
         }
     }
 
