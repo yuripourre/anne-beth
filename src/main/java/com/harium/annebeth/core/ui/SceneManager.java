@@ -28,10 +28,14 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 // TODO Split this class between generic SceneManager and Laundry SceneManager
 public class SceneManager {
 
-    public static final int ROOM_HEIGHT = 310;
-    public static final int ROOM_OFFSET = 50;
-
     public static boolean DEBUG_MODE = false;
+
+    public static final int ROOM_HEIGHT = 310;
+    public static final int ROOM_OFFSET_X = 0;
+    public static final int ROOM_OFFSET_Y = 50;
+    public static final int HALL_OFFSET_X = 816;
+    public static final int KITCHEN_OFFSET_X = HALL_OFFSET_X + 720;
+    public static final int DINNER_OFFSET_X = KITCHEN_OFFSET_X + 816;
 
     private static final Color background = new Color(0xC7, 0xB0, 0x8B);
     //private static final Color upsideDownBG = new Color(0x00, 0xB0, 0x8B);
@@ -101,8 +105,8 @@ public class SceneManager {
     }
 
     private void initDinner() {
-        int ox = 816 + 720 + 816;
-        int oy = 50;
+        int ox = DINNER_OFFSET_X;
+        int oy = ROOM_OFFSET_Y;
         addObjectList(new CactusJimmy(235 + ox, 121 + oy));
         //foreground.add(new Table(-110 + ox, 220 + oy));
     }
@@ -119,7 +123,7 @@ public class SceneManager {
     }
 
     private void initKitchen() {
-        int ox = 816 + 720;
+        int ox = KITCHEN_OFFSET_X;
         int oy = 50;
 
         addObjectList(new Detergent(505 + ox, 85 + oy));
@@ -152,8 +156,8 @@ public class SceneManager {
     }
 
     private void initBedRoom() {
-        int ox = 0;
-        int oy = 50;
+        int ox = ROOM_OFFSET_X;
+        int oy = ROOM_OFFSET_Y;
         foreground.add(new Fan(358 + ox, -50 + oy));
         foreground.add(new Television(350 + ox, 252 + oy));
         addObjectList(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
@@ -163,10 +167,10 @@ public class SceneManager {
     }
 
     private void roomObjects() {
-        rooms.add(new BedRoom(0, ROOM_OFFSET));
-        rooms.add(new Hall(816, ROOM_OFFSET));
-        rooms.add(new Kitchen(816 + 720, ROOM_OFFSET));
-        rooms.add(new Dinner(816 + 720 + 816, ROOM_OFFSET));
+        rooms.add(new BedRoom(ROOM_OFFSET_X, ROOM_OFFSET_Y));
+        rooms.add(new Hall(HALL_OFFSET_X, ROOM_OFFSET_Y));
+        rooms.add(new Kitchen(KITCHEN_OFFSET_X, ROOM_OFFSET_Y));
+        rooms.add(new Dinner(DINNER_OFFSET_X, ROOM_OFFSET_Y));
     }
 
     private void setupEffects(int w, int h) {

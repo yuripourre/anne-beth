@@ -1,6 +1,6 @@
 package com.harium.annebeth.laundry;
 
-import android.app.SharedPreferencesImpl;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import com.harium.annebeth.core.Context;
 import com.harium.annebeth.core.Interaction;
@@ -75,9 +75,9 @@ public class InGame extends Application implements GameStateHandler {
     }
 
     private SharedPreferences getPreferences() {
-        /*Activity activity = session.get("ANDROID_ACTIVITY");
-        return activity.getSharedPreferences(PREFERENCES_FILE, android.content.Context.MODE_PRIVATE);*/
-        return new SharedPreferencesImpl(PREFERENCES_FILE);
+        Activity activity = (Activity) session.get("ANDROID_ACTIVITY");
+        return activity.getSharedPreferences(PREFERENCES_FILE, android.content.Context.MODE_PRIVATE);
+        //return new SharedPreferencesImpl(PREFERENCES_FILE);
     }
 
     private void initAnimation() {

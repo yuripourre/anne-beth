@@ -1,5 +1,6 @@
 package com.harium.annebeth.laundry;
 
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.harium.annebeth.laundry.wire.WirePuzzle;
 import com.harium.etyl.Etyl;
 //import com.harium.etyl.EtylMobile;
@@ -23,5 +24,12 @@ public class Main extends Etyl {
         //return new InGame(w, h);
         //return new Credits(w, h);
         //return new WirePuzzle(w, h);
+    }
+
+    protected LwjglApplicationConfiguration buildConfiguration() {
+        LwjglApplicationConfiguration configuration = new LwjglApplicationConfiguration();
+        // Avoid antialias
+        configuration.samples = 1;
+        return configuration;
     }
 }

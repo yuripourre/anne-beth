@@ -9,7 +9,7 @@ import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.core.graphics.Graphics;
 
 import static com.harium.annebeth.core.ui.SceneManager.ROOM_HEIGHT;
-import static com.harium.annebeth.core.ui.SceneManager.ROOM_OFFSET;
+import static com.harium.annebeth.core.ui.SceneManager.ROOM_OFFSET_Y;
 
 
 public class BaseObject implements Turnable {
@@ -122,7 +122,7 @@ public class BaseObject implements Turnable {
     public void turnUpsideDown() {
         // I have no idea where 44 comes from
         // int offset = ROOM_HEIGHT + ROOM_OFFSET * 2 - originalY - h;
-        int offset = ROOM_HEIGHT + ROOM_OFFSET + 44 - originalY - h;
+        int offset = ROOM_HEIGHT + ROOM_OFFSET_Y + 44 - originalY - h;
         y = offset;
     }
 
