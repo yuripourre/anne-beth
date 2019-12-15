@@ -53,6 +53,11 @@ public interface Dictionary {
     String LAMP_LONG = "lampl";
     String COUCH = "couch";
     String PHONE = "phone";
+    // Kitchen Objects
+    String CABINET = "cabinet";
+    String OVEN = "oven";
+    String DISH_WASHER = "dishw";
+    String SINK = "sink";
 
     String STANDARD_LOOK_AT = "std_look";
     String CANT_REACH = "cant_reach";

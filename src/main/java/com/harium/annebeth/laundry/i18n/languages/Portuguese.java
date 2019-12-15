@@ -43,6 +43,7 @@ public class Portuguese implements Dictionary {
         sentences.put(TRASH, "lixeira");
         sentences.put(REFRIGERATOR, "geladeira");
         sentences.put(LAMP, "luminária");
+        // Bedroom Objects
         sentences.put(BED, "cama");
         sentences.put(CLOCK, "despertador");
         sentences.put(DRAWER, "mesa de cabeceira");
@@ -57,6 +58,11 @@ public class Portuguese implements Dictionary {
         sentences.put(LAMP_LONG, "abajour");
         sentences.put(COUCH, "sofá");
         sentences.put(PHONE, "telefone");
+        // Kitchen Objects
+        sentences.put(CABINET, "cabinet");
+        sentences.put(OVEN, "oven");
+        sentences.put(DISH_WASHER, "dishwasher");
+        sentences.put(SINK, "pia");
 
         genders.put(sentences.get(CACTUS), Gender.MASCULINE);
         genders.put(sentences.get(CACTUS_FLOWER), Gender.FEMININE);

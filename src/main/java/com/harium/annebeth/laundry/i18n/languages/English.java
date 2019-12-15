@@ -41,6 +41,7 @@ public class English implements Dictionary {
         sentences.put(TRASH, "trash");
         sentences.put(REFRIGERATOR, "refrigerator");
         sentences.put(LAMP, "lamp");
+        // Bedroom Objects
         sentences.put(BED, "bed");
         sentences.put(CLOCK, "alarm clock");
         sentences.put(DRAWER, "drawer");
@@ -55,6 +56,11 @@ public class English implements Dictionary {
         sentences.put(LAMP_LONG, "floor lamp");
         sentences.put(COUCH, "couch");
         sentences.put(PHONE, "telephone");
+        // Kitchen Objects
+        sentences.put(CABINET, "cabinet");
+        sentences.put(OVEN, "oven");
+        sentences.put(DISH_WASHER, "dishwasher");
+        sentences.put(SINK, "sink");
 
         sentences.put(GOOD_MORNING, "Good morning!");
         sentences.put(LAUNDRY_DAY, "Today is Laundry Day!");

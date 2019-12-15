@@ -59,6 +59,11 @@ public class Spanish implements Dictionary {
         sentences.put(LAMP_LONG, "lampara");
         sentences.put(COUCH, "sofá");
         sentences.put(PHONE, "telefono");
+        // Kitchen Objects
+        sentences.put(CABINET, "armario");
+        sentences.put(OVEN, "horno");
+        sentences.put(DISH_WASHER, "lavaplatos");
+        sentences.put(SINK, "fregadero");
 
         genders.put(sentences.get(CACTUS), Gender.MASCULINE);
         genders.put(sentences.get(CACTUS_FLOWER), Gender.FEMININE);

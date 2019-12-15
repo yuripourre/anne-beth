@@ -1,8 +1,5 @@
 # Pixel Art Images
 
-## Woman / Witch by doudoulolita
-https://opengameart.org/content/pixie
-
 ## House Objects by PurpleHeart
 https://opengameart.org/content/ph64-pixel-pack-100s-of-sideview-assets
 
@@ -11,9 +8,6 @@ http://lunamatic.net/172/cactus-flower/
 
 ## Sleepy Cat by GarGar
 https://www.deviantart.com/gargar/art/Sleeping-cat-pixel-art-55626013
-
-## Magnifying Glass by Angrycheese
-https://opengameart.org/content/magnifying-glass-0
 
 ## UI by Kenney
 https://opengameart.org/content/pixel-ui-pack-750-assets
@@ -42,3 +36,12 @@ https://www.dafont.com/press-start-2p.font
 ## Tools
 Pixelator
 http://pixelatorapp.com/
+
+# Unused Resources
+
+## Woman / Witch by doudoulolita
+https://opengameart.org/content/pixie
+
+## Magnifying Glass by Angrycheese
+https://opengameart.org/content/magnifying-glass-0
+

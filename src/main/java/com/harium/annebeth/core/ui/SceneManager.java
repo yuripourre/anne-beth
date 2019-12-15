@@ -127,6 +127,14 @@ public class SceneManager {
         int ox = KITCHEN_OFFSET_X;
         int oy = 50;
 
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 250 + ox, 64 + oy, 124, 86));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 154 + ox, 64 + oy, 100, 78).open(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 374 + ox, 64 + oy, 100, 78).open(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 216 + ox, 188 + oy, 194, 84).open(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(OVEN), 128 + ox, 186 + oy, 90, 88).open(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DISH_WASHER), 410 + ox, 186 + oy, 66, 88).open(BETTER_NOT));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(SINK), 278 + ox, 150 + oy, 76, 36).use(BETTER_NOT));
+
         addObjectList(new Detergent(505 + ox, 85 + oy));
         addObjectList(new Softener(538 + ox, 89 + oy));
         addObjectList(new Shoyu(505 + ox, 174 + oy));
@@ -171,8 +179,8 @@ public class SceneManager {
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 102 + ox, 12 + oy, 96, 136));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 686 + ox, 12 + oy, 96, 136));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WARDROBE), ox, 122+ oy , 80, 145).use(BETTER_NOT));
-        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER), 235 + ox, 196 + oy, 68, 68));
-        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER_LONG), 550 + ox, 196 + oy, 120, 70));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER), 235 + ox, 196 + oy, 68, 68).open(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER_LONG), 550 + ox, 196 + oy, 120, 70).open(BETTER_NOT));
         addObjectList(new HitBoxObject(LanguageManager.objectName(LAMP), 262 + ox, 130 + oy, 48, 70));
         addObjectList(new HitBoxObject(LanguageManager.objectName(CLOCK), 226 + ox, 150 + oy, 48, 48));
         addObjectList(new HitBoxObject(LanguageManager.objectName(PICTURE), 358 + ox, 60 + oy, 128, 92));
