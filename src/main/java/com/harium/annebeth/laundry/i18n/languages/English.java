@@ -40,8 +40,14 @@ public class English implements Dictionary {
         sentences.put(TABLE, "table");
         sentences.put(TRASH, "trash");
         sentences.put(REFRIGERATOR, "refrigerator");
-        sentences.put(MIRROR, "mirror");
+        sentences.put(ABAJOUR, "lamp");
         sentences.put(BED, "bed");
+        sentences.put(CLOCK, "alarm clock");
+        sentences.put(DRAWER, "drawer");
+        sentences.put(MIRROR, "mirror");
+        sentences.put(PICTURE, "picture");
+        sentences.put(WINDOW, "window");
+        sentences.put(WARDROBE, "wardrobe");
 
         sentences.put(GOOD_MORNING, "Good morning!");
         sentences.put(LAUNDRY_DAY, "Today is Laundry Day!");
@@ -49,16 +55,19 @@ public class English implements Dictionary {
         sentences.put(CANT_REACH, "I can't reach it.");
         sentences.put(CANT_DO_THAT, "I can't do that.");
         sentences.put(WHY_SOULD_I, "Why should I do that?");
+        sentences.put(BETTER_NOT, "Hmmm... Better not.");
         sentences.put(IT_SHOULD_BE_CLOSED, "It should be closed first.");
         sentences.put(ALMOST_EMPTY, "It is almost empty.");
         sentences.put(EMPTY, "It's empty.");
         sentences.put(FULL_AGAIN, "It's full again.");
         sentences.put(CACTUS_HAS_FLOWER, "Oh, wait, is it a flower?");
+        sentences.put(CACTUS_CANT_PICK, "It would be painful.");
         sentences.put(ENOUGH_FLOWERS, "I don't think it needs more flowers.");
         sentences.put(JIMMY_PLANT_LOOK_AT, "Jimmy the Plant.");
         sentences.put(MIRROR_LOOK_AT, "Hey, it's me.");
         sentences.put(BED_LOOK_AT, "A very comfortable bed.");
         sentences.put(FAN_SWITCH_LOOK_AT, "A fan switch with two spin modes.");
+        sentences.put(FAN_SWITCH_CANT_PICK, "I can't move it. It's stuck.");
         sentences.put(LINO_GREETINGS, "Hi {name}!");
         sentences.put(LINO_SLEEPING, "Guess what, he is sleeping.");
         sentences.put(PILE_LOOK_AT, "It is a huge pile of clothes.");

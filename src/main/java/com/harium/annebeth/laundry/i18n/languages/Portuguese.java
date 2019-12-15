@@ -42,8 +42,15 @@ public class Portuguese implements Dictionary {
         sentences.put(TABLE, "mesa");
         sentences.put(TRASH, "lixeira");
         sentences.put(REFRIGERATOR, "geladeira");
-        sentences.put(MIRROR, "espelho");
+        sentences.put(ABAJOUR, "luminária");
         sentences.put(BED, "cama");
+        sentences.put(CLOCK, "despertador");
+        sentences.put(DRAWER, "mesa de cabeceira");
+        sentences.put(DRAWER_LONG, "gaveteiro");
+        sentences.put(PICTURE, "quadro");
+        sentences.put(MIRROR, "espelho");
+        sentences.put(WINDOW, "janela");
+        sentences.put(WARDROBE, "armário");
 
         genders.put(sentences.get(CACTUS), Gender.MASCULINE);
         genders.put(sentences.get(CACTUS_FLOWER), Gender.FEMININE);
@@ -63,8 +70,13 @@ public class Portuguese implements Dictionary {
         genders.put(sentences.get(TABLE), Gender.FEMININE);
         genders.put(sentences.get(TRASH), Gender.FEMININE);
         genders.put(sentences.get(REFRIGERATOR), Gender.FEMININE);
-        genders.put(sentences.get(MIRROR), Gender.MASCULINE);
+        genders.put(sentences.get(ABAJOUR), Gender.FEMININE);
         genders.put(sentences.get(BED), Gender.FEMININE);
+        genders.put(sentences.get(CLOCK), Gender.MASCULINE);
+        genders.put(sentences.get(PICTURE), Gender.MASCULINE);
+        genders.put(sentences.get(MIRROR), Gender.MASCULINE);
+        genders.put(sentences.get(WINDOW), Gender.FEMININE);
+        genders.put(sentences.get(WARDROBE), Gender.MASCULINE);
 
         sentences.put(GOOD_MORNING, "Bom dia!");
         sentences.put(LAUNDRY_DAY, "Hoje é dia de lavar roupa!");
@@ -72,16 +84,19 @@ public class Portuguese implements Dictionary {
         sentences.put(CANT_REACH, "Não consigo alcançar.");
         sentences.put(CANT_DO_THAT, "Não dá pra fazer isso.");
         sentences.put(WHY_SOULD_I, "Por que eu deveria fazer isso?");
+        sentences.put(BETTER_NOT, "Hummm... Melhor não.");
         sentences.put(IT_SHOULD_BE_CLOSED, "Preciso fechar primeiro.");
         sentences.put(ALMOST_EMPTY, "Está quase vazi{det}.");
         sentences.put(EMPTY, "Está vazi{det}.");
         sentences.put(FULL_AGAIN, "Está chei{det} novamente.");
         sentences.put(CACTUS_HAS_FLOWER, "Ei, isso é uma flor?");
+        sentences.put(CACTUS_CANT_PICK, "Isso ia doer.");
         sentences.put(ENOUGH_FLOWERS, "Eu acho que não precisa de mais flores.");
         sentences.put(JIMMY_PLANT_LOOK_AT, "Jimmy a Planta.");
         sentences.put(MIRROR_LOOK_AT, "Ih, sou eu.");
         sentences.put(BED_LOOK_AT, "É uma cama bem confortável.");
         sentences.put(FAN_SWITCH_LOOK_AT, "Um interruptor que faz girar nos dois sentidos.");
+        sentences.put(FAN_SWITCH_CANT_PICK, "Não consigo tirar, está emperrado.");
         sentences.put(LINO_GREETINGS, "Oi {name}!");
         sentences.put(LINO_SLEEPING, "Adivinha, ele está dormindo.");
         sentences.put(PILE_LOOK_AT, "É uma grande pilha de roupas.");

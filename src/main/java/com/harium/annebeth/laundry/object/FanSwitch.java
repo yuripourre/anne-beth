@@ -15,12 +15,14 @@ import com.harium.etyl.layer.ImageLayer;
 public class FanSwitch extends PickupableObject {
 
     boolean picked = false;
+    public ImageLayer upsideLayer;
 
     public FanSwitch(int x, int y) {
         super(LanguageManager.objectName(Dictionary.FAN_SWITCH), x, y, 20, 28, 57, 70);
 
         layer = new ImageLayer(x, y, 20, 28, "objects/fan_switch.png");
         inventoryLayer = new ImageLayer(0, 0, 57, 70, "objects/fan_switch_inv.png");
+        upsideLayer = new ImageLayer(x, y, 20, 28, "objects/fan_switch.png");
 
         this.border = 10;
     }
@@ -30,7 +32,11 @@ public class FanSwitch extends PickupableObject {
         if (!visible) {
             return;
         }
-        layer.draw(g);
+        if (SceneManager.normalWorld) {
+            layer.draw(g);
+        } else {
+            upsideLayer.draw(g);
+        }
     }
 
     @Override
@@ -57,7 +63,8 @@ public class FanSwitch extends PickupableObject {
     @Override
     public PickLevel onPickUp() {
         if (SceneManager.normalWorld) {
-            cantUse();
+            Jukebox.playCannot();
+            DialogManager.addDialog(LanguageManager.sentence(Dictionary.FAN_SWITCH_CANT_PICK));
             return PickLevel.NONE;
         }
         super.onPickUp();

@@ -3,10 +3,7 @@ package com.harium.annebeth.core.ui;
 import com.harium.annebeth.core.Context;
 import com.harium.annebeth.core.Interaction;
 import com.harium.annebeth.core.i18n.LanguageManager;
-import com.harium.annebeth.core.object.BaseObject;
-import com.harium.annebeth.core.object.DummyObject;
-import com.harium.annebeth.core.object.HitBoxObject;
-import com.harium.annebeth.core.object.PickupableObject;
+import com.harium.annebeth.core.object.*;
 import com.harium.annebeth.core.player.Player;
 import com.harium.annebeth.laundry.object.*;
 import com.harium.annebeth.laundry.room.*;
@@ -107,15 +104,19 @@ public class SceneManager {
     private void initDinner() {
         int ox = DINNER_OFFSET_X;
         int oy = ROOM_OFFSET_Y;
-        addObjectList(new CactusJimmy(235 + ox, 121 + oy));
+        addObjectList(new CactusJimmy(210 + ox, 121 + oy));
         //foreground.add(new Table(-110 + ox, 220 + oy));
     }
 
     private void addObjectList(BaseObject baseObject) {
         objectList.add(baseObject);
-        if(baseObject instanceof PickupableObject) {
+        if (baseObject instanceof PickupableObject) {
             pickupObject.put(baseObject.getName(), (PickupableObject) baseObject);
         }
+    }
+
+    private void addForegroundObject(BaseObject baseObject) {
+        foreground.add(baseObject);
     }
 
     public PickupableObject getPickupObject(String name) {
@@ -158,10 +159,18 @@ public class SceneManager {
     private void initBedRoom() {
         int ox = ROOM_OFFSET_X;
         int oy = ROOM_OFFSET_Y;
-        foreground.add(new Fan(358 + ox, -50 + oy));
-        foreground.add(new Television(350 + ox, 252 + oy));
-        addObjectList(new HitBoxObject(LanguageManager.sentence(MIRROR), LanguageManager.sentence(MIRROR_LOOK_AT), LanguageManager.sentence(MIRROR_LOOK_AT), 576 + ox, 96 + oy, 76, 98));
-        addObjectList(new HitBoxObject(LanguageManager.sentence(BED), LanguageManager.sentence(BED_LOOK_AT), 326 + ox, 200 + oy, 190, 98));
+        addForegroundObject(new Fan(358 + ox, -50 + oy));
+        addForegroundObject(new Television(350 + ox, 252 + oy));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 102 + ox, 12 + oy, 96, 136));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 686 + ox, 12 + oy, 96, 136));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WARDROBE), ox, 122+ oy , 80, 145).use(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER), 235 + ox, 196 + oy, 68, 68));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER_LONG), 550 + ox, 196 + oy, 120, 70));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(ABAJOUR), 262 + ox, 130 + oy, 48, 70));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(CLOCK), 226 + ox, 150 + oy, 48, 48));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(PICTURE), 358 + ox, 60 + oy, 128, 92));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(MIRROR), 576 + ox, 96 + oy, 76, 98).look(MIRROR_LOOK_AT).use(MIRROR_LOOK_AT));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(BED), BED_LOOK_AT, 326 + ox, 200 + oy, 190, 98));
         addObjectList(new FanSwitch(528 + ox, 131 + oy));
         addObjectList(new Lino(133 + ox, 215 + oy));
     }
@@ -233,27 +242,28 @@ public class SceneManager {
     public void updateMouse(PointerEvent event, Player player) {
         boolean found = false;
 
-        for (int i = objectList.size() - 1; i >= 0; i--) {
-            BaseObject object = objectList.get(i);
-
+        for (int i = foreground.size() - 1; i >= 0; i--) {
+            BaseObject object = foreground.get(i);
             if (!object.visible) {
                 continue;
             }
             if (object.collide(event.getX(), event.getY())) {
-                if (Context.getInteraction() == Interaction.LOOK_AT) {
-                    ActionUIManager.defineTarget(player, object);
-                } else if (Context.getInteraction() == Interaction.USE) {
-                    ActionUIManager.defineTarget(player, object);
-                    found = true;
-                } else if (Context.getInteraction() == Interaction.USE_WITH) {
-                    Context.setInteraction(Interaction.USE);
-                    ActionUIManager.defineTarget(player, object);
-                    found = true;
-                } else if (Context.getInteraction() == Interaction.WALK || Context.getInteraction() == Interaction.NONE) {
-                    openMenu(player, object);
-                    found = true;
-                }
+                found = handleObjectInteraction(player, found, object);
                 break;
+            }
+        }
+
+        if (!found) {
+            for (int i = objectList.size() - 1; i >= 0; i--) {
+                BaseObject object = objectList.get(i);
+
+                if (!object.visible) {
+                    continue;
+                }
+                if (object.collide(event.getX(), event.getY())) {
+                    found = handleObjectInteraction(player, found, object);
+                    break;
+                }
             }
         }
 
@@ -273,6 +283,23 @@ public class SceneManager {
                 Context.changeObject(floor);
             }
         }
+    }
+
+    private boolean handleObjectInteraction(Player player, boolean found, BaseObject object) {
+        if (Context.getInteraction() == Interaction.LOOK_AT) {
+            ActionUIManager.defineTarget(player, object);
+        } else if (Context.getInteraction() == Interaction.USE) {
+            ActionUIManager.defineTarget(player, object);
+            found = true;
+        } else if (Context.getInteraction() == Interaction.USE_WITH) {
+            Context.setInteraction(Interaction.USE);
+            ActionUIManager.defineTarget(player, object);
+            found = true;
+        } else if (Context.getInteraction() == Interaction.WALK || Context.getInteraction() == Interaction.NONE) {
+            openMenu(player, object);
+            found = true;
+        }
+        return found;
     }
 
     private void openMenu(Player player, BaseObject object) {

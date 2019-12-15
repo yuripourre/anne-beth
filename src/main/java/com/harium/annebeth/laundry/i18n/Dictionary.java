@@ -16,6 +16,7 @@ public interface Dictionary {
     String LAUNDRY_DAY = "laundry day";
     String SKILL_STOOL = "skill_stool";
 
+    String ABAJOUR = "abajour";
     String CACTUS = "cactus";
     String CACTUS_FLOWER = "cactus_flower";
     String CLOTHES_PILE = "pile";
@@ -35,20 +36,29 @@ public interface Dictionary {
     String LINO = "lino";
     String TABLE = "table";
     String BED = "bed";
+    String DRAWER = "drawer";
+    String DRAWER_LONG = "drawer_l";
+    String CLOCK = "clock";
     String MIRROR = "mirror";
+    String PICTURE = "picture";
+    String WINDOW = "window";
+    String WARDROBE = "wardrobe";
 
     String STANDARD_LOOK_AT = "std_look";
     String CANT_REACH = "cant_reach";
     String CANT_DO_THAT = "cant_do";
     String WHY_SOULD_I = "why_should_i";
+    String BETTER_NOT = "better_not";
     String IT_SHOULD_BE_CLOSED = "it_close";
     String ALMOST_EMPTY = "almost_empty";
     String EMPTY = "empty";
     String FULL_AGAIN = "full";
     String CACTUS_HAS_FLOWER = "cactus_has_flower";
+    String CACTUS_CANT_PICK = "cactus_hurts";
     String ENOUGH_FLOWERS = "enough_flowers";
     String JIMMY_PLANT_LOOK_AT = "jimmy_look";
     String FAN_SWITCH_LOOK_AT = "fanswitch_look";
+    String FAN_SWITCH_CANT_PICK = "fanswitch_cntpick";
     String BED_LOOK_AT = "bed_look";
     String MIRROR_LOOK_AT = "mirror_look";
     String LINO_GREETINGS = "linohi";

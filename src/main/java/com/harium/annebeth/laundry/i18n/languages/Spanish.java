@@ -44,8 +44,14 @@ public class Spanish implements Dictionary {
         sentences.put(TABLE, "mesa");
         sentences.put(TRASH, "bote de basura");
         sentences.put(REFRIGERATOR, "refrigerador");
-        sentences.put(MIRROR, "espejo");
+        sentences.put(ABAJOUR, "luminaria");
         sentences.put(BED, "cama");
+        sentences.put(CLOCK, "reloj despertador");
+        sentences.put(DRAWER,"mesilla de noche");
+        sentences.put(MIRROR, "espejo");
+        sentences.put(PICTURE, "pintura");
+        sentences.put(WINDOW, "ventana");
+        sentences.put(WARDROBE, "armario");
 
         genders.put(sentences.get(CACTUS), Gender.MASCULINE);
         genders.put(sentences.get(CACTUS_FLOWER), Gender.FEMININE);
@@ -67,6 +73,11 @@ public class Spanish implements Dictionary {
         genders.put(sentences.get(REFRIGERATOR), Gender.FEMININE);
         genders.put(sentences.get(MIRROR), Gender.MASCULINE);
         genders.put(sentences.get(BED), Gender.FEMININE);
+        genders.put(sentences.get(CLOCK), Gender.MASCULINE);
+        genders.put(sentences.get(DRAWER), Gender.FEMININE);
+        genders.put(sentences.get(PICTURE), Gender.FEMININE);
+        genders.put(sentences.get(WINDOW), Gender.FEMININE);
+        genders.put(sentences.get(WARDROBE), Gender.MASCULINE);
 
         sentences.put(GOOD_MORNING, "¡Buen día!");
         sentences.put(LAUNDRY_DAY, "¡Hoy es dia de lavanderia!");
@@ -74,16 +85,19 @@ public class Spanish implements Dictionary {
         sentences.put(CANT_REACH, "No puedo alcanzar.");
         sentences.put(CANT_DO_THAT, "No puedo hacer eso.");
         sentences.put(WHY_SOULD_I, "¿Por qué debería hacer eso?");
+        sentences.put(BETTER_NOT, "Hmmm... Mejor no.");
         sentences.put(IT_SHOULD_BE_CLOSED, "Preciso fechar primeiro.");
         sentences.put(ALMOST_EMPTY, "Está casi vací{suf}.");
         sentences.put(EMPTY, "Está vací{suf}.");
         sentences.put(FULL_AGAIN, "Está llen{suf} otra vez.");
         sentences.put(CACTUS_HAS_FLOWER, "¿Oye, espera, es una flor?");
+        sentences.put(CACTUS_CANT_PICK, "Esto dolería.");
         sentences.put(ENOUGH_FLOWERS, "No creo que necesite más flores.");
         sentences.put(JIMMY_PLANT_LOOK_AT, "Jimmy la Planta.");
         sentences.put(MIRROR_LOOK_AT, "Oye, esa soy yo.");
         sentences.put(BED_LOOK_AT, "Una cama muy cómoda.");
         sentences.put(FAN_SWITCH_LOOK_AT, "Un interruptor de ventilador con dos modos de giro.");
+        sentences.put(FAN_SWITCH_CANT_PICK, "No puedo moverlo. Está atorado.");
         sentences.put(LINO_GREETINGS, "¡Hola {name}!");
         sentences.put(LINO_SLEEPING, "Adivina qué, él está durmiendo.");
         sentences.put(PILE_LOOK_AT, "Es un montón de ropa enorme.");

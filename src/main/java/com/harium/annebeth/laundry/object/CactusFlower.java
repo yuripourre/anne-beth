@@ -3,6 +3,7 @@ package com.harium.annebeth.laundry.object;
 import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
 import com.harium.annebeth.core.object.HighObject;
+import com.harium.annebeth.core.object.PickLevel;
 import com.harium.annebeth.core.ui.DialogManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.sound.Jukebox;
@@ -58,6 +59,13 @@ public class CactusFlower extends HighObject {
         } else {
             cantUse();
         }
+    }
+
+    @Override
+    public PickLevel onPickUp() {
+        Jukebox.playCannot();
+        DialogManager.addDialog(LanguageManager.objectName(Dictionary.CACTUS_CANT_PICK));
+        return PickLevel.NONE;
     }
 
     public void combine(Softener softener) {

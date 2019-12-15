@@ -1,5 +1,6 @@
 package com.harium.annebeth.core.object;
 
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.ui.DialogManager;
 
 public class HitBoxObject extends BaseObject {
@@ -21,6 +22,16 @@ public class HitBoxObject extends BaseObject {
         super(mirror, x, y, w, h);
         this.lookAtSentence = lookAtSentence;
         this.useSentence = useSentence;
+    }
+
+    public HitBoxObject look(String lookSentence) {
+        this.lookAtSentence = LanguageManager.sentence(lookSentence);
+        return this;
+    }
+
+    public HitBoxObject use(String useSentence) {
+        this.useSentence = LanguageManager.sentence(useSentence);
+        return this;
     }
 
     @Override
