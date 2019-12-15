@@ -25,7 +25,7 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 // TODO Split this class between generic SceneManager and Laundry SceneManager
 public class SceneManager {
 
-    public static boolean DEBUG_MODE = true;
+    public static boolean DEBUG_MODE = false;
 
     public static final int ROOM_HEIGHT = 310;
     public static final int ROOM_OFFSET_X = 0;
@@ -127,6 +127,7 @@ public class SceneManager {
         int ox = KITCHEN_OFFSET_X;
         int oy = 50;
 
+        addForegroundObject(new Table( 840 + ox, 252 + oy));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 250 + ox, 64 + oy, 124, 86));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 154 + ox, 64 + oy, 100, 78).open(BETTER_NOT));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 374 + ox, 64 + oy, 100, 78).open(BETTER_NOT));

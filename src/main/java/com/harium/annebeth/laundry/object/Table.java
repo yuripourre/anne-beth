@@ -8,7 +8,7 @@ import com.harium.etyl.layer.ImageLayer;
 public class Table extends DecorativeObject {
 
     public Table(int x, int y) {
-        super(LanguageManager.objectName(Dictionary.TABLE), x, y, 296, 108);
+        super(LanguageManager.objectName(Dictionary.TABLE), x, y, 262, 108);
         this.originalY = y;
         layer = new ImageLayer(x, y, w, h, "objects/table.png");
     }
