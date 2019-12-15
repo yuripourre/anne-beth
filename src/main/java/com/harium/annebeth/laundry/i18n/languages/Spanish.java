@@ -44,14 +44,21 @@ public class Spanish implements Dictionary {
         sentences.put(TABLE, "mesa");
         sentences.put(TRASH, "bote de basura");
         sentences.put(REFRIGERATOR, "refrigerador");
-        sentences.put(ABAJOUR, "luminaria");
+        sentences.put(LAMP, "luminaria");
         sentences.put(BED, "cama");
         sentences.put(CLOCK, "reloj despertador");
         sentences.put(DRAWER,"mesilla de noche");
+        sentences.put(DRAWER_LONG,"cajon");
         sentences.put(MIRROR, "espejo");
         sentences.put(PICTURE, "pintura");
         sentences.put(WINDOW, "ventana");
         sentences.put(WARDROBE, "armario");
+        // Hall Objects
+        sentences.put(FRONT_DOOR, "puerta");
+        sentences.put(CLOTHES_DOOR, "ropas");
+        sentences.put(LAMP_LONG, "lampara");
+        sentences.put(COUCH, "sofá");
+        sentences.put(PHONE, "telefono");
 
         genders.put(sentences.get(CACTUS), Gender.MASCULINE);
         genders.put(sentences.get(CACTUS_FLOWER), Gender.FEMININE);

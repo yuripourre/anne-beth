@@ -40,18 +40,25 @@ public class English implements Dictionary {
         sentences.put(TABLE, "table");
         sentences.put(TRASH, "trash");
         sentences.put(REFRIGERATOR, "refrigerator");
-        sentences.put(ABAJOUR, "lamp");
+        sentences.put(LAMP, "lamp");
         sentences.put(BED, "bed");
         sentences.put(CLOCK, "alarm clock");
         sentences.put(DRAWER, "drawer");
+        sentences.put(DRAWER_LONG, "drawer");
         sentences.put(MIRROR, "mirror");
         sentences.put(PICTURE, "picture");
         sentences.put(WINDOW, "window");
         sentences.put(WARDROBE, "wardrobe");
+        // Hall Objects
+        sentences.put(FRONT_DOOR, "door");
+        sentences.put(CLOTHES_DOOR, "clothes");
+        sentences.put(LAMP_LONG, "floor lamp");
+        sentences.put(COUCH, "couch");
+        sentences.put(PHONE, "telephone");
 
         sentences.put(GOOD_MORNING, "Good morning!");
         sentences.put(LAUNDRY_DAY, "Today is Laundry Day!");
-        sentences.put(STANDARD_LOOK_AT, "It is just a {name}.");
+        sentences.put(STANDARD_LOOK_AT, "It is just {undet} {name}.");
         sentences.put(CANT_REACH, "I can't reach it.");
         sentences.put(CANT_DO_THAT, "I can't do that.");
         sentences.put(WHY_SOULD_I, "Why should I do that?");
@@ -145,9 +152,22 @@ public class English implements Dictionary {
         return sentence;
     }
 
-    private static String interpolate(String sentence, BaseObject object) {
+    private String interpolate(String sentence, BaseObject object) {
+        String undet = undet(object.getName());
         String result = sentence.replaceAll("\\{name\\}", object.getName());
+        result = result.replaceAll("\\{undet\\}", undet);
         return result;
+    }
+
+    private String undet(String name) {
+        if (name.startsWith("a") ||
+                name.startsWith("e") ||
+                name.startsWith("i") ||
+                name.startsWith("o") ||
+                name.startsWith("u")) {
+            return "an";
+        }
+        return "a";
     }
 
 }

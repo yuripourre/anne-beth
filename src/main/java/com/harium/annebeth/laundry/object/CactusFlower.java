@@ -61,13 +61,6 @@ public class CactusFlower extends HighObject {
         }
     }
 
-    @Override
-    public PickLevel onPickUp() {
-        Jukebox.playCannot();
-        DialogManager.addDialog(LanguageManager.objectName(Dictionary.CACTUS_CANT_PICK));
-        return PickLevel.NONE;
-    }
-
     public void combine(Softener softener) {
         if (softener.hasFlower) {
             // Should never happen

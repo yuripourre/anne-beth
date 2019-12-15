@@ -40,6 +40,25 @@ public class FanSwitch extends PickupableObject {
     }
 
     @Override
+    public void turnUpsideDown() {
+        super.turnUpsideDown();
+        upsideLayer.setY(y);
+        upsideLayer.setScaleY(-1);
+    }
+
+    @Override
+    public void turnNormal() {
+        super.turnNormal();
+        upsideLayer.setY(y);
+        upsideLayer.setScaleY(1);
+    }
+
+    public void setPosition(int x, int y) {
+        super.setPosition(x, y);
+        upsideLayer.setLocation(x, y);
+    }
+
+    @Override
     public void onLook() {
         DialogManager.addDialog(LanguageManager.sentence(Dictionary.FAN_SWITCH_LOOK_AT));
     }

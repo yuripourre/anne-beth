@@ -25,7 +25,7 @@ import static com.harium.annebeth.laundry.i18n.Dictionary.*;
 // TODO Split this class between generic SceneManager and Laundry SceneManager
 public class SceneManager {
 
-    public static boolean DEBUG_MODE = false;
+    public static boolean DEBUG_MODE = true;
 
     public static final int ROOM_HEIGHT = 310;
     public static final int ROOM_OFFSET_X = 0;
@@ -148,6 +148,13 @@ public class SceneManager {
         int ox = 816;
         int oy = 50;
 
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(FRONT_DOOR), 616 + ox, 46 + oy, 104, 206));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 155 + ox, 14 + oy, 326, 132));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(CLOTHES_DOOR), 22 + ox, 60 + oy, 78, 100));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(LAMP_LONG), 120 + ox, 116 + oy, 54, 160));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(COUCH), 232 + ox, 158 + oy, 190, 125));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(PHONE), 456 + ox, 176 + oy, 50, 38));
+
         Cactus cactus = new Cactus(525 + ox, 102 + oy);
         addObjectList(cactus);
         addObjectList(new CactusFlower(cactus));
@@ -166,7 +173,7 @@ public class SceneManager {
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WARDROBE), ox, 122+ oy , 80, 145).use(BETTER_NOT));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER), 235 + ox, 196 + oy, 68, 68));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER_LONG), 550 + ox, 196 + oy, 120, 70));
-        addObjectList(new HitBoxObject(LanguageManager.objectName(ABAJOUR), 262 + ox, 130 + oy, 48, 70));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(LAMP), 262 + ox, 130 + oy, 48, 70));
         addObjectList(new HitBoxObject(LanguageManager.objectName(CLOCK), 226 + ox, 150 + oy, 48, 48));
         addObjectList(new HitBoxObject(LanguageManager.objectName(PICTURE), 358 + ox, 60 + oy, 128, 92));
         addObjectList(new HitBoxObject(LanguageManager.objectName(MIRROR), 576 + ox, 96 + oy, 76, 98).look(MIRROR_LOOK_AT).use(MIRROR_LOOK_AT));

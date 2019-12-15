@@ -113,7 +113,7 @@ public class Credits extends Application {
         credits.add("");
         credits.add(LanguageManager.sentence(Dictionary.CREDITS_MADE_BY));
         credits.add("");
-        credits.add("Yuri Pourre");
+        credits.add("Harium");
         credits.add("");
         credits.add("");
         credits.add("");

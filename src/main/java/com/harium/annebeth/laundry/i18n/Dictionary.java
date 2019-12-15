@@ -1,6 +1,9 @@
 package com.harium.annebeth.laundry.i18n;
 
+import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
+import com.harium.annebeth.core.object.HitBoxObject;
+import com.harium.annebeth.core.object.HitBoxOpenableObject;
 
 public interface Dictionary {
 
@@ -16,7 +19,6 @@ public interface Dictionary {
     String LAUNDRY_DAY = "laundry day";
     String SKILL_STOOL = "skill_stool";
 
-    String ABAJOUR = "abajour";
     String CACTUS = "cactus";
     String CACTUS_FLOWER = "cactus_flower";
     String CLOTHES_PILE = "pile";
@@ -35,7 +37,9 @@ public interface Dictionary {
     String JIMMY_PLANT = "jimmy";
     String LINO = "lino";
     String TABLE = "table";
+    // Bedroom Objects
     String BED = "bed";
+    String LAMP = "lamp";
     String DRAWER = "drawer";
     String DRAWER_LONG = "drawer_l";
     String CLOCK = "clock";
@@ -43,6 +47,12 @@ public interface Dictionary {
     String PICTURE = "picture";
     String WINDOW = "window";
     String WARDROBE = "wardrobe";
+    // Hall Objects
+    String FRONT_DOOR = "door";
+    String CLOTHES_DOOR = "clothesd";
+    String LAMP_LONG = "lampl";
+    String COUCH = "couch";
+    String PHONE = "phone";
 
     String STANDARD_LOOK_AT = "std_look";
     String CANT_REACH = "cant_reach";
