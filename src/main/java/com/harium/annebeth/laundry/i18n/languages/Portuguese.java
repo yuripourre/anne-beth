@@ -71,6 +71,7 @@ public class Portuguese implements Dictionary {
         add(STANDARD_LOOK_AT, "É apenas {undet} {name}.");
         add(CANT_REACH, "Não consigo alcançar.");
         add(CANT_DO_THAT, "Não dá pra fazer isso.");
+        add(DOESNT_FIT_POCKET, "Não cabe no meu bolso.");
         add(WHY_SOULD_I, "Por que eu deveria fazer isso?");
         add(BETTER_NOT, "Hummm... Melhor não.");
         add(IT_SHOULD_BE_CLOSED, "Preciso fechar primeiro.");

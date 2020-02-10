@@ -1,9 +1,6 @@
 package com.harium.annebeth.laundry.i18n;
 
-import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.core.object.BaseObject;
-import com.harium.annebeth.core.object.HitBoxObject;
-import com.harium.annebeth.core.object.HitBoxOpenableObject;
 
 public interface Dictionary {
 
@@ -62,6 +59,7 @@ public interface Dictionary {
     String STANDARD_LOOK_AT = "std_look";
     String CANT_REACH = "cant_reach";
     String CANT_DO_THAT = "cant_do";
+    String DOESNT_FIT_POCKET = "dsnt_fit";
     String WHY_SOULD_I = "why_should_i";
     String BETTER_NOT = "better_not";
     String IT_SHOULD_BE_CLOSED = "it_close";

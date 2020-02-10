@@ -60,7 +60,7 @@ public class BaseObject implements Turnable {
     public void onOpen() {
         if (!canOpen) {
             Jukebox.playCannot();
-            DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_DO_THAT));
+            dialog(LanguageManager.sentence(Dictionary.CANT_DO_THAT));
         } else {
             Jukebox.playOpen();
         }
@@ -69,10 +69,14 @@ public class BaseObject implements Turnable {
     public void onClose() {
         if (!canClose) {
             Jukebox.playCannot();
-            DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_DO_THAT));
+            dialog(LanguageManager.sentence(Dictionary.CANT_DO_THAT));
         } else {
             Jukebox.playOpen();
         }
+    }
+
+    protected void dialog(String sentence) {
+        DialogManager.addDialog(sentence);
     }
 
     public PickLevel onPickUp() {
@@ -100,7 +104,7 @@ public class BaseObject implements Turnable {
 
     protected void negativeDialog() {
         String sentence = DialogHelper.negativeSentence();
-        DialogManager.addDialog(sentence);
+        dialog(sentence);
     }
 
     public void onPull() {
@@ -112,7 +116,7 @@ public class BaseObject implements Turnable {
     }
 
     public void onLook() {
-        DialogManager.addDialog(LanguageManager.sentence(Dictionary.STANDARD_LOOK_AT, this));
+        dialog(LanguageManager.sentence(Dictionary.STANDARD_LOOK_AT, this));
     }
 
     public int centerX() {

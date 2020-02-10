@@ -69,6 +69,7 @@ public class Spanish implements Dictionary {
         add(STANDARD_LOOK_AT, "És solo {undet} {name}.");
         add(CANT_REACH, "No puedo alcanzar.");
         add(CANT_DO_THAT, "No puedo hacer eso.");
+        add(DOESNT_FIT_POCKET, "No cabe en mi bolsillo");
         add(WHY_SOULD_I, "¿Por qué debería hacer eso?");
         add(BETTER_NOT, "Hmmm... Mejor no.");
         add(IT_SHOULD_BE_CLOSED, "Preciso fechar primeiro.");

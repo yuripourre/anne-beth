@@ -67,6 +67,7 @@ public class English implements Dictionary {
         sentences.put(STANDARD_LOOK_AT, "It is just {undet} {name}.");
         sentences.put(CANT_REACH, "I can't reach it.");
         sentences.put(CANT_DO_THAT, "I can't do that.");
+        sentences.put(DOESNT_FIT_POCKET, "It doesn't fit in my pocket.");
         sentences.put(WHY_SOULD_I, "Why should I do that?");
         sentences.put(BETTER_NOT, "Hmmm... Better not.");
         sentences.put(IT_SHOULD_BE_CLOSED, "It should be closed first.");
