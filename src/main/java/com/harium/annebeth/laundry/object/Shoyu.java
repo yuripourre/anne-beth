@@ -6,6 +6,7 @@ import com.harium.annebeth.core.object.PickupableObject;
 import com.harium.annebeth.core.ui.DialogManager;
 import com.harium.annebeth.core.ui.InventoryManager;
 import com.harium.annebeth.core.ui.SceneManager;
+import com.harium.annebeth.core.ui.SkillManager;
 import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.core.i18n.LanguageManager;
 import com.harium.annebeth.laundry.sound.Jukebox;
@@ -24,7 +25,10 @@ public class Shoyu extends PickupableObject {
     @Override
     public PickLevel onPickUp() {
         if (SceneManager.isUpsideDown()) {
-            if (!InventoryManager.has(LanguageManager.objectName(Dictionary.STOOL))) {
+            if (SkillManager.has(Dictionary.STOOL)) {
+                super.onPickUp();
+                return PickLevel.HIGH;
+            } else {
                 DialogManager.addDialog(LanguageManager.sentence(Dictionary.CANT_REACH));
                 return PickLevel.NONE;
             }
