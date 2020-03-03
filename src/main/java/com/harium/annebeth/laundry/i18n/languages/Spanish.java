@@ -137,7 +137,7 @@ public class Spanish implements Dictionary {
         add(CREDITS_SFX, "Efectos Sonoros");
         add(CREDITS_SFX_CREATOR, "SubspaceAudio");
         add(CREDITS_MUSIC, "Músicas");
-        add(CREDITS_MUSIC_HOUSE, "Melody Town Theme por CleytonKauffman");
+        add(CREDITS_MUSIC_HOUSE, "Magic in the Garden por Rafael Krux");
         add(CREDITS_MUSIC_UPSIDE_DOWN, "Facing it por Komiku");
         add(CREDITS_MUSIC_MENU, "A Simple Trifle por jestar");
         add(CREDITS_TOOLS, "Herramientas");

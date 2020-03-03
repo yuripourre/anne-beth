@@ -103,6 +103,10 @@ public class Credits extends Application {
         credits.add("Pixelator");
         //credits.add("http://pixelatorapp.com/");
         credits.add("");
+        credits.add("LibGDX");
+        credits.add("");
+        credits.add("Etyl");
+        credits.add("");
         credits.add("");
         credits.add(LanguageManager.sentence(Dictionary.CREDITS_BETA_TESTERS));
         credits.add("");
@@ -120,7 +124,6 @@ public class Credits extends Application {
         credits.add("");
         credits.add(LanguageManager.sentence(Dictionary.CREDITS_SPECIAL_THANKS));
         credits.add("");
-        credits.add("LibGDX");
         credits.add(LanguageManager.sentence(Dictionary.CREDITS_THANKS_DISCORD));
     }
 

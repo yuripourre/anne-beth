@@ -126,7 +126,7 @@ public class English implements Dictionary {
         sentences.put(CREDITS_SFX, "Sound Effects");
         sentences.put(CREDITS_SFX_CREATOR, "SubspaceAudio");
         sentences.put(CREDITS_MUSIC, "Musics");
-        sentences.put(CREDITS_MUSIC_HOUSE, "Melody Town Theme by CleytonKauffman");
+        sentences.put(CREDITS_MUSIC_HOUSE, "Magic in the Garden by Rafael Krux");
         sentences.put(CREDITS_MUSIC_UPSIDE_DOWN, "Facing it by Komiku");
         sentences.put(CREDITS_MUSIC_MENU, "A Simple Trifle by jestar");
         sentences.put(CREDITS_TOOLS, "Tools");
