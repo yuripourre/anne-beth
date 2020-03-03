@@ -186,7 +186,7 @@ public class SceneManager {
         addObjectList(new HitBoxObject(LanguageManager.objectName(CLOCK), 226 + ox, 150 + oy, 48, 48));
         addObjectList(new HitBoxObject(LanguageManager.objectName(PICTURE), 358 + ox, 60 + oy, 128, 92));
         addObjectList(new HitBoxObject(LanguageManager.objectName(MIRROR), 576 + ox, 96 + oy, 76, 98).look(MIRROR_LOOK_AT).use(MIRROR_LOOK_AT));
-        addObjectList(new HitBoxObject(LanguageManager.objectName(BED), BED_LOOK_AT, 326 + ox, 200 + oy, 190, 98));
+        addObjectList(new HitBoxObject(LanguageManager.objectName(BED), 326 + ox, 200 + oy, 190, 98).look(BED_LOOK_AT));
         addObjectList(new FanSwitch(528 + ox, 131 + oy));
         addObjectList(new Lino(133 + ox, 215 + oy));
     }
