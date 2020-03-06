@@ -88,6 +88,6 @@ public class FanSwitch extends PickupableObject {
         }
         super.onPickUp();
         picked = true;
-        return PickLevel.MEDIUM;
+        return PickLevel.HIGH;
     }
 }
