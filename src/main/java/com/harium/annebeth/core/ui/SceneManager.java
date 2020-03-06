@@ -8,6 +8,7 @@ import com.harium.annebeth.core.player.Player;
 import com.harium.annebeth.laundry.object.*;
 import com.harium.annebeth.laundry.room.*;
 import com.harium.annebeth.laundry.sound.Jukebox;
+import com.harium.etyl.commons.event.MouseEvent;
 import com.harium.etyl.commons.event.PointerEvent;
 import com.harium.etyl.commons.graphics.Color;
 import com.harium.etyl.commons.layer.Layer;
@@ -39,6 +40,9 @@ public class SceneManager {
     public int x = 0;
     public int w = 0;
 
+    public int speed = 1;
+    public int dx = 0;
+    private boolean walking = false;
     DummyObject floor;
     // Openable objects
     public Washer washer;
@@ -127,7 +131,7 @@ public class SceneManager {
         int ox = KITCHEN_OFFSET_X;
         int oy = 50;
 
-        addForegroundObject(new Table( 840 + ox, 252 + oy));
+        addForegroundObject(new Table(840 + ox, 252 + oy));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 250 + ox, 64 + oy, 124, 86));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 154 + ox, 64 + oy, 100, 78).open(BETTER_NOT));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(CABINET), 374 + ox, 64 + oy, 100, 78).open(BETTER_NOT));
@@ -179,7 +183,7 @@ public class SceneManager {
         addForegroundObject(new Television(350 + ox, 252 + oy));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 102 + ox, 12 + oy, 96, 136));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WINDOW), 686 + ox, 12 + oy, 96, 136));
-        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WARDROBE), ox, 122+ oy , 80, 145).use(BETTER_NOT));
+        addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(WARDROBE), ox, 122 + oy, 80, 145).use(BETTER_NOT));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER), 235 + ox, 196 + oy, 68, 68).open(BETTER_NOT));
         addObjectList(new HitBoxOpenableObject(LanguageManager.objectName(DRAWER_LONG), 550 + ox, 196 + oy, 120, 70).open(BETTER_NOT));
         addObjectList(new HitBoxObject(LanguageManager.objectName(LAMP), 262 + ox, 130 + oy, 48, 70));
@@ -255,7 +259,17 @@ public class SceneManager {
         }
     }
 
+    public void keepWalking(Player player) {
+        floor.setPosition(dx, floor.y);
+        player.setTarget(floor);
+    }
+
     public void updateMouse(PointerEvent event, Player player) {
+        if (walking && event.isButtonUp(MouseEvent.MOUSE_BUTTON_LEFT)) {
+            walking = false;
+            return;
+        }
+
         boolean found = false;
 
         for (int i = foreground.size() - 1; i >= 0; i--) {
@@ -290,15 +304,21 @@ public class SceneManager {
                 return;
             }
             if (!Context.hasObject() /*|| Context.getInteraction() == Interaction.USE_WITH*/ || Context.getInteraction() == Interaction.NONE) {
-                Context.reset();
-                Context.setInteraction(Interaction.WALK);
-                // just walk
-                floor.setPosition(event.getX(), event.getY());
-
-                player.setTarget(floor);
-                Context.changeObject(floor);
+                dx = event.getX();
+                walkTo(event.getX(), event.getY(), player);
             }
         }
+    }
+
+    private void walkTo(int x, int y, Player player) {
+        Context.reset();
+        Context.setInteraction(Interaction.WALK);
+        // just walk
+        floor.setPosition(x, y);
+
+        player.setTarget(floor);
+        Context.changeObject(floor);
+        walking = true;
     }
 
     private boolean handleObjectInteraction(Player player, boolean found, BaseObject object) {
@@ -409,5 +429,9 @@ public class SceneManager {
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public boolean isPlayerWalking() {
+        return walking;
     }
 }

@@ -9,7 +9,6 @@ import com.harium.annebeth.core.player.Player;
 import com.harium.annebeth.core.state.GameState;
 import com.harium.annebeth.core.state.GameStateHandler;
 import com.harium.annebeth.core.ui.*;
-import com.harium.annebeth.laundry.i18n.Dictionary;
 import com.harium.annebeth.laundry.sound.Jukebox;
 import com.harium.etyl.commons.context.Application;
 import com.harium.etyl.commons.event.KeyEvent;
@@ -92,6 +91,9 @@ public class InGame extends Application implements GameStateHandler {
         sceneManager.update(now);
         inventoryManager.update(now);
 
+        if (sceneManager.isPlayerWalking()) {
+            sceneManager.keepWalking(player);
+        }
         if (sceneManager.isGameOver()) {
             nextApplication = new Credits(w, h);
         }
@@ -121,6 +123,8 @@ public class InGame extends Application implements GameStateHandler {
             } else {
                 inventoryManager.updateMouse(event);
             }
+        } else if(sceneManager.isPlayerWalking() && event.isButtonUp(MouseEvent.MOUSE_BUTTON_LEFT)) {
+            sceneManager.updateMouse(event, player);
         }
     }
 
